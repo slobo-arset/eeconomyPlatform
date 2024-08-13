@@ -1,0 +1,75 @@
+<div class="card">
+  <h5>Banke</h5>
+
+  <div class="grid sifarnik-main">
+    <div class="col-12 md:col-10">
+			<span class="p-input-icon-left">
+                <i class="pi pi-search"></i>
+                <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, banke)"
+                       placeholder="Pretraga"/>
+            </span>
+    </div>
+    <div class="col-12 md:col-2">
+      <button pButton type="button" class="min-w-full sifarnik-button" label="Dodaj" (click)="showAddBlock()"></button>
+    </div>
+  </div>
+
+
+  <div *ngIf="addBlock" class="grid sifarnik-add">
+    <div class=" col-12 md:col-12 align-items-end">
+      <button icon="pi pi-times" class="close" (click)="hiddenAddBlock()">X</button>
+    </div>
+    <div class="p-field col-12 md:col-4">
+      <div class="field">
+        <label for="username1" class="block labela">Naziv</label>
+        <input id="username1" class="min-w-full p-inputtext-sm" pInputText/>
+      </div>
+    </div>
+    <div class="p-field col-12 md:col-4">
+      <div class="field">
+        <label for="username2" class="block labela">Šifra</label>
+        <input id="username2" class="min-w-full p-inputtext-sm" pInputText/>
+      </div>
+    </div>
+    <div class="p-field col-12 md:col-2">
+      <div class="field">
+        <label class="block labela">Validan</label>
+        <p-inputSwitch></p-inputSwitch>
+      </div>
+    </div>
+    <div class="p-field col-12 md:col-2">
+      <label class="block labela">Akcija</label>
+      <button pButton type="button" class="sifarnik-button" label="Sačuvaj"></button>
+      <p-button label="Obriši" icon="pi pi-times" styleClass="p-button-secondary"
+                [style]="{'margin-left': '.5em'}"></p-button>
+    </div>
+  </div>
+
+  <p-table #dt1 [value]="(banke | async)!">
+    <ng-template pTemplate="header">
+      <tr>
+        <th>RB</th>
+        <th pSortableColumn="naziv">Naziv
+          <p-sortIcon field="naziv"></p-sortIcon>
+        </th>
+        <th pSortableColumn="sifra">Broj računa
+          <p-sortIcon field="sifra"></p-sortIcon>
+        </th>
+        <th>Izmena</th>
+
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-banka>
+      <tr>
+        <td class="col-1">{{banka.id}}</td>
+        <td class="col-5">{{banka.naziv}}</td>
+        <td class="col-5">{{banka.broj_racuna}}</td>
+        <td class="col-1">
+          <button pButton pRipple type="button" icon="pi pi-pencil" (click)="showAddBlock()"
+                  class="p-button-rounded p-button-text"></button>
+        </td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+

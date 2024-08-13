@@ -1,0 +1,116 @@
+/* You can add global styles to this file, and also import other style files */
+
+@import "assets/layout/styles/layout/layout";
+
+@import "../node_modules/primeicons/primeicons.css";
+@import "../node_modules/primeng/resources/primeng.min.css";
+@import "../node_modules/primeflex/primeflex.css";
+
+
+
+@import "assets/layout/light/theme.css";
+//@import "assets/layout/dark/theme.css";
+//@import "../node_modules/primeng/resources/themes/bootstrap4-dark-blue/theme.css";
+//@import "../node_modules/primeng/resources/themes/md-dark-indigo/theme.css";
+
+//@import "../node_modules/primeng/resources/themes/mdc-dark-indigo/theme.css";
+
+
+
+ //@import "../node_modules/primeng/resources/themes/lara-dark-blue/theme.css";
+
+
+ //@import "../node_modules/primeng/resources/themes/soho-dark/theme.css";
+
+// @import "primeng/resources/themes/viva-dark/theme.css";
+
+// @import "primeng/resources/themes/mira/theme.css";
+// @import "primeng/resources/themes/nano/theme.css";
+// @import "primeng/resources/themes/saga-blue/theme.css";
+// @import "primeng/resources/themes/saga-green/theme.css";
+// @import "primeng/resources/themes/saga-orange/theme.css";
+// @import "primeng/resources/themes/saga-purple/theme.css";
+// @import "primeng/resources/themes/vela-blue/theme.css";
+// @import "primeng/resources/themes/vela-green/theme.css";
+// @import "primeng/resources/themes/vela-orange/theme.css";
+// @import "primeng/resources/themes/vela-purple/theme.css";
+// @import "primeng/resources/themes/arya-blue/theme.css";
+// @import "primeng/resources/themes/arya-green/theme.css";
+// @import "primeng/resources/themes/arya-orange/theme.css";
+// @import "primeng/resources/themes/arya-purple/theme.css";
+// @import "primeng/resources/themes/nova/theme.css";
+// @import "primeng/resources/themes/nova-alt/theme.css";
+// @import "primeng/resources/themes/nova-accent/theme.css";
+// @import "primeng/resources/themes/luna-amber/theme.css";
+// @import "primeng/resources/themes/luna-blue/theme.css";
+// @import "primeng/resources/themes/luna-green/theme.css";
+// @import "primeng/resources/themes/luna-pink/theme.css";
+// @import "primeng/resources/themes/rhea/theme.css";
+
+
+
+
+
+/* width */
+::-webkit-scrollbar {
+  width: 5px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #ff1c1c;
+  width: 3px;
+}
+
+
+/* Light */
+.sifarnik-main{
+  background: #e9e9e9;
+  margin: 0px 0px 10px 0px;
+  border: 1px solid #bfbfbf;
+}
+
+.sifarnik-add{
+background: #f5f5f5;
+margin: 0px 0px 10px 0px;
+border: 1px solid #bfbfbf;
+}
+
+.close {
+font-size: 12px;
+background: #ff1c1c;
+border: 1px solid #cc5701;
+border-radius: 5px;
+color: #fff;
+cursor: pointer;
+}
+
+.align-items-end{
+text-align: end;
+border-bottom: 1px solid #ccc;
+}
+
+.labela {
+font-size: 11px;
+padding-bottom: 5px;
+}
+
+
+.layout-sidebar {
+  position: fixed;
+  width: 300px;
+  height: calc(100vh - 5rem);
+  z-index: 999;
+  overflow-y: auto;
+  -webkit-user-select: none;
+  user-select: none;
+  top: 5rem;
+  transition: transform 0.2s, left 0.2s;
+  background-color: #1f2d40;
+  padding: 0px;
+  box-shadow: 0px 3px 5px rgb(0 0 0 / 2%), 0px 0px 2px rgb(0 0 0 / 5%), 0px 1px 4px rgb(0 0 0 / 8%);
+}

@@ -1,0 +1,48 @@
+.login-body .login-panel {
+  padding: 0 70px 20px 70px;
+  height: 100%;
+  width: 556px;
+  position: absolute;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.9);
+  -moz-border-radius: 2px;
+  -webkit-border-radius: 2px;
+  border-radius: 2px;
+}
+
+.login-body .login-panel .login-panel-content {
+  margin-top: 33.3%;
+}
+
+.login-body .login-panel .guest-sign-in {
+  color: #303030;
+}
+
+.login-body .login-panel .username-container, .login-body .login-panel .password-container {
+  text-align: left;
+}
+
+.login-body {
+  padding: 0;
+  overflow: hidden;
+  margin: 0 auto;
+  position: relative;
+  height: 100vh;
+  background: url("http://localhost:4200/assets/images/pozadina.avif") no-repeat;
+  background-size: cover;
+}
+
+@media screen and (max-width: 40em) {
+  .login-body .login-panel {
+    left: 0;
+    bottom: 0%;
+    width: 100%;
+    margin-bottom: 0px;
+    margin-top: 0;
+    margin-left: 0;
+    padding: 0 27px 20px 28px;
+    height: calc(100% - 128px);
+  }
+}
+
+/*# sourceMappingURL=cp-login.component.css.map */

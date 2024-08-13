@@ -1,0 +1,92 @@
+<div class="card">
+  <h5>Artikli</h5>
+
+  <div class="grid sifarnik-main">
+
+
+      <div class="col-6">
+        <div class="field">
+          <label for="firstname1">Šifra artikla</label>
+          <input id="firstname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field">
+          <label for="lastname1">Naziv artikla</label>
+          <input id="lastname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field">
+          <label for="firstname1">Grupa artikla</label>
+          <div>
+            <p-dropdown  autoWidth="false" [style]="{'width':'100%'}"   optionLabel="name"></p-dropdown>
+          </div>
+        </div>
+        <div class="field">
+          <label for="lastname1">Serijski broj</label>
+          <input id="lastname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field">
+          <label for="firstname1">MC</label>
+          <input id="firstname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field">
+          <label for="lastname1">Marža %</label>
+          <input id="lastname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field">
+          <label for="firstname1">VPC</label>
+          <input id="firstname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+
+
+      </div>
+      <div class="col-6">
+        <div class="field">
+          <label for="lastname1">Fiskali broj</label>
+          <input id="lastname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full" disabled>
+        </div>
+        <div class="field">
+          <label for="firstname1">Cijena</label>
+          <input id="firstname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field">
+          <label for="lastname1">Minimalna količina na stanju</label>
+          <input id="lastname1" type="text" class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+        <div class="field">
+          <label for="firstname1">Jedinica mjere</label>
+          <div>
+            <p-dropdown  autoWidth="false" [style]="{'width':'100%'}"   optionLabel="name"></p-dropdown>
+          </div>
+        </div>
+        <div class="field">
+          <p-fileUpload name="myfile[]" url="./upload.php"
+          accept="image/*" >
+            <ng-template pTemplate="toolbar">
+                <div class="pt-2 text-sm">Odaberite sliku</div>
+            </ng-template>
+          </p-fileUpload>
+        </div>
+        <div class="field">
+          <p-checkbox name="groupname" value="val1" label="Normativ" class="pr-2" ></p-checkbox>
+          <p-checkbox name="groupname" value="val2" label="Poluproizvod" class="pr-2"></p-checkbox>
+          <p-checkbox name="groupname" value="val1" label="WEB" class="pr-2"></p-checkbox>
+        </div>
+
+
+
+
+      </div>
+      <div class="col-6 bg-black-alpha-10">
+        <p-button label="Kartica artikla" class="pr-2" ></p-button>
+        <p-button label="Normativ" class="pr-2"></p-button>
+        <p-button label="Poluproizvod" class="pr-2"></p-button>
+        <p-button label="Skladiste" class="pr-2"></p-button>
+      </div>
+      <div class="col-6 bg-black-alpha-10 align-items-end">
+        <p-button label="Sačuvaj" class="pr-2"></p-button>
+        <p-button label="Očisti polja" class="pr-2"></p-button>
+      </div>
+
+
+
+  </div>
+</div>

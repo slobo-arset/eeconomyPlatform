@@ -1,0 +1,78 @@
+<div class="card">
+    <h5>Artikli</h5>
+
+    <div class="grid sifarnik-main">
+      <div class="col-12 md:col-10">
+              <span class="p-input-icon-left">
+                  <i class="pi pi-search"></i>
+                  <input pInputText type="text" (input)="dt1.filterGlobal($any($event.target).value, artikli)"
+                         placeholder="Pretraga"/>
+              </span>
+      </div>
+      <div class="col-12 md:col-2">
+        <button pButton type="button" class="min-w-full sifarnik-button" label="Dodaj" (click)="onRowEditInit(0)" ></button>
+      </div>
+    </div>
+
+    <p-table #dt1 [value]="(artikli | async)!">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Šifra artikla</th>
+          <th pSortableColumn="naziv">Naziv artikla
+            <p-sortIcon field="naziv"></p-sortIcon>
+          </th>
+          <th pSortableColumn="sifra">Grupa artikla
+            <p-sortIcon field="sifra"></p-sortIcon>
+          </th>
+          <th>MC</th>
+          <th>Marža %</th>
+          <th>RUC</th>
+          <th>VPC</th>
+          <th>Cijena</th>
+          <th>Jed. mjere</th>
+          <th>N</th>
+          <th>P</th>
+          <th>W</th>
+          <th>Akcija</th>
+
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-artikal>
+        <tr>
+          <td>{{artikal.sifra_artikla}}</td>
+          <td>{{artikal.naziv}}</td>
+          <td>{{artikal.grupa_artikla_naziv}}</td>
+          <td>{{artikal.mc}}</td>
+          <td>{{artikal.marza}}</td>
+          <td>{{artikal.ruc}}</td>
+          <td>{{artikal.vpc}}</td>
+          <td>{{artikal.cijena}}</td>
+          <td>{{artikal.jedinica_mjere_naziv}}</td>
+          <td>
+            <button *ngIf="artikal.n == true" pButton pRipple type="button" icon="pi pi-check"
+                    class="p-button-rounded p-button-text p-button-success mr-2"></button>
+            <button *ngIf="artikal.n == false" pButton pRipple type="button" icon="pi pi-times"
+                    class="p-button-rounded p-button-text p-button-danger mr-2"></button>
+          </td>
+          <td>
+            <button *ngIf="artikal.p == true" pButton pRipple type="button" icon="pi pi-check"
+                    class="p-button-rounded p-button-text p-button-success mr-2"></button>
+            <button *ngIf="artikal.p == false" pButton pRipple type="button" icon="pi pi-times"
+                    class="p-button-rounded p-button-text p-button-danger mr-2"></button>
+          </td>
+          <td>
+            <button *ngIf="artikal.w == true" pButton pRipple type="button" icon="pi pi-check"
+                    class="p-button-rounded p-button-text p-button-success mr-2"></button>
+            <button *ngIf="artikal.w == false" pButton pRipple type="button" icon="pi pi-times"
+                    class="p-button-rounded p-button-text p-button-danger mr-2"></button>
+          </td>
+
+          <td>
+            <button pButton pRipple type="button" icon="pi pi-pencil" (click)="onRowEditInit(artikal.id)"
+                    class="p-button-rounded p-button-text"></button>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+
