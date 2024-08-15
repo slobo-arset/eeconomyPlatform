@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: 'pretplata', component: RegistrationComponent},
   {
     path: '', component: AppLayoutComponent,
-    //canActivate: [AuthGuard],
+    canActivate: [AuthGuard],
     children: [
       {path: '', component: CpDashboardComponent},
       {
