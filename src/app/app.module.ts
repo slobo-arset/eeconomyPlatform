@@ -7,9 +7,7 @@ import {FeatureModule} from "./feature/feature.module";
 import {AppLayoutModule} from "./layout/app.layout.module";
 import {StoreModule} from '@ngrx/store';
 import {StoreDevtoolsModule} from '@ngrx/store-devtools';
-import {AppStoreModule} from "./store/app.store.module";
 import {EffectsModule} from '@ngrx/effects';
-import {metaReducers} from "./store/hydration/hydration.reducer";
 import {UtilModule} from "./util/util.module";
 
 
@@ -22,9 +20,8 @@ import {UtilModule} from "./util/util.module";
     AppRoutingModule,
     FeatureModule,
     AppLayoutModule,
-    AppStoreModule,
     UtilModule,
-    StoreModule.forRoot({}, {metaReducers}),
+    StoreModule.forRoot({}),
     StoreDevtoolsModule.instrument({
       maxAge: 25, // Retains last 25 states
       logOnly: !isDevMode(), // Restrict extension to log-only mode

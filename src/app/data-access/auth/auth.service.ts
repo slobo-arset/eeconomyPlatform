@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import {Observable} from "rxjs";
-import * as selector from './../../store/auth/auth.selector'
 import {Store} from "@ngrx/store";
-import {AppState} from "../../store/app.state";
 import {HttpClient} from "@angular/common/http";
 import {AuthResp, LoginData} from "../../interface/auth";
 
@@ -12,12 +10,11 @@ import {AuthResp, LoginData} from "../../interface/auth";
 export class AuthService {
 
   constructor(
-    private store: Store<AppState>,
     private http: HttpClient
   ) { }
 
-   isAuthenticated(): Observable<boolean> {
-    return this.store.select(selector.isLogin);
+   isAuthenticated(): any {
+    //return this.store.select(selector.isLogin);
   }
 
   public login(data: LoginData): Observable<AuthResp> {

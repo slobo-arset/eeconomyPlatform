@@ -1,10 +1,7 @@
 import {OnInit} from '@angular/core';
 import {Component} from '@angular/core';
 import {LayoutService} from './service/app.layout.service';
-import *  as authState from './../store/auth/auth.selector'
 import {Store} from "@ngrx/store";
-import {AppState} from "../store/app.state";
-import * as selector from "../store/auth/auth.selector";
 
 @Component({
   selector: 'app-menu',
@@ -13,11 +10,10 @@ import * as selector from "../store/auth/auth.selector";
 export class AppMenuComponent implements OnInit {
 
   model: any[] = [];
-  companyName = this.store.selectSignal(selector.companyName);
+  companyName = '';
 
   constructor(
     public layoutService: LayoutService,
-    private store: Store<AppState>
   ) {
   }
 

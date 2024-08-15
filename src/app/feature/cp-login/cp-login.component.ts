@@ -2,7 +2,6 @@ import {Component} from '@angular/core';
 import {FormControl, FormGroup} from "@angular/forms";
 
 import {Store} from '@ngrx/store';
-import {login} from "../../store/auth/auth.actions";
 import {LoginData} from "../../interface/auth";
 
 @Component({
@@ -27,6 +26,6 @@ export class CpLoginComponent {
     console.log(JSON.stringify(this.loginForm.value));
     const dataLogin: LoginData = {username: this.loginForm.value.username!, password: this.loginForm.value.password!};
 
-    this.store.dispatch(login({data: dataLogin}));
+    //this.store.dispatch(login({data: dataLogin}));
   }
 }

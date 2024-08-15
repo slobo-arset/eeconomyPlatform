@@ -2,7 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from "./service/app.layout.service";
 import {Store} from "@ngrx/store";
-import {login, logout} from "../store/auth/auth.actions";
+
 
 @Component({
     selector: 'app-topbar',
@@ -32,6 +32,6 @@ export class AppTopBarComponent {
     ) { }
 
     logOut(){
-      this.store.dispatch(logout());
+      //this.store.dispatch(logout());
     }
 }
