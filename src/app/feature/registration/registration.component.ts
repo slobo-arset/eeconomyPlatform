@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 
@@ -24,10 +24,28 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   selectedPretplata!: string;
 
   loginForm = new FormGroup({
-    username: new FormControl(''),
-    password: new FormControl(''),
-    aggrement: new FormControl(false),
-  });
+    companyName: new FormControl('', Validators.required),
+    pib: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{9}$')]),
+    jbkjs: new FormControl('', Validators.required),
+    contactPerson: new FormControl('', Validators.required),
+    city: new FormControl('', Validators.required),
+    address: new FormControl('', Validators.required),
+    postCode: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{5}$')]),
+    contactNumber: new FormControl('', [
+      Validators.required
+    ]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+    passwordConf: new FormControl('', Validators.required),
+    aggrement: new FormControl(false, Validators.requiredTrue),
+    aggrementPolis: new FormControl(false, Validators.requiredTrue),
+  }, { validators: this.passwordMatchValidator });
+
+  passwordMatchValidator(group: FormGroup) {
+    const password = group.get('password')?.value;
+    const passwordConf = group.get('passwordConf')?.value;
+    return password === passwordConf ? null : { passwordMismatch: true };
+  }
 
   constructor(private route: ActivatedRoute) {}
 
@@ -39,14 +57,9 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
       if (tip) {
         const foundOption = this.pretplata.find(option => option.code === tip);
-
         if (foundOption) {
           this.selectedPretplata = foundOption;
-        } else {
-          console.warn('No matching subscription found for the given tip parameter.');
         }
-      } else {
-        console.warn('The tip parameter is missing in the URL.');
       }
     });
   }
@@ -56,5 +69,23 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     this.destroy$.complete();
   }
 
-  isLogin() {}
+  isLogin() {
+    console.log(this.loginForm.value)
+    if (this.loginForm.invalid) {
+      this.markFormGroupTouched(this.loginForm);
+      return;
+    }
+
+  }
+
+  markFormGroupTouched(formGroup: FormGroup) {
+    Object.keys(formGroup.controls).forEach(field => {
+      const control = formGroup.get(field);
+      if (control instanceof FormControl) {
+        control.markAsTouched({ onlySelf: true });
+      } else if (control instanceof FormGroup) {
+        this.markFormGroupTouched(control);
+      }
+    });
+  }
 }

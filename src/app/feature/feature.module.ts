@@ -7,6 +7,9 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {StoreModule} from "@ngrx/store";
 import { RegistrationComponent } from './registration/registration.component';
 import { DropdownModule } from 'primeng/dropdown';
+import { PasswordModule } from 'primeng/password';
+import { ButtonModule } from 'primeng/button';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +23,9 @@ import { DropdownModule } from 'primeng/dropdown';
     CheckboxModule,
     ReactiveFormsModule,
     FormsModule,
-    DropdownModule
+    DropdownModule,
+    PasswordModule,
+    ButtonModule
   ]
 })
 export class FeatureModule { }
