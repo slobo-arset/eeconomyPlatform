@@ -132,19 +132,19 @@
 
           <div class="col-12">
             <p-checkbox formControlName="aggrement" [binary]="true" inputId="aggrement" class="mr-3"></p-checkbox>
-            <label for="aggrement">Prihvatam <span class="text-blue-800 font-bold cursor-pointer" >Uslove korišćenja</span></label>
+            <label for="aggrement">Prihvatam <span class="text-blue-800 font-bold cursor-pointer" (click)="openTerms()" >Uslove korišćenja</span></label>
           </div>
 
           <div class="col-12">
             <p-checkbox formControlName="aggrementPolis" [binary]="true" inputId="aggrementPolis" class="mr-3"></p-checkbox>
-            <label for="aggrementPolis">Prihvatam <span class="text-blue-800 font-bold cursor-pointer" >Politiku privatnosti</span></label>
+            <label for="aggrementPolis">Prihvatam <span class="text-blue-800 font-bold cursor-pointer" (click)="openPolis()" >Politiku privatnosti</span></label>
           </div>
 
           <div class="col-12 sm:col-12 md:col-12">
             <p-button type="submit" label="PRETPLATI SE"></p-button>
           </div>
           <div class="col-6 sm:col-6 md:col-6 forgetpassword-container">
-            <span>Imam nalog</span>
+            <span class="cursor-pointer text-red-500 font-bold" (click)="openLogin()">Imam nalog</span>
           </div>
         </div>
       </form>

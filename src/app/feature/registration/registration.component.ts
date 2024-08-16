@@ -1,6 +1,6 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
 import { DisplayMessageService } from 'src/app/data-access/message/message.service';
 
@@ -10,6 +10,7 @@ import { DisplayMessageService } from 'src/app/data-access/message/message.servi
   styleUrls: ['./registration.component.scss']
 })
 export class RegistrationComponent implements OnInit, OnDestroy {
+
 
   private destroy$ = new Subject<void>();
 
@@ -50,7 +51,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
   constructor(
     private route: ActivatedRoute,
-    private displayMessageService: DisplayMessageService
+    private displayMessageService: DisplayMessageService,
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -76,17 +78,15 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   isLogin() {
     console.log(this.loginForm.value)
 
-      if (!this.loginForm.get('aggrement')?.value) {
-        this.displayMessageService.emitMustAgreeTerms();
-        return;
-      }
-      if (!this.loginForm.get('aggrementPolis')?.value) {
-        this.displayMessageService.emitMustAgreePrivacy();
-        return;
-      }
+    if (!this.loginForm.get('aggrement')?.value) {
+      this.displayMessageService.emitMustAgreeTerms();
+      return;
+    }
+    if (!this.loginForm.get('aggrementPolis')?.value) {
+      this.displayMessageService.emitMustAgreePrivacy();
+      return;
+    }
 
-
-      console.log(this.loginForm.invalid)
 
     if (this.loginForm.invalid) {
       this.displayMessageService.emitMandatoryFieldsEmpty();
@@ -94,6 +94,26 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       return;
     }
 
+    this.loginForm.reset({
+      companyName: '',
+      pib: '',
+      jbkjs: '',
+      contactPerson: '',
+      city: '',
+      address: '',
+      postCode: '',
+      contactNumber: '',
+      email: '',
+      password: '',
+      passwordConf: '',
+      aggrement: false,
+      aggrementPolis: false
+    });
+
+    this.loginForm.reset({
+      aggrement: this.loginForm.get('aggrement')?.value,
+      aggrementPolis: this.loginForm.get('aggrementPolis')?.value,
+    });
   }
 
   markFormGroupTouched(formGroup: FormGroup) {
@@ -105,5 +125,17 @@ export class RegistrationComponent implements OnInit, OnDestroy {
         this.markFormGroupTouched(control);
       }
     });
+  }
+
+  openTerms(){
+    window.open('https://e-economy.biz/politika-privatnosti/', '_blank');
+  }
+
+  openPolis(){
+    window.open('https://e-economy.biz/politika-privatnosti/', '_blank');
+  }
+
+  openLogin() {
+    this.router.navigate(['login']);
   }
 }

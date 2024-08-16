@@ -3,6 +3,7 @@ import {FormControl, FormGroup} from "@angular/forms";
 
 import {Store} from '@ngrx/store';
 import {LoginData} from "../../interface/auth";
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cp-login',
@@ -19,7 +20,10 @@ export class CpLoginComponent {
     password: new FormControl(''),
   });
 
-  constructor(private store: Store) {
+  constructor(
+    private store: Store,
+    private router: Router
+  ) {
   }
 
   isLogin() {
@@ -27,5 +31,9 @@ export class CpLoginComponent {
     const dataLogin: LoginData = {username: this.loginForm.value.username!, password: this.loginForm.value.password!};
 
     //this.store.dispatch(login({data: dataLogin}));
+  }
+
+  goToRegistration(){
+    this.router.navigate(['pretplata']);
   }
 }

@@ -29,10 +29,10 @@
             </div>
           </div>
           <div class="col-8 sm:col-8 md:col-8 rememberme-container text-left">
-              Nemate nalog? <span class="text-pink-600 cursor-pointer font-semibold">Registrujte se brzo i lako.</span>
+              Nemate nalog? <span (click)="goToRegistration()" class="text-red-600 cursor-pointer font-semibold">Registrujte se brzo i lako.</span>
           </div>
           <div class="col-4 sm:col-4 md:col-4 forgetpassword-container text-right">
-            <span class="text-pink-600 cursor-pointer font-semibold">Zaboravljena šifra </span>
+            <span class="text-red-600 cursor-pointer font-semibold">Zaboravljena šifra </span>
           </div>
           <div class="col-12 sm:col-12 md:col-12">
             <button type="submit" icon="pi pi-check" label="Prijava" class="p-element p-button p-component"
@@ -41,7 +41,7 @@
               <span class="p-button-label">Prijava</span>
             </button>
           </div>
-  
+
         </div>
       </form>
     </div>
