@@ -2,6 +2,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Subject, takeUntil } from 'rxjs';
+import { DisplayMessageService } from 'src/app/data-access/message/message.service';
 
 @Component({
   selector: 'app-registration',
@@ -25,8 +26,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
   loginForm = new FormGroup({
     companyName: new FormControl('', Validators.required),
-    pib: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{9}$')]),
-    jbkjs: new FormControl('', Validators.required),
+    pib: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{9}$')]),
+    jbkjs: new FormControl(''),
     contactPerson: new FormControl('', Validators.required),
     city: new FormControl('', Validators.required),
     address: new FormControl('', Validators.required),
@@ -47,7 +48,10 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     return password === passwordConf ? null : { passwordMismatch: true };
   }
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(
+    private route: ActivatedRoute,
+    private displayMessageService: DisplayMessageService
+  ) {}
 
   ngOnInit() {
     this.route.queryParams
@@ -71,7 +75,21 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
   isLogin() {
     console.log(this.loginForm.value)
+
+      if (!this.loginForm.get('aggrement')?.value) {
+        this.displayMessageService.emitMustAgreeTerms();
+        return;
+      }
+      if (!this.loginForm.get('aggrementPolis')?.value) {
+        this.displayMessageService.emitMustAgreePrivacy();
+        return;
+      }
+
+
+      console.log(this.loginForm.invalid)
+
     if (this.loginForm.invalid) {
+      this.displayMessageService.emitMandatoryFieldsEmpty();
       this.markFormGroupTouched(this.loginForm);
       return;
     }

@@ -18,4 +18,28 @@ export class DisplayMessageService {
     });
   }
 
+
+  emitMandatoryFieldsEmpty(): void {
+    this.messageEmitter.next({
+      severity: 'info',
+      summary: 'OBAVEŠTENJE',
+      detail: 'Potrebno je popuniti sva obavezna polja',
+    });
+  }
+
+  emitMustAgreePrivacy(): void {
+    this.messageEmitter.next({
+      severity: 'info',
+      summary: 'OBAVEŠTENJE',
+      detail: 'Potrebno je prihvatiti politiku privatnosti',
+    });
+  }
+
+  emitMustAgreeTerms(): void {
+    this.messageEmitter.next({
+      severity: 'info',
+      summary: 'OBAVEŠTENJE',
+      detail: 'Potrebno je prihvatiti uslove korišćenja',
+    });
+  }
 }

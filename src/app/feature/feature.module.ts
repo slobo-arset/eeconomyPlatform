@@ -9,6 +9,7 @@ import { RegistrationComponent } from './registration/registration.component';
 import { DropdownModule } from 'primeng/dropdown';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
+import { InputNumberModule } from 'primeng/inputnumber';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { ButtonModule } from 'primeng/button';
     FormsModule,
     DropdownModule,
     PasswordModule,
-    ButtonModule
+    ButtonModule,
+    InputNumberModule
   ]
 })
 export class FeatureModule { }
