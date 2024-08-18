@@ -13,12 +13,9 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-   isAuthenticated(): any {
-    //return this.store.select(selector.isLogin);
-  }
 
   public login(data: LoginData): Observable<AuthResp> {
-    return this.http.post<AuthResp>('http://127.0.0.1:5001/api/auth/login',data)
+    return this.http.post<AuthResp>('auth/login',data)
   }
 
 }

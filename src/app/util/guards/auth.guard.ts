@@ -17,18 +17,13 @@ export class AuthGuard {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-    /*return this.auth$.isAuthenticated().pipe(
-      switchMap((val: boolean) => {
-        val = false;
-        if (!val) {
-          this.router.navigate(['login']);
-          return of(val)
-        }
-        return of(val)
-      })
-    )*/
-      this.router.navigate(['login']);
-      return of(false)
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+        return true;
+      } else {
+        this.router.navigate(['/login']);
+        return false;
+      }
   }
 
 }
