@@ -13,7 +13,6 @@ export class AuthService {
     private http: HttpClient
   ) { }
 
-
   public login(data: LoginData): Observable<AuthResp> {
     return this.http.post<AuthResp>('auth/login',data)
   }

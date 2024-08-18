@@ -2,6 +2,7 @@ import {OnInit} from '@angular/core';
 import {Component} from '@angular/core';
 import {LayoutService} from './service/app.layout.service';
 import {Store} from "@ngrx/store";
+import { MainStateService } from '../data-access/state/main-state.service';
 
 @Component({
   selector: 'app-menu',
@@ -14,595 +15,603 @@ export class AppMenuComponent implements OnInit {
 
   constructor(
     public layoutService: LayoutService,
+    public mainStateService: MainStateService
   ) {
   }
 
   ngOnInit() {
+    const user  =  this.mainStateService.getStateBykey('user')
+    console.log(user)
+
+    // if(){
+
+    // } else {
 
 
+    // }
     this.model = [
-      {
-        label: 'Početna',
-        items: [
-          {label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/']}
-        ]
-      },
+      // {
+      //   label: 'Početna',
+      //   items: [
+      //     {label: 'Dashboard', icon: 'pi pi-fw pi-home', routerLink: ['/']}
+      //   ]
+      // },
 
-      {
-        label: 'Moduli',
-        icon: 'pi pi-fw pi-briefcase',
-        items: [
-          {
-            label: 'ADMINISTRACIJA',
-            icon: 'pi pi-fw pi-user',
-            items: [
-              {
-                label: 'Otvaranje novih klijenata',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/administracija/lista-klijenta']
-              },
-              {
-                label: 'Otvaranje kasa klijenata',
-                icon: 'pi pi-fw pi-times-circle',
-                routerLink: ['/administracija/lista-klijenta']
-              },
-              {
-                label: 'Administriranje',
-                icon: 'pi pi-fw pi-lock',
-                routerLink: ['/administracija/lista-klijenta']
-              },
-              {
-                label: 'Izvjestaji o klijentima',
-                icon: 'pi pi-fw pi-lock',
-                routerLink: ['/administracija/izvestaj-o-klientima']
-              }
-            ]
-          },
-          {
-            label: 'KLIENT',
-            icon: 'pi pi-fw pi-user',
-            items: [
-              {
-                label: 'Klijent',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/korisnik/edit']
-              },
-              {
-                label: 'Fiskalni izvještaji',
-                icon: 'pi pi-fw pi-times-circle',
-                routerLink: ['/korisnik/fiskalni-izvestaj']
-              }
-            ]
-          },
-          {
-            label: 'PARAMETRI',
-            icon: 'pi pi-fw pi-user',
-            items: [
-              {
-                label: 'Artikli',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/parametri/artikli']
-              },
-              {
-                label: 'Jedinice mjere',
-                icon: 'pi pi-fw pi-times-circle',
-                routerLink: ['/parametri/jedinica-mere']
-              },
-              {
-                label: 'Vrste',
-                icon: 'pi pi-fw pi-lock',
-                routerLink: ['/parametri/vrste']
-              },
-              {
-                label: 'Grupe',
-                icon: 'pi pi-fw pi-lock',
-                routerLink: ['/parametri/grupe']
-              },
-              {
-                label: 'Poslovnice',
-                icon: 'pi pi-fw pi-lock',
-                routerLink: ['/parametri/poslovnice']
-              },
-              {
-                label: 'Skladišta',
-                icon: 'pi pi-fw pi-lock',
-                routerLink: ['/parametri/skladista']
-              },
-              {
-                label: 'Kupci-Dobavljači',
-                icon: 'pi pi-fw pi-lock',
-                routerLink: ['/parametri/kupci-dobavljaci']
-              },
-              {
-                label: 'Kupci fizička lica',
-                icon: 'pi pi-fw pi-lock',
-                routerLink: ['/parametri/kupci-fizicka-lica']
-              },
-              {
-                label: 'Porezne stope',
-                icon: 'pi pi-fw pi-lock',
-                routerLink: ['/parametri/porezne-stope']
-              },
-              {
-                label: 'Porez na potrošnju',
-                icon: 'pi pi-fw pi-lock',
-                routerLink: ['/parametri/porez-na-potrosnju']
-              },
-              {
-                label: 'Napomene',
-                icon: 'pi pi-fw pi-lock',
-                routerLink: ['/parametri/napomene']
-              },
-              {
-                label: 'Države',
-                icon: 'pi pi-fw pi-lock',
-                routerLink: ['/parametri/drzave']
-              },
-              {
-                label: 'Banke',
-                icon: 'pi pi-fw pi-lock',
-                routerLink: ['/parametri/banke']
-              },
-              {
-                label: 'Vrste plaćanja',
-                icon: 'pi pi-fw pi-lock',
-                routerLink: ['/parametri/vrste-placanja']
-              }
-            ]
-          },
-          {
-            label: 'DINAMIČKI MENI',
-            icon: 'pi pi-fw pi-user',
-            items: [
-              {
-                label: 'Maloprodajna kalkulacija',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/obrada/maloprodajna-kalkulacija']
-              },
-              {
-                label: 'Veleprodajna kalkulacija',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Ulaz materijala',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Izlazna faktura',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Izvozna faktura',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Avansni račun',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Nefakturisani računi',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Predračun',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Otpremnica',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Iventura',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Početno stanje',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Inventurna razlika',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Otpis robe',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Prenos robe',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Povrat robe',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Normativi (postavke parametara)',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Poluproizvodi (postavke parametara)',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Maloprodajna nivelacija',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Veleprodajna nivelacija',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Pregled maloprodajnih računa',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Knjižno odobrenje',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Proizvodni process',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Proizvodni proces – POLUPROIZVOD',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Radni nalog',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/radni']
-              },
-              {
-                label: 'Nalog za knjiženje',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-            ]
-          },
-          {
-            label: 'IZVJEŠTAJI',
-            icon: 'pi pi-fw pi-user',
-            items: [
-              {
-                label: 'Izvještaji sa kasa',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Stanje skaladišta',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Kartica artikla',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Rekapitulacija',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Dugovanja I potraživanja',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Kartica Kupca/Dobavljača',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Uporedjivanje perioda',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Statistika artikala',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Pregled artikala Kupaca',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Pregled nabavke',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Pregled proizvodnje',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Pregled utroška materijala',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Trgovačka knjiga na malo',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Trgovačka knjiga na veliko',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Poslovna knjiga ugostitelja',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Knjiga usluga',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Knjiga šanka',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Dnevni list kuhinje',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-            ]
-          },
-          {
-            label: 'PDV',
-            icon: 'pi pi-fw pi-user',
-            items: [
-              {
-                label: 'KUF',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'KIF',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Troškovi',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'PDV prijava',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Export',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
+      // {
+      //   label: 'Moduli',
+      //   icon: 'pi pi-fw pi-briefcase',
+      //   items: [
+      //     {
+      //       label: 'ADMINISTRACIJA',
+      //       icon: 'pi pi-fw pi-user',
+      //       items: [
+      //         {
+      //           label: 'Otvaranje novih klijenata',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/administracija/lista-klijenta']
+      //         },
+      //         {
+      //           label: 'Otvaranje kasa klijenata',
+      //           icon: 'pi pi-fw pi-times-circle',
+      //           routerLink: ['/administracija/lista-klijenta']
+      //         },
+      //         {
+      //           label: 'Administriranje',
+      //           icon: 'pi pi-fw pi-lock',
+      //           routerLink: ['/administracija/lista-klijenta']
+      //         },
+      //         {
+      //           label: 'Izvjestaji o klijentima',
+      //           icon: 'pi pi-fw pi-lock',
+      //           routerLink: ['/administracija/izvestaj-o-klientima']
+      //         }
+      //       ]
+      //     },
+      //     {
+      //       label: 'KLIENT',
+      //       icon: 'pi pi-fw pi-user',
+      //       items: [
+      //         {
+      //           label: 'Klijent',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/korisnik/edit']
+      //         },
+      //         {
+      //           label: 'Fiskalni izvještaji',
+      //           icon: 'pi pi-fw pi-times-circle',
+      //           routerLink: ['/korisnik/fiskalni-izvestaj']
+      //         }
+      //       ]
+      //     },
+      //     {
+      //       label: 'PARAMETRI',
+      //       icon: 'pi pi-fw pi-user',
+      //       items: [
+      //         {
+      //           label: 'Artikli',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/parametri/artikli']
+      //         },
+      //         {
+      //           label: 'Jedinice mjere',
+      //           icon: 'pi pi-fw pi-times-circle',
+      //           routerLink: ['/parametri/jedinica-mere']
+      //         },
+      //         {
+      //           label: 'Vrste',
+      //           icon: 'pi pi-fw pi-lock',
+      //           routerLink: ['/parametri/vrste']
+      //         },
+      //         {
+      //           label: 'Grupe',
+      //           icon: 'pi pi-fw pi-lock',
+      //           routerLink: ['/parametri/grupe']
+      //         },
+      //         {
+      //           label: 'Poslovnice',
+      //           icon: 'pi pi-fw pi-lock',
+      //           routerLink: ['/parametri/poslovnice']
+      //         },
+      //         {
+      //           label: 'Skladišta',
+      //           icon: 'pi pi-fw pi-lock',
+      //           routerLink: ['/parametri/skladista']
+      //         },
+      //         {
+      //           label: 'Kupci-Dobavljači',
+      //           icon: 'pi pi-fw pi-lock',
+      //           routerLink: ['/parametri/kupci-dobavljaci']
+      //         },
+      //         {
+      //           label: 'Kupci fizička lica',
+      //           icon: 'pi pi-fw pi-lock',
+      //           routerLink: ['/parametri/kupci-fizicka-lica']
+      //         },
+      //         {
+      //           label: 'Porezne stope',
+      //           icon: 'pi pi-fw pi-lock',
+      //           routerLink: ['/parametri/porezne-stope']
+      //         },
+      //         {
+      //           label: 'Porez na potrošnju',
+      //           icon: 'pi pi-fw pi-lock',
+      //           routerLink: ['/parametri/porez-na-potrosnju']
+      //         },
+      //         {
+      //           label: 'Napomene',
+      //           icon: 'pi pi-fw pi-lock',
+      //           routerLink: ['/parametri/napomene']
+      //         },
+      //         {
+      //           label: 'Države',
+      //           icon: 'pi pi-fw pi-lock',
+      //           routerLink: ['/parametri/drzave']
+      //         },
+      //         {
+      //           label: 'Banke',
+      //           icon: 'pi pi-fw pi-lock',
+      //           routerLink: ['/parametri/banke']
+      //         },
+      //         {
+      //           label: 'Vrste plaćanja',
+      //           icon: 'pi pi-fw pi-lock',
+      //           routerLink: ['/parametri/vrste-placanja']
+      //         }
+      //       ]
+      //     },
+      //     {
+      //       label: 'DINAMIČKI MENI',
+      //       icon: 'pi pi-fw pi-user',
+      //       items: [
+      //         {
+      //           label: 'Maloprodajna kalkulacija',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/obrada/maloprodajna-kalkulacija']
+      //         },
+      //         {
+      //           label: 'Veleprodajna kalkulacija',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Ulaz materijala',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Izlazna faktura',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Izvozna faktura',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Avansni račun',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Nefakturisani računi',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Predračun',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Otpremnica',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Iventura',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Početno stanje',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Inventurna razlika',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Otpis robe',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Prenos robe',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Povrat robe',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Normativi (postavke parametara)',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Poluproizvodi (postavke parametara)',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Maloprodajna nivelacija',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Veleprodajna nivelacija',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Pregled maloprodajnih računa',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Knjižno odobrenje',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Proizvodni process',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Proizvodni proces – POLUPROIZVOD',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Radni nalog',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/radni']
+      //         },
+      //         {
+      //           label: 'Nalog za knjiženje',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //       ]
+      //     },
+      //     {
+      //       label: 'IZVJEŠTAJI',
+      //       icon: 'pi pi-fw pi-user',
+      //       items: [
+      //         {
+      //           label: 'Izvještaji sa kasa',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Stanje skaladišta',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Kartica artikla',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Rekapitulacija',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Dugovanja I potraživanja',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Kartica Kupca/Dobavljača',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Uporedjivanje perioda',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Statistika artikala',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Pregled artikala Kupaca',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Pregled nabavke',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Pregled proizvodnje',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Pregled utroška materijala',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Trgovačka knjiga na malo',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Trgovačka knjiga na veliko',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Poslovna knjiga ugostitelja',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Knjiga usluga',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Knjiga šanka',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Dnevni list kuhinje',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //       ]
+      //     },
+      //     {
+      //       label: 'PDV',
+      //       icon: 'pi pi-fw pi-user',
+      //       items: [
+      //         {
+      //           label: 'KUF',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'KIF',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Troškovi',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'PDV prijava',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Export',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
 
-            ]
-          },
-          {
-            label: 'RECEPCIJA',
-            icon: 'pi pi-fw pi-user',
-            items: [
-              {
-                label: 'Tip sobe',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Sobe',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Programi',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Gosti',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Rezervacije',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Ostalo 1',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Ostalo 2',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Ostalo 3',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
+      //       ]
+      //     },
+      //     {
+      //       label: 'RECEPCIJA',
+      //       icon: 'pi pi-fw pi-user',
+      //       items: [
+      //         {
+      //           label: 'Tip sobe',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Sobe',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Programi',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Gosti',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Rezervacije',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Ostalo 1',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Ostalo 2',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Ostalo 3',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
 
-            ]
-          },
-          {
-            label: 'BLAGAJNA',
-            icon: 'pi pi-fw pi-user',
-            items: [
-              {
-                label: 'Nalog za naplatu',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Nalog za isplatu',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Nalog razduženja',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Blagajnički dnevnik',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-            ]
-          },
-          {
-            label: 'FINANSIJSKO POSLOVANJE',
-            icon: 'pi pi-fw pi-user',
-            items: [
-              {
-                label: 'Kontni plan',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Šema knjiženja',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Predlog za kompenzaciju',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'IOS – izvod otvorenih stavki',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Kartice konta',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Dnevnik knjiženja',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Specifikacije kupca',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Specifikacije dobavljača',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Specifikacija prihoda',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Specifikacija rashoda',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Zaključni list',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Zaključna knjiženja',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Nalog početnog stanja',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Specifikacija osnovnih sredstava',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Glavna knjiga',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-            ]
-          },
-          {
-            label: 'OBRASCI ZA ZAVRŠNI RAČUN',
-            icon: 'pi pi-fw pi-user',
-            items: [
-              {
-                label: 'Bilans stanja',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Bilans uspjeha',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Bilans tokova gotovine',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Izvještaj o promjenama u kapitalu',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Statistički aneks',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
-              {
-                label: 'Izvještaj o ostalim dobicima I gubitcima',
-                icon: 'pi pi-fw pi-sign-in',
-                routerLink: ['/auth/login']
-              },
+      //       ]
+      //     },
+      //     {
+      //       label: 'BLAGAJNA',
+      //       icon: 'pi pi-fw pi-user',
+      //       items: [
+      //         {
+      //           label: 'Nalog za naplatu',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Nalog za isplatu',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Nalog razduženja',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Blagajnički dnevnik',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //       ]
+      //     },
+      //     {
+      //       label: 'FINANSIJSKO POSLOVANJE',
+      //       icon: 'pi pi-fw pi-user',
+      //       items: [
+      //         {
+      //           label: 'Kontni plan',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Šema knjiženja',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Predlog za kompenzaciju',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'IOS – izvod otvorenih stavki',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Kartice konta',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Dnevnik knjiženja',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Specifikacije kupca',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Specifikacije dobavljača',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Specifikacija prihoda',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Specifikacija rashoda',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Zaključni list',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Zaključna knjiženja',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Nalog početnog stanja',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Specifikacija osnovnih sredstava',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Glavna knjiga',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //       ]
+      //     },
+      //     {
+      //       label: 'OBRASCI ZA ZAVRŠNI RAČUN',
+      //       icon: 'pi pi-fw pi-user',
+      //       items: [
+      //         {
+      //           label: 'Bilans stanja',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Bilans uspjeha',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Bilans tokova gotovine',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Izvještaj o promjenama u kapitalu',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Statistički aneks',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
+      //         {
+      //           label: 'Izvještaj o ostalim dobicima I gubitcima',
+      //           icon: 'pi pi-fw pi-sign-in',
+      //           routerLink: ['/auth/login']
+      //         },
 
-            ]
-          },
+      //       ]
+      //     },
 
-        ]
-      },
+      //   ]
+      // },
 
 
 

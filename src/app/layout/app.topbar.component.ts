@@ -2,6 +2,7 @@ import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from "./service/app.layout.service";
 import {Store} from "@ngrx/store";
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -9,14 +10,6 @@ import {Store} from "@ngrx/store";
     templateUrl: './app.topbar.component.html'
 })
 export class AppTopBarComponent {
-
-    cities = [
-        {godina: '2023'},
-        {godina: '2022'},
-        {godina: '2021'},
-        {godina: '2020'},
-        {godina: '2019'}
-    ];
 
     items!: MenuItem[];
 
@@ -28,10 +21,12 @@ export class AppTopBarComponent {
 
     constructor(
       public layoutService: LayoutService,
-      private store: Store
+      private store: Store,
+      private router: Router
     ) { }
 
     logOut(){
-      //this.store.dispatch(logout());
+      localStorage.removeItem('accessToken');
+      this.router.navigate(['/login']);
     }
 }

@@ -14,19 +14,11 @@
 
     <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
 
-        <p-dropdown [options]="cities" optionLabel="godina" optionDisabled="inactive"></p-dropdown>
-
-        <button class="p-link layout-topbar-button">
-            <i class="pi pi-calendar"></i>
-            <span>Calendar</span>
-        </button>
         <button class="p-link layout-topbar-button">
             <i class="pi pi-user"></i>
-            <span>Profile</span>
         </button>
         <button class="p-link layout-topbar-button" (click)="logOut()">
             <i class="pi pi-power-off"></i>
-            <span>Settings</span>
         </button>
     </div>
 </div>

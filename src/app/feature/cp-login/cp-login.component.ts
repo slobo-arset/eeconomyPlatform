@@ -6,6 +6,7 @@ import {LoginData} from "../../interface/auth";
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/data-access/auth/auth.service';
 import { catchError, Observable, of, switchMap, tap } from 'rxjs';
+import { MainStateService } from 'src/app/data-access/state/main-state.service';
 
 @Component({
   selector: 'app-cp-login',
@@ -25,27 +26,24 @@ export class CpLoginComponent {
   constructor(
     private store: Store,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private mainStateService: MainStateService
   ) {
   }
 
   isLogin() {
-    console.log(JSON.stringify(this.loginForm.value));
     const dataLogin: LoginData = {username: this.loginForm.value.username!, password: this.loginForm.value.password!};
 
     this.authService.login(dataLogin).subscribe({
-      next: (data) => {
-        // Success: Store the token and navigate to a protected route
+      next: (data: any) => {
+        this.mainStateService.setAppState({user:data.user})
         localStorage.setItem('accessToken', data.token);
-        this.router.navigate(['/dashboard']);  // Redirect to the dashboard or another protected route
+        this.router.navigate(['/dashboard']);
       },
       error: (error) => {
-        // Error: Handle the error (e.g., display an error message)
-        //this.displayMessageService.emitLoginFailed();  // Custom service to handle error messages
         console.log('Login failed:', error);
       }
     });
-    //this.store.dispatch(login({data: dataLogin}));
   }
 
   goToRegistration(){
