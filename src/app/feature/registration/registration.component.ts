@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { of, Subject, switchMap, takeUntil } from 'rxjs';
 import { DisplayMessageService } from 'src/app/data-access/message/message.service';
+import { RegistrationService } from 'src/app/data-access/registration/registration.service';
 import { SubscriptionService } from 'src/app/data-access/subscription/subscription.service';
 
 @Component({
@@ -50,7 +51,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
     private displayMessageService: DisplayMessageService,
     private router: Router,
     private subscriptionService: SubscriptionService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private registrationService: RegistrationService
   ) {
     this.route.queryParams
       .pipe(
@@ -94,7 +96,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   isLogin() {
     console.log(this.loginForm.value)
     console.log(this.selectedPretplata)
-
+    const formValues = this.loginForm.value;
 
     if (!this.loginForm.get('aggrement')?.value) {
       this.displayMessageService.emitMustAgreeTerms();
@@ -112,26 +114,53 @@ export class RegistrationComponent implements OnInit, OnDestroy {
       return;
     }
 
-    this.loginForm.reset({
-      companyName: '',
-      pib: '',
-      jbkjs: '',
-      contactPerson: '',
-      city: '',
-      address: '',
-      postCode: '',
-      contactNumber: '',
-      email: '',
-      password: '',
-      passwordConf: '',
-      aggrement: false,
-      aggrementPolis: false
-    });
 
-    this.loginForm.reset({
-      aggrement: this.loginForm.get('aggrement')?.value,
-      aggrementPolis: this.loginForm.get('aggrementPolis')?.value,
-    });
+    const jsonData = {
+      company: {
+        company_name: formValues.companyName,
+        pib: formValues.pib,
+        jbkjs: formValues.jbkjs,
+        contact_person: formValues.contactPerson,
+        city: formValues.city,
+        address: formValues.address,
+        post_code: formValues.postCode,
+        contact_number: formValues.contactNumber,
+        subscription_type: this.selectedPretplata ? this.selectedPretplata : ''
+      },
+      user: {
+        email: formValues.email,
+        password: formValues.password,
+        tip: 2
+      }
+    };
+
+    this.registrationService.create(jsonData).pipe(
+      takeUntil(this.destroy$)
+    ).subscribe(()=>{
+      this.loginForm.reset({
+        companyName: '',
+        pib: '',
+        jbkjs: '',
+        contactPerson: '',
+        city: '',
+        address: '',
+        postCode: '',
+        contactNumber: '',
+        email: '',
+        password: '',
+        passwordConf: '',
+        aggrement: false,
+        aggrementPolis: false
+      });
+
+      this.loginForm.reset({
+        aggrement: this.loginForm.get('aggrement')?.value,
+        aggrementPolis: this.loginForm.get('aggrementPolis')?.value,
+      });
+    })
+
+
+
   }
 
   markFormGroupTouched(formGroup: FormGroup) {
