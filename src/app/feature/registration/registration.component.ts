@@ -1,8 +1,9 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Subject, takeUntil } from 'rxjs';
+import { of, Subject, switchMap, takeUntil } from 'rxjs';
 import { DisplayMessageService } from 'src/app/data-access/message/message.service';
+import { SubscriptionService } from 'src/app/data-access/subscription/subscription.service';
 
 @Component({
   selector: 'app-registration',
@@ -14,34 +15,29 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
   private destroy$ = new Subject<void>();
 
-  pretplata: any[] = [
-    { name: 'TROMESEČNA PRETPLATA - 18000 + pdv 20%', code: 'PR3' },
-    { name: 'ŠESTOMESEČNA PRETPLATA - 33000 + pdv 20%', code: 'PR6' },
-    { name: 'GODIŠNJA PRETPLATA - 54000 + pdv 20%', code: 'PR12' },
-    { name: 'GODIŠNJA PRETPLATA - AKCIJSKA CENA - 45000 + pdv 20%', code: 'PRA12' }
-];
-
+  pretplata: any[] = []
 
   password!: string;
-  selectedPretplata!: string;
+  selectedPretplata: string = "";
 
-  loginForm = new FormGroup({
-    companyName: new FormControl('', Validators.required),
-    pib: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{9}$')]),
-    jbkjs: new FormControl(''),
-    contactPerson: new FormControl('', Validators.required),
-    city: new FormControl('', Validators.required),
-    address: new FormControl('', Validators.required),
-    postCode: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{5}$')]),
-    contactNumber: new FormControl('', [
-      Validators.required
-    ]),
-    email: new FormControl('', [Validators.required, Validators.email]),
-    password: new FormControl('', [Validators.required, Validators.minLength(8)]),
-    passwordConf: new FormControl('', Validators.required),
-    aggrement: new FormControl(false, Validators.requiredTrue),
-    aggrementPolis: new FormControl(false, Validators.requiredTrue),
-  }, { validators: this.passwordMatchValidator });
+  loginForm = new FormGroup(
+      {
+      companyName: new FormControl('', Validators.required),
+      pib: new FormControl(null, [Validators.required, Validators.pattern('^[0-9]{9}$')]),
+      jbkjs: new FormControl(''),
+      contactPerson: new FormControl('', Validators.required),
+      city: new FormControl('', Validators.required),
+      address: new FormControl('', Validators.required),
+      postCode: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{5}$')]),
+      contactNumber: new FormControl('', [Validators.required]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [Validators.required, Validators.minLength(8)]),
+      passwordConf: new FormControl('', Validators.required),
+      aggrement: new FormControl(false, Validators.requiredTrue),
+      aggrementPolis: new FormControl(false, Validators.requiredTrue),
+    },
+    { validators: this.passwordMatchValidator }
+  );
 
   passwordMatchValidator(group: FormGroup) {
     const password = group.get('password')?.value;
@@ -52,22 +48,42 @@ export class RegistrationComponent implements OnInit, OnDestroy {
   constructor(
     private route: ActivatedRoute,
     private displayMessageService: DisplayMessageService,
-    private router: Router
-  ) {}
+    private router: Router,
+    private subscriptionService: SubscriptionService,
+    private cdr: ChangeDetectorRef
+  ) {
+    this.route.queryParams
+      .pipe(
+        takeUntil(this.destroy$),
+        switchMap(params => {
+          console.log('DDD')
+          this.tip = params['tip'];
+          return this.subscriptionService.getAll().pipe(
+            takeUntil(this.destroy$),
+            switchMap(data => {
+              this.pretplata = data;
+              console.log('DDD')
+              this.cdr.markForCheck();
+              return of([]);
+            })
+          );
+        })
+      )
+      .subscribe((DATA)=>{
+        console.log('DDD')
+        const foundOption = this.pretplata.find(option => option.code ===  this.tip);
+              if (foundOption) {
+                this.selectedPretplata = foundOption.code;
+                console.log(this.selectedPretplata)
+                this.cdr.markForCheck();
+              }
+      });
+  }
+
+  tip: any;
 
   ngOnInit() {
-    this.route.queryParams
-    .pipe(takeUntil(this.destroy$))
-    .subscribe(params => {
-      const tip = params['tip'];
-
-      if (tip) {
-        const foundOption = this.pretplata.find(option => option.code === tip);
-        if (foundOption) {
-          this.selectedPretplata = foundOption;
-        }
-      }
-    });
+    this.selectedPretplata = "PR12"
   }
 
   ngOnDestroy() {
@@ -77,6 +93,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
   isLogin() {
     console.log(this.loginForm.value)
+    console.log(this.selectedPretplata)
+
 
     if (!this.loginForm.get('aggrement')?.value) {
       this.displayMessageService.emitMustAgreeTerms();
