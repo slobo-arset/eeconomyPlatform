@@ -18,7 +18,12 @@ export class ErrorInterceptor implements HttpInterceptor {
 
         console.log('ERROR...', err.status);
 
-        this.displayMessageService.emitMessageAlert();
+        // Potrebna dorada da se prikaze greska backenda
+        if(err.status == 409){
+          this.displayMessageService.emitCompanyAlreadyExists();
+        } else if (err.status == 404) {
+          this.displayMessageService.emitMessageAlert();
+        }
 
         throw err;
       })

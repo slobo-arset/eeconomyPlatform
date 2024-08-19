@@ -42,4 +42,21 @@ export class DisplayMessageService {
       detail: 'Potrebno je prihvatiti uslove korišćenja',
     });
   }
+
+
+  emitCompanyAlreadyExists(): void {
+    this.messageEmitter.next({
+      severity: 'info',
+      summary: 'OBAVEŠTENJE',
+      detail: 'Pravno lice ili korisnik su već registrovani.',
+    });
+  }
+
+  emitSuccessRegistration(): void {
+    this.messageEmitter.next({
+      severity: 'success',
+      summary: 'OBAVEŠTENJE',
+      detail: 'Uspešno ste se prijavili. Predračun je poslat na vašu mail adresu.',
+    });
+  }
 }

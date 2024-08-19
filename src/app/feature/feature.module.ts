@@ -10,13 +10,19 @@ import { DropdownModule } from 'primeng/dropdown';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { InputNumberModule } from 'primeng/inputnumber';
-
+import { PretplateComponent } from './administracija/pretplate/pretplate.component';
+import { TableModule } from 'primeng/table';
+import { CompanyComponent } from './user/company/company.component';
+import { EmployeesComponent } from './user/employees/employees.component';
 
 @NgModule({
   declarations: [
     CpDashboardComponent,
     CpLoginComponent,
-    RegistrationComponent
+    RegistrationComponent,
+    PretplateComponent,
+    CompanyComponent,
+    EmployeesComponent
   ],
   imports: [
     CommonModule,
@@ -27,7 +33,8 @@ import { InputNumberModule } from 'primeng/inputnumber';
     DropdownModule,
     PasswordModule,
     ButtonModule,
-    InputNumberModule
+    InputNumberModule,
+    TableModule
   ]
 })
 export class FeatureModule { }

@@ -23,13 +23,33 @@ export class AppMenuComponent implements OnInit {
     const user  =  this.mainStateService.getStateBykey('user')
     console.log(user)
 
-    // if(){
+    if(user.tip == 1){
+      this.model = [
+        {
+          label: '',
+          items: [
+              { label: 'Početna', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
+              { label: 'Korisnici', icon: 'pi pi-fw pi-users', routerLink: ['/users'] },
+              { label: 'Pretplate', icon: 'pi pi-fw pi-euro', routerLink: ['/subscription'] },
+          ]
+        }
+      ]
 
-    // } else {
+    } else {
 
+      this.model = [
+        {
+          label: '',
+          items: [
+              { label: 'Početna', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
+              { label: 'XML konvertor', icon: 'pi pi-fw pi-file-export', routerLink: ['/xml/convertor'] },
+              { label: 'Zaposleni', icon: 'pi pi-fw pi-users', routerLink: ['/employees'] },
 
-    // }
-    this.model = [
+          ]
+        }
+      ]
+    }
+    //this.model = [
       // {
       //   label: 'Početna',
       //   items: [
@@ -770,6 +790,6 @@ export class AppMenuComponent implements OnInit {
       //         }
       //     ]
       // }
-    ];
+    //];
   }
 }

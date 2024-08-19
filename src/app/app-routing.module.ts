@@ -5,6 +5,8 @@ import {CpLoginComponent} from "./feature/cp-login/cp-login.component";
 import {CpDashboardComponent} from "./feature/cp-dashboard/cp-dashboard.component";
 import {AuthGuard} from "./util/guards/auth.guard";
 import { RegistrationComponent } from './feature/registration/registration.component';
+import { PretplateComponent } from './feature/administracija/pretplate/pretplate.component';
+import { CompanyComponent } from './feature/user/company/company.component';
 
 const routes: Routes = [
   {path: 'login', component: CpLoginComponent},
@@ -14,6 +16,12 @@ const routes: Routes = [
     canActivate: [AuthGuard],
     children: [
       {path: '', component: CpDashboardComponent},
+      {path: 'users', component: CompanyComponent},
+      {path: 'subscription', component: PretplateComponent},
+      {path: 'profile', component: CpDashboardComponent},
+
+      {path: 'xml/convertor', component: CpDashboardComponent},
+      {path: 'employees', component: CpDashboardComponent},
       // {
       //   path: 'administracija',
       //   loadChildren: () => import('../app/feature/administracija/admin.module').then(m => m.AdminModule)

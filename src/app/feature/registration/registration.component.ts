@@ -157,6 +157,9 @@ export class RegistrationComponent implements OnInit, OnDestroy {
         aggrement: this.loginForm.get('aggrement')?.value,
         aggrementPolis: this.loginForm.get('aggrementPolis')?.value,
       });
+
+      this.displayMessageService.emitSuccessRegistration();
+
     })
 
 
