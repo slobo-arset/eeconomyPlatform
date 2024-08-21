@@ -14,6 +14,10 @@ import { PretplateComponent } from './administracija/pretplate/pretplate.compone
 import { TableModule } from 'primeng/table';
 import { CompanyComponent } from './user/company/company.component';
 import { EmployeesComponent } from './user/employees/employees.component';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextModule } from 'primeng/inputtext';
+import { CalendarModule } from 'primeng/calendar';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 @NgModule({
   declarations: [
@@ -34,7 +38,11 @@ import { EmployeesComponent } from './user/employees/employees.component';
     PasswordModule,
     ButtonModule,
     InputNumberModule,
-    TableModule
+    TableModule,
+    DialogModule,
+    InputTextModule,
+    CalendarModule,
+    InputSwitchModule
   ]
 })
 export class FeatureModule { }
