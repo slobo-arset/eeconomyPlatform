@@ -1,3 +1,15 @@
-<div class="card flex justify-content-center">
-    <p-chart type="pie" [data]="data" [options]="options"></p-chart>
+<div class="grid">
+    <div class="col-6">
+        <div class="p-3 card">
+            <div class="m-0 font-bold">Struktura KJS u RS</div>
+            <p-chart type="pie" [data]="data" [options]="options"></p-chart>
+        </div>
+    </div>
+    <div class="col-6">
+        <div class="p-3 card">
+            <div class="m-0 font-bold">Edukacije eRIC doo</div>
+            <p-chart type="pie" [data]="data2" [options]="options"></p-chart>
+        </div>
+    </div>
 </div>
+ 
