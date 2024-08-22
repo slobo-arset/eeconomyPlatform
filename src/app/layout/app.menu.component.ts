@@ -26,11 +26,18 @@ export class AppMenuComponent implements OnInit {
     if(user.tip == 1){
       this.model = [
         {
-          label: '',
+          label: 'MENI',
           items: [
               { label: 'Početna', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
+          ]
+        },
+        {
+          label: 'ADMINISTRACIJA',
+          items: [
               { label: 'Korisnici', icon: 'pi pi-fw pi-users', routerLink: ['/users'] },
               { label: 'Pretplate', icon: 'pi pi-fw pi-euro', routerLink: ['/subscription'] },
+              { label: 'Zaposleni', icon: 'pi pi-fw pi-users', routerLink: ['/employees'] },
+              { label: 'Log lista', icon: 'pi pi-fw pi-list', routerLink: ['/log-lista'] },
           ]
         }
       ]
@@ -39,7 +46,7 @@ export class AppMenuComponent implements OnInit {
 
       this.model = [
         {
-          label: '',
+          label: 'MENI',
           items: [
               { label: 'Početna', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
               { label: 'XML konvertor', icon: 'pi pi-fw pi-file-export', routerLink: ['/xml/convertor'] },

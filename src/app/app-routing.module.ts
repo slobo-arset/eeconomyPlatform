@@ -7,6 +7,7 @@ import {AuthGuard} from "./util/guards/auth.guard";
 import { RegistrationComponent } from './feature/registration/registration.component';
 import { PretplateComponent } from './feature/administracija/pretplate/pretplate.component';
 import { CompanyComponent } from './feature/user/company/company.component';
+import { LogListaComponent } from './feature/administracija/log-lista/log-lista.component';
 
 const routes: Routes = [
   {path: 'login', component: CpLoginComponent},
@@ -19,6 +20,7 @@ const routes: Routes = [
       {path: 'users', component: CompanyComponent},
       {path: 'subscription', component: PretplateComponent},
       {path: 'profile', component: CpDashboardComponent},
+      {path: 'log-lista', component: LogListaComponent},
 
       {path: 'xml/convertor', component: CpDashboardComponent},
       {path: 'employees', component: CpDashboardComponent},

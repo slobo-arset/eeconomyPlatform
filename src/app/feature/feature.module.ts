@@ -18,6 +18,7 @@ import { DialogModule } from 'primeng/dialog';
 import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { LogListaComponent } from './administracija/log-lista/log-lista.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { InputSwitchModule } from 'primeng/inputswitch';
     RegistrationComponent,
     PretplateComponent,
     CompanyComponent,
-    EmployeesComponent
+    EmployeesComponent,
+    LogListaComponent
   ],
   imports: [
     CommonModule,
