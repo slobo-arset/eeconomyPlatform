@@ -19,6 +19,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { LogListaComponent } from './administracija/log-lista/log-lista.component';
+import { ChartModule } from 'primeng/chart';
 
 @NgModule({
   declarations: [
@@ -44,7 +45,8 @@ import { LogListaComponent } from './administracija/log-lista/log-lista.componen
     DialogModule,
     InputTextModule,
     CalendarModule,
-    InputSwitchModule
+    InputSwitchModule,
+    ChartModule
   ]
 })
 export class FeatureModule { }
