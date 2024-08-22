@@ -1,1 +1,98 @@
-<p>log-lista works!</p>
+<div class="col-12 card">
+  <p-table
+      #dt1
+      [value]="logLista$ | async"
+      dataKey="id"
+      [rows]="5"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[5, 10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="Prikaži od {first} do {last} od ukupno {totalRecords} redova"
+      [globalFilterFields]="['id','name', 'address', 'country']"
+      >
+
+      <ng-template pTemplate="header">
+          <tr>
+
+              <th pSortableColumn="company_name">
+                  <div class="flex align-items-center">
+                      Rb.
+                  </div>
+              </th>
+              <th pSortableColumn="pib">
+                  <div class="flex align-items-center">
+                      Vreme
+                      <p-sortIcon field="pib"></p-sortIcon>
+                      <p-columnFilter type="text" field="pib" display="menu" class="ml-auto"></p-columnFilter>
+                  </div>
+              </th>
+              <th pSortableColumn="jbkjs" >
+                <div class="flex align-items-center">
+                    Korisnik
+                    <p-sortIcon field="jbkjs"></p-sortIcon>
+                    <p-columnFilter type="text" field="jbkjs" display="menu" class="ml-auto"></p-columnFilter>
+                </div>
+              </th>
+              <th pSortableColumn="subscription_type">
+                <div class="flex align-items-center">
+                    Entitet
+                    <p-sortIcon field="subscription_type"></p-sortIcon>
+                    <p-columnFilter type="text" field="subscription_type" display="menu" class="ml-auto"></p-columnFilter>
+                </div>
+              </th>
+              <th pSortableColumn="subscription_end">
+                <div class="flex align-items-center">
+                    Identifikator
+                    <p-sortIcon field="subscription_end"></p-sortIcon>
+                    <p-columnFilter type="text" field="subscription_end" display="menu" class="ml-auto"></p-columnFilter>
+                </div>
+              </th>
+              <th pSortableColumn="is_active">
+                <div class="flex align-items-center">
+                    Akcija
+                    <p-sortIcon field="is_actives"></p-sortIcon>
+               </div>
+              </th>
+              <th style="width: 10rem">
+                  <div class="flex align-items-center">
+                      Ip adresa
+                  </div>
+              </th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-data>
+          <tr>
+
+              <td>
+                  {{ data.company_name }}
+              </td>
+              <td>
+                  {{ data.pib  }}
+              </td>
+              <td>
+                {{ data.jbkjs  }}
+              </td>
+              <td>
+                {{ data.subscription_type  }}
+              </td>
+              <td>
+                {{ data.subscription_end  }}
+              </td>
+              <td>
+                <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': data.is_active, 'text-red-500 pi-times-circle': !data.is_active }"></i>
+              </td>
+
+
+              <td class="text-center">
+
+              </td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+          <tr>
+              <td colspan="7">Trenutno nemate logova u bazi.</td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>
+
