@@ -90,11 +90,14 @@
     </div>
     <div class="col-12 text-right">
 
-      <p-button label="Sačuvaj" styleClass="p-button-raised p-button-success" class="w-3 font-medium"></p-button>
-      <p-button label="Odustani" styleClass="p-button-raised p-button-danger" class="w-3 ml-2 font-medium"></p-button>
+      <p-button label="Sačuvaj" styleClass="p-button-raised p-button-success" class="w-3 font-medium" (click)="saveData()"></p-button>
+      <p-button label="Odustani" styleClass="p-button-raised p-button-danger" class="w-3 ml-2 font-medium" (click)="cancel()"></p-button>
 
 
     </div>
   </div>
   <ng-template pTemplate="footer"> </ng-template>
 </p-dialog>
+
+
+<p-toast></p-toast>

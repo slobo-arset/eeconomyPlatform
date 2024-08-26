@@ -20,7 +20,8 @@ import { CalendarModule } from 'primeng/calendar';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { LogListaComponent } from './administracija/log-lista/log-lista.component';
 import { ChartModule } from 'primeng/chart';
-
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ToastModule } from 'primeng/toast';
 @NgModule({
   declarations: [
     CpDashboardComponent,
@@ -46,7 +47,9 @@ import { ChartModule } from 'primeng/chart';
     InputTextModule,
     CalendarModule,
     InputSwitchModule,
-    ChartModule
+    ChartModule,
+    ConfirmDialogModule,
+    ToastModule
   ]
 })
 export class FeatureModule { }

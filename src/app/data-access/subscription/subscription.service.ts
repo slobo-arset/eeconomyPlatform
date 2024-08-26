@@ -15,4 +15,7 @@ export class SubscriptionService {
     return this.http.get<any>(this.baseUrl);
   }
 
+  update(id,data):Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/${id}`,data);
+  }
 }

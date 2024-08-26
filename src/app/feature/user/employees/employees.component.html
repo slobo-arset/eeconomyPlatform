@@ -1,1 +1,137 @@
-<p>employees works!</p>
+
+<div class="col-12 card">
+  <p-table
+      #dt1
+      [value]="user$ | async"
+      dataKey="id"
+      [rows]="5"
+      [showCurrentPageReport]="true"
+      [rowsPerPageOptions]="[5, 10, 25, 50]"
+      [paginator]="true"
+      currentPageReportTemplate="Prikaži od {first} do {last} od ukupno {totalRecords} redova"
+      [globalFilterFields]="['id','name', 'address', 'country']"
+      >
+
+      <ng-template pTemplate="header">
+          <tr>
+
+              <th pSortableColumn="company_name">
+                  <div class="flex align-items-center">
+                      Naziv
+                      <p-sortIcon field="company_name"></p-sortIcon>
+                      <p-columnFilter type="text" field="company_name" display="menu" class="ml-auto"></p-columnFilter>
+                  </div>
+              </th>
+              <th pSortableColumn="pib">
+                  <div class="flex align-items-center">
+                      PIB
+                      <p-sortIcon field="pib"></p-sortIcon>
+                      <p-columnFilter type="text" field="pib" display="menu" class="ml-auto"></p-columnFilter>
+                  </div>
+              </th>
+              <th pSortableColumn="jbkjs" >
+                <div class="flex align-items-center">
+                    JBKJS
+                    <p-sortIcon field="jbkjs"></p-sortIcon>
+                    <p-columnFilter type="text" field="jbkjs" display="menu" class="ml-auto"></p-columnFilter>
+                </div>
+              </th>
+              <th pSortableColumn="subscription_type">
+                <div class="flex align-items-center">
+                    TIP pretplate
+                    <p-sortIcon field="subscription_type"></p-sortIcon>
+                    <p-columnFilter type="text" field="subscription_type" display="menu" class="ml-auto"></p-columnFilter>
+                </div>
+              </th>
+              <th pSortableColumn="subscription_end">
+                <div class="flex align-items-center">
+                    Datum isteka
+                    <p-sortIcon field="subscription_end"></p-sortIcon>
+                    <p-columnFilter type="text" field="subscription_end" display="menu" class="ml-auto"></p-columnFilter>
+                </div>
+              </th>
+              <th pSortableColumn="is_active">
+                <div class="flex align-items-center">
+                    Aktivan
+                    <p-sortIcon field="is_actives"></p-sortIcon>
+               </div>
+              </th>
+              <th style="width: 10rem">
+                  <div class="flex align-items-center">
+                      Akcija
+                  </div>
+              </th>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-data>
+          <tr>
+
+              <td>
+                  {{ data.company_name }}
+              </td>
+              <td>
+                  {{ data.pib  }}
+              </td>
+              <td>
+                {{ data.jbkjs  }}
+              </td>
+              <td>
+                {{ data.subscription_type  }}
+              </td>
+              <td>
+                {{ data.subscription_end  }}
+              </td>
+              <td>
+                <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': data.is_active, 'text-red-500 pi-times-circle': !data.is_active }"></i>
+              </td>
+
+
+              <td class="text-center">
+                  <!-- <p-button type="button" icon="pi pi-pencil" styleClass="p-button-info" (click)="showDialog(data)"></p-button>
+                  <p-button type="button" icon="pi pi-trash" styleClass="ml-2 p-button-danger"></p-button> -->
+              </td>
+          </tr>
+      </ng-template>
+      <ng-template pTemplate="emptymessage">
+          <tr>
+              <td colspan="7">No product certificates found.</td>
+          </tr>
+      </ng-template>
+  </p-table>
+</div>
+
+
+
+<!-- <p-dialog
+[(visible)]="displayDialog"
+[modal]="true"
+[style]="{ width: '300px' }"
+header="Izmena pretplate"
+>
+  <div
+    class="grid"
+  >
+
+
+  <div class="col-12">
+    <div class="flex flex-column gap-2 w-full">
+      <label htmlFor="username">Aktivan</label>
+      <p-inputSwitch [(ngModel)]="isActive"></p-inputSwitch>
+    </div>
+  </div>
+  <div class="col-12">
+    <div class="flex flex-column gap-2 w-full">
+      <label htmlFor="username">Datum isteka pretplate</label>
+      <p-calendar [(ngModel)]="date" [showIcon]="true" dateFormat="dd.mm.yy" [style]="{'width':'100%'}" ></p-calendar>
+    </div>
+  </div>
+  <div class="col-12 text-left">
+
+    <p-button label="Sačuvaj" styleClass="p-button-raised p-button-success" [style]="{'width':'48%'}"></p-button>
+    <p-button label="Odustani" styleClass="p-button-raised p-button-danger" class="w-6 ml-2 font-medium" [style]="{'width':'49%'}"></p-button>
+
+
+  </div>
+  </div>
+  <ng-template pTemplate="footer"> </ng-template>
+</p-dialog> -->

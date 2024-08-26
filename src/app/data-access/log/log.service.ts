@@ -5,19 +5,13 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CompanyService {
+export class LogService {
 
-
-  private baseUrl = "companies";
+  private baseUrl = "log";
 
   constructor(private http: HttpClient) { }
 
   getAll():Observable<any> {
     return this.http.get<any>(this.baseUrl);
   }
-
-  update(id,data):Observable<any> {
-    return this.http.put<any>(`${this.baseUrl}/${id}`,data);
-  }
-
 }

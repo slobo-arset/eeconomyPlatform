@@ -16,13 +16,10 @@ export class AppMenuComponent implements OnInit {
   constructor(
     public layoutService: LayoutService,
     public mainStateService: MainStateService
-  ) {
-  }
+  ) {}
 
   ngOnInit() {
-    const user  =  this.mainStateService.getStateBykey('user')
-    console.log(user)
-
+    const user  =  this.mainStateService.getStateBykey('user');
     if(user.tip == 1){
       this.model = [
         {

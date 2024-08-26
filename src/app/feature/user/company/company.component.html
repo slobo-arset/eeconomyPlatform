@@ -2,7 +2,7 @@
 <div class="col-12 card">
   <p-table
       #dt1
-      [value]="subscription$ | async"
+      [value]="company$ | async"
       dataKey="id"
       [rows]="5"
       [showCurrentPageReport]="true"
@@ -79,7 +79,7 @@
                 {{ data.subscription_type  }}
               </td>
               <td>
-                {{ data.subscription_end  }}
+                {{ data.subscription_end | date:'dd-MM-yyyy' }}
               </td>
               <td>
                 <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': data.is_active, 'text-red-500 pi-times-circle': !data.is_active }"></i>
@@ -88,7 +88,7 @@
 
               <td class="text-center">
                   <p-button type="button" icon="pi pi-pencil" styleClass="p-button-info" (click)="showDialog(data)"></p-button>
-                  <p-button type="button" icon="pi pi-trash" styleClass="ml-2 p-button-danger"></p-button>
+                  <p-button type="button" icon="pi pi-trash" styleClass="ml-2 p-button-danger" (click)="confirmDelete()"></p-button>
               </td>
           </tr>
       </ng-template>
@@ -122,16 +122,31 @@ header="Izmena pretplate"
   <div class="col-12">
     <div class="flex flex-column gap-2 w-full">
       <label htmlFor="username">Datum isteka pretplate</label>
-      <p-calendar [(ngModel)]="date" [showIcon]="true" dateFormat="dd.mm.yy" [style]="{'width':'100%'}" ></p-calendar>
+      <p-calendar [(ngModel)]="date" [showIcon]="true" [touchUI]="true" dateFormat="dd.mm.yy" [style]="{'width':'100%'}" ></p-calendar>
     </div>
   </div>
   <div class="col-12 text-left">
 
-    <p-button label="Sačuvaj" styleClass="p-button-raised p-button-success" [style]="{'width':'48%'}"></p-button>
-    <p-button label="Odustani" styleClass="p-button-raised p-button-danger" class="w-6 ml-2 font-medium" [style]="{'width':'49%'}"></p-button>
+    <p-button label="Sačuvaj" styleClass="p-button-raised p-button-success" [style]="{'width':'48%'}" (click)="saveData()"></p-button>
+    <p-button label="Odustani" styleClass="p-button-raised p-button-danger" class="w-6 ml-2 font-medium" [style]="{'width':'49%'}" (click)="calcel()"></p-button>
 
 
   </div>
   </div>
   <ng-template pTemplate="footer"> </ng-template>
 </p-dialog>
+
+
+
+<p-confirmDialog #cd [style]="{width: '30vw'}">
+  <ng-template pTemplate="header">
+      <h3>Brisanje korisnika</h3>
+  </ng-template>
+  <ng-template pTemplate="footer">
+      <button type="button" pButton icon="pi pi-times" label="No" (click)="cd.reject()"></button>
+      <button type="button" pButton icon="pi pi-check" label="Yes" (click)="cd.accept()"></button>
+  </ng-template>
+</p-confirmDialog>
+
+
+<p-toast></p-toast>

@@ -8,6 +8,7 @@ import { RegistrationComponent } from './feature/registration/registration.compo
 import { PretplateComponent } from './feature/administracija/pretplate/pretplate.component';
 import { CompanyComponent } from './feature/user/company/company.component';
 import { LogListaComponent } from './feature/administracija/log-lista/log-lista.component';
+import { EmployeesComponent } from './feature/user/employees/employees.component';
 
 const routes: Routes = [
   {path: 'login', component: CpLoginComponent},
@@ -23,7 +24,7 @@ const routes: Routes = [
       {path: 'log-lista', component: LogListaComponent},
 
       {path: 'xml/convertor', component: CpDashboardComponent},
-      {path: 'employees', component: CpDashboardComponent},
+      {path: 'employees', component: EmployeesComponent},
       // {
       //   path: 'administracija',
       //   loadChildren: () => import('../app/feature/administracija/admin.module').then(m => m.AdminModule)
