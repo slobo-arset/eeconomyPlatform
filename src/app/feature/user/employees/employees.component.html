@@ -15,6 +15,13 @@
       [globalFilterFields]="['id','name', 'address', 'country']"
       >
 
+      <ng-template pTemplate="caption">
+        <div class="flex">
+          <div class="">Maksimalni broj zaposlenih je 2</div>
+          <button type="button" pButton pRipple icon="pi pi-plus"  (click)="create()" class="p-button-info ml-auto" pTooltip="Selection Only" tooltipPosition="bottom"></button>
+        </div>
+    </ng-template>
+
       <ng-template pTemplate="header">
           <tr>
 
@@ -69,9 +76,8 @@
               </td>
 
 
-              <td class="text-center">
-                  <!-- <p-button type="button" icon="pi pi-pencil" styleClass="p-button-info" (click)="showDialog(data)"></p-button>
-                  <p-button type="button" icon="pi pi-trash" styleClass="ml-2 p-button-danger"></p-button> -->
+              <td class="text-right">
+                  <p-button type="button" icon="pi pi-pencil" styleClass="p-button-info" (click)="edit(data)"></p-button>
               </td>
           </tr>
       </ng-template>
@@ -85,36 +91,38 @@
 
 
 
-<!-- <p-dialog
-[(visible)]="displayDialog"
-[modal]="true"
-[style]="{ width: '300px' }"
-header="Izmena pretplate"
+<p-dialog
+  [(visible)]="displayDialog"
+  [modal]="true"
+  [style]="{ width: '500px' }"
+  header="Kreiranje zaposlenog"
 >
-  <div
-    class="grid"
-  >
-
-
-  <div class="col-12">
-    <div class="flex flex-column gap-2 w-full">
-      <label htmlFor="username">Aktivan</label>
-      <p-inputSwitch [(ngModel)]="isActive"></p-inputSwitch>
+  <div class="grid" >
+    <div class="col-12">
+      <div class="flex flex-column gap-2">
+        <label htmlFor="username">Ime</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="name" />
+      </div>
+      <div class="flex flex-column gap-2">
+        <label htmlFor="username">Prezime</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="name" />
+      </div>
+      <div class="flex flex-column gap-2">
+        <label htmlFor="username">Mail</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="name" />
+      </div>
     </div>
-  </div>
-  <div class="col-12">
-    <div class="flex flex-column gap-2 w-full">
-      <label htmlFor="username">Datum isteka pretplate</label>
-      <p-calendar [(ngModel)]="date" [showIcon]="true" dateFormat="dd.mm.yy" [style]="{'width':'100%'}" ></p-calendar>
+    <div class="col-12">
+      <!-- <div class="flex flex-column gap-2 w-full">
+        <label htmlFor="username">Datum isteka pretplate</label>
+        <p-calendar [(ngModel)]="date" [showIcon]="true" dateFormat="dd.mm.yy" [style]="{'width':'100%'}" ></p-calendar>
+      </div> -->
     </div>
-  </div>
-  <div class="col-12 text-left">
+    <div class="col-12 text-left">
 
-    <p-button label="Sačuvaj" styleClass="p-button-raised p-button-success" [style]="{'width':'48%'}"></p-button>
-    <p-button label="Odustani" styleClass="p-button-raised p-button-danger" class="w-6 ml-2 font-medium" [style]="{'width':'49%'}"></p-button>
-
-
-  </div>
+      <p-button label="Sačuvaj" styleClass="p-button-raised p-button-success" [style]="{'width':'48%'}"></p-button>
+      <p-button label="Odustani" styleClass="p-button-raised p-button-danger" class="w-6 ml-2 font-medium" [style]="{'width':'49%'}"></p-button>
+    </div>
   </div>
   <ng-template pTemplate="footer"> </ng-template>
-</p-dialog> -->
+</p-dialog>

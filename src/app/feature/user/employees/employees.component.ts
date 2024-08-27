@@ -13,6 +13,8 @@ export class EmployeesComponent implements OnInit {
 
   user$: Observable<any>;
   items: MenuItem[] = [{ label: 'Zaposleni' }];
+  displayDialog: boolean = false;
+  name: string = ""
 
   constructor(
     private employeesService: EmployeesService,
@@ -23,6 +25,16 @@ export class EmployeesComponent implements OnInit {
     const user  =  this.mainStateService.getStateBykey('user');
     console.log(user)
     this.user$ = this.employeesService.getUser(user?.company_id);
+  }
+
+
+  create(){
+    this.displayDialog = true;
+  }
+
+  edit(data: any){
+    this.displayDialog = true;
+
   }
 
 }
