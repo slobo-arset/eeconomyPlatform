@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-cp-dashboard',
@@ -9,7 +10,7 @@ export class CpDashboardComponent {
   data: any;
   data2: any;
   options: any;
-
+  items: MenuItem[] = [{ label: 'Početna' }];
 
   ngOnInit() {
     const documentStyle = getComputedStyle(document.documentElement);
@@ -17,7 +18,7 @@ export class CpDashboardComponent {
 
     this.data = {
         labels: [
-            '0 - Nosioci budžet', 
+            '0 - Nosioci budžet',
             '1 - DBK',
             '2 - IBK',
             '6 - Drugi KJS',
@@ -36,7 +37,7 @@ export class CpDashboardComponent {
 
     this.data2 = {
         labels: [
-            'Edukacija - Osnovna sredstva', 
+            'Edukacija - Osnovna sredstva',
             'Edukacija - Direktori OŠ i srednjih škola',
             'Edukacija - SPIRI sistem budžeta',
             'Edukacija - eARHIV i digitalizacija',
@@ -47,16 +48,16 @@ export class CpDashboardComponent {
                 data: [5.26, 21.05, 38.60, 26.32, 8.77],
                 backgroundColor: [
                     documentStyle.getPropertyValue('--red-500'),
-                    documentStyle.getPropertyValue('--red-900'), 
-                    documentStyle.getPropertyValue('--blue-500'), 
-                    documentStyle.getPropertyValue('--yellow-500'), 
+                    documentStyle.getPropertyValue('--red-900'),
+                    documentStyle.getPropertyValue('--blue-500'),
+                    documentStyle.getPropertyValue('--yellow-500'),
                     documentStyle.getPropertyValue('--green-500')
                 ],
                 hoverBackgroundColor: [
                     documentStyle.getPropertyValue('--red-400'),
-                    documentStyle.getPropertyValue('--red-800'), 
-                    documentStyle.getPropertyValue('--blue-500'), 
-                    documentStyle.getPropertyValue('--yellow-500'), 
+                    documentStyle.getPropertyValue('--red-800'),
+                    documentStyle.getPropertyValue('--blue-500'),
+                    documentStyle.getPropertyValue('--yellow-500'),
                     documentStyle.getPropertyValue('--green-500')
                 ]
             }
@@ -76,11 +77,11 @@ export class CpDashboardComponent {
         layout: {
             left: 150,
         },
-        
+
         responsive: true,
         maintainAspectRatio: false,
       }
-    
+
 }
 
 }

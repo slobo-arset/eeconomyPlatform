@@ -10,6 +10,7 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import {EffectsModule} from '@ngrx/effects';
 import {UtilModule} from "./util/util.module";
 import { HttpClientModule } from '@angular/common/http';
+import { UiModule } from './ui/ui.module';
 
 
 @NgModule({
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     FeatureModule,
     AppLayoutModule,
     UtilModule,
+    UiModule,
     HttpClientModule,
     EffectsModule.forRoot([]),
   ],

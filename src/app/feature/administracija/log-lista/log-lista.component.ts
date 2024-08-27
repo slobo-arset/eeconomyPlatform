@@ -1,5 +1,6 @@
 import { LogService } from './../../../data-access/log/log.service';
 import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 import { Observable } from 'rxjs';
 import { CompanyService } from 'src/app/data-access/user/company/company.service';
 
@@ -10,7 +11,9 @@ import { CompanyService } from 'src/app/data-access/user/company/company.service
 })
 export class LogListaComponent implements OnInit{
   logLista$: Observable<any>
-  subscription$: Observable<any>
+  subscription$: Observable<any>;
+
+  items: MenuItem[] = [{ label: 'Log lista' }];
 
   constructor(private logService: LogService, private companyService: CompanyService){
 

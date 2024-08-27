@@ -22,6 +22,7 @@ import { LogListaComponent } from './administracija/log-lista/log-lista.componen
 import { ChartModule } from 'primeng/chart';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
+import { UiModule } from '../ui/ui.module';
 @NgModule({
   declarations: [
     CpDashboardComponent,
@@ -49,7 +50,8 @@ import { ToastModule } from 'primeng/toast';
     InputSwitchModule,
     ChartModule,
     ConfirmDialogModule,
-    ToastModule
+    ToastModule,
+    UiModule
   ]
 })
 export class FeatureModule { }

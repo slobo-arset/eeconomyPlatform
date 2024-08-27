@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component } from '@angular/core';
-import { ConfirmationService, ConfirmEventType, MessageService } from 'primeng/api';
+import { ConfirmationService, ConfirmEventType, MenuItem, MessageService } from 'primeng/api';
 import { Observable, switchMap, tap } from 'rxjs';
 import { CompanyService } from 'src/app/data-access/user/company/company.service';
 
@@ -16,6 +16,7 @@ export class CompanyComponent {
   isActive: any;
   displayDialog: boolean = false;
   companyId = 0;
+  items: MenuItem[] = [{ label: 'Korisnici' }];
 
   constructor(
     private companyService: CompanyService,

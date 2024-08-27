@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MessageService } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 import { Observable, switchMap, tap } from 'rxjs';
 import { SubscriptionService } from 'src/app/data-access/subscription/subscription.service';
 
@@ -17,6 +17,8 @@ export class PretplateComponent implements OnInit {
   price: string = '';
   code: string = '';
   selectedId: string = '';
+
+  items: MenuItem[] = [{ label: 'Pretplate' }];
 
   constructor(
     private subscriptionService: SubscriptionService,

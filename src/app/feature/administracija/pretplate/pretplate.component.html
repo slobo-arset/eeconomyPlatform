@@ -1,102 +1,104 @@
+<div class="col-12 p-0 mb-2">
+  <app-breadcrumbs [items]="items"></app-breadcrumbs>
+</div>
+<div class="col-12 card">
+        <p-table
+            #dt1
+            [value]="subscription$ | async"
+            dataKey="id"
+            [rows]="5"
+            [showCurrentPageReport]="true"
+            [rowsPerPageOptions]="[5, 10, 25, 50]"
+            [paginator]="true"
+            currentPageReportTemplate="Prikaži od {first} do {last} od ukupno {totalRecords} redova"
+            [globalFilterFields]="['id','name', 'address', 'country']"
+            >
 
-  <div class="col-12 card">
-          <p-table
-              #dt1
-              [value]="subscription$ | async"
-              dataKey="id"
-              [rows]="5"
-              [showCurrentPageReport]="true"
-              [rowsPerPageOptions]="[5, 10, 25, 50]"
-              [paginator]="true"
-              currentPageReportTemplate="Prikaži od {first} do {last} od ukupno {totalRecords} redova"
-              [globalFilterFields]="['id','name', 'address', 'country']"
-              >
+            <ng-template pTemplate="header">
+                <tr>
 
-              <ng-template pTemplate="header">
-                  <tr>
+                    <th pSortableColumn="name">
+                        <div class="flex align-items-center">
+                            Naziv
+                            <p-sortIcon field="name"></p-sortIcon>
+                            <p-columnFilter type="text" field="name" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th pSortableColumn="code">
+                        <div class="flex align-items-center">
+                            Kod
+                            <p-sortIcon field="code"></p-sortIcon>
+                            <p-columnFilter type="text" field="code" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                    </th>
+                    <th>
+                        <div class="flex align-items-center">
+                            Akcija
+                        </div>
+                    </th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-data>
+                <tr>
 
-                      <th pSortableColumn="name">
-                          <div class="flex align-items-center">
-                              Naziv
-                              <p-sortIcon field="name"></p-sortIcon>
-                              <p-columnFilter type="text" field="name" display="menu" class="ml-auto"></p-columnFilter>
-                          </div>
-                      </th>
-                      <th pSortableColumn="code">
-                          <div class="flex align-items-center">
-                              Kod
-                              <p-sortIcon field="code"></p-sortIcon>
-                              <p-columnFilter type="text" field="code" display="menu" class="ml-auto"></p-columnFilter>
-                          </div>
-                      </th>
-                      <th>
-                          <div class="flex align-items-center">
-                              Akcija
-                          </div>
-                      </th>
-                  </tr>
-              </ng-template>
-              <ng-template pTemplate="body" let-data>
-                  <tr>
-
-                      <td>
-                          {{ data.name }}
-                      </td>
-                      <td>
-                          {{ data.code  }}
-                      </td>
-                      <td class="text-center">
-                          <p-button (click)="showDialog(data)" type="button" icon="pi pi-pencil" styleClass="p-button-info"></p-button>
-                      </td>
-                  </tr>
-              </ng-template>
-              <ng-template pTemplate="emptymessage">
-                  <tr>
-                      <td colspan="7">No data found.</td>
-                  </tr>
-              </ng-template>
-          </p-table>
-  </div>
+                    <td>
+                        {{ data.name }}
+                    </td>
+                    <td>
+                        {{ data.code  }}
+                    </td>
+                    <td class="text-center">
+                        <p-button (click)="showDialog(data)" type="button" icon="pi pi-pencil" styleClass="p-button-info"></p-button>
+                    </td>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="emptymessage">
+                <tr>
+                    <td colspan="7">No data found.</td>
+                </tr>
+            </ng-template>
+        </p-table>
+</div>
 
 
-  <p-dialog
-    [(visible)]="displayDialog"
-    [modal]="true"
-    [style]="{ width: '600px' }"
-    header="Izmena detalja pretplate"
+<p-dialog
+  [(visible)]="displayDialog"
+  [modal]="true"
+  [style]="{ width: '600px' }"
+  header="Izmena detalja pretplate"
+>
+  <div
+    class="grid"
   >
-    <div
-      class="grid"
-    >
 
 
-    <div class="col-12">
-      <div class="flex flex-column gap-2 w-full">
-        <label htmlFor="username">Naziv</label>
-        <input pInputText id="username" class="w-full" aria-describedby="username-help" [(ngModel)]="name" />
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="flex flex-column gap-2 w-full">
-        <label htmlFor="username">Cena bez PDV-a</label>
-        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="price" />
-      </div>
-    </div>
-    <div class="col-6">
-      <div class="flex flex-column gap-2 w-full">
-        <label htmlFor="username">Šifra</label>
-        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="code" disabled="true"/>
-      </div>
-    </div>
-    <div class="col-12 text-right">
-
-      <p-button label="Sačuvaj" styleClass="p-button-raised p-button-success" class="w-3 font-medium" (click)="saveData()"></p-button>
-      <p-button label="Odustani" styleClass="p-button-raised p-button-danger" class="w-3 ml-2 font-medium" (click)="cancel()"></p-button>
-
-
+  <div class="col-12">
+    <div class="flex flex-column gap-2 w-full">
+      <label htmlFor="username">Naziv</label>
+      <input pInputText id="username" class="w-full" aria-describedby="username-help" [(ngModel)]="name" />
     </div>
   </div>
-  <ng-template pTemplate="footer"> </ng-template>
+  <div class="col-6">
+    <div class="flex flex-column gap-2 w-full">
+      <label htmlFor="username">Cena bez PDV-a</label>
+      <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="price" />
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="flex flex-column gap-2 w-full">
+      <label htmlFor="username">Šifra</label>
+      <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="code" disabled="true"/>
+    </div>
+  </div>
+  <div class="col-12 text-right">
+
+    <p-button label="Sačuvaj" styleClass="p-button-raised p-button-success" class="w-3 font-medium" (click)="saveData()"></p-button>
+    <p-button label="Odustani" styleClass="p-button-raised p-button-danger" class="w-3 ml-2 font-medium" (click)="cancel()"></p-button>
+
+
+  </div>
+</div>
+<ng-template pTemplate="footer"> </ng-template>
 </p-dialog>
 
 

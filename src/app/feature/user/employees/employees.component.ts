@@ -2,6 +2,7 @@ import { Observable } from 'rxjs';
 import { EmployeesService } from './../../../data-access/user/employees/employees.service';
 import { Component, OnInit } from '@angular/core';
 import { MainStateService } from 'src/app/data-access/state/main-state.service';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-employees',
@@ -11,6 +12,7 @@ import { MainStateService } from 'src/app/data-access/state/main-state.service';
 export class EmployeesComponent implements OnInit {
 
   user$: Observable<any>;
+  items: MenuItem[] = [{ label: 'Zaposleni' }];
 
   constructor(
     private employeesService: EmployeesService,

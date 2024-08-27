@@ -1,3 +1,6 @@
+<div class="col-12 p-0 mb-2">
+  <app-breadcrumbs [items]="items"></app-breadcrumbs>
+</div>
 
 <div class="col-12 card">
   <p-table
@@ -17,37 +20,23 @@
 
               <th pSortableColumn="company_name">
                   <div class="flex align-items-center">
-                      Naziv
+                      Ime
                       <p-sortIcon field="company_name"></p-sortIcon>
                       <p-columnFilter type="text" field="company_name" display="menu" class="ml-auto"></p-columnFilter>
                   </div>
               </th>
               <th pSortableColumn="pib">
                   <div class="flex align-items-center">
-                      PIB
+                      Prezime
                       <p-sortIcon field="pib"></p-sortIcon>
                       <p-columnFilter type="text" field="pib" display="menu" class="ml-auto"></p-columnFilter>
                   </div>
               </th>
               <th pSortableColumn="jbkjs" >
                 <div class="flex align-items-center">
-                    JBKJS
+                    Korisničko ime/email
                     <p-sortIcon field="jbkjs"></p-sortIcon>
                     <p-columnFilter type="text" field="jbkjs" display="menu" class="ml-auto"></p-columnFilter>
-                </div>
-              </th>
-              <th pSortableColumn="subscription_type">
-                <div class="flex align-items-center">
-                    TIP pretplate
-                    <p-sortIcon field="subscription_type"></p-sortIcon>
-                    <p-columnFilter type="text" field="subscription_type" display="menu" class="ml-auto"></p-columnFilter>
-                </div>
-              </th>
-              <th pSortableColumn="subscription_end">
-                <div class="flex align-items-center">
-                    Datum isteka
-                    <p-sortIcon field="subscription_end"></p-sortIcon>
-                    <p-columnFilter type="text" field="subscription_end" display="menu" class="ml-auto"></p-columnFilter>
                 </div>
               </th>
               <th pSortableColumn="is_active">
@@ -67,19 +56,13 @@
           <tr>
 
               <td>
-                  {{ data.company_name }}
+                  {{ data.name }}
               </td>
               <td>
-                  {{ data.pib  }}
+                  {{ data.lastname  }}
               </td>
               <td>
-                {{ data.jbkjs  }}
-              </td>
-              <td>
-                {{ data.subscription_type  }}
-              </td>
-              <td>
-                {{ data.subscription_end  }}
+                {{ data.email  }}
               </td>
               <td>
                 <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': data.is_active, 'text-red-500 pi-times-circle': !data.is_active }"></i>
