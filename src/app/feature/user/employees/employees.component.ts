@@ -14,7 +14,10 @@ export class EmployeesComponent implements OnInit {
   user$: Observable<any>;
   items: MenuItem[] = [{ label: 'Zaposleni' }];
   displayDialog: boolean = false;
-  name: string = ""
+  firstName: string = "";
+  lastName: string = "";
+  email: string = "";
+  password: string = "";
 
   constructor(
     private employeesService: EmployeesService,
@@ -35,6 +38,11 @@ export class EmployeesComponent implements OnInit {
   edit(data: any){
     this.displayDialog = true;
 
+  }
+
+
+  cnacel(){
+    this.displayDialog = false;
   }
 
 }

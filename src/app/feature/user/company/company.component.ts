@@ -48,7 +48,7 @@ export class CompanyComponent {
     });
   }
 
-  calcel(){
+  cnacel(){
     this.displayDialog = false;
     //this.cdr.detectChanges();
   }
