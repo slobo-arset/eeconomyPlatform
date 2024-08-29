@@ -29,8 +29,24 @@ export class CpDashboardComponent {
         datasets: [
             {
                 data: [	1.93, 10.50, 71.07,  0.42, 12.69, 0.04, 3.35],
-                backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
-                hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
+                backgroundColor: [
+                  documentStyle.getPropertyValue('--red-500'),
+                  documentStyle.getPropertyValue('--red-900'),
+                  documentStyle.getPropertyValue('--blue-500'),
+                  documentStyle.getPropertyValue('--yellow-500'),
+                  documentStyle.getPropertyValue('--green-500'),
+                  documentStyle.getPropertyValue('--pink-500'),
+                  documentStyle.getPropertyValue('--teal-500')
+                  ],
+                hoverBackgroundColor: [
+                  documentStyle.getPropertyValue('--red-400'),
+                  documentStyle.getPropertyValue('--red-800'),
+                  documentStyle.getPropertyValue('--blue-400'),
+                  documentStyle.getPropertyValue('--yellow-400'),
+                  documentStyle.getPropertyValue('--green-400'),
+                  documentStyle.getPropertyValue('--pink-400'),
+                  documentStyle.getPropertyValue('--teal-400')
+                ]
             }
         ]
     };
