@@ -111,6 +111,12 @@
         <label htmlFor="username">Mail</label>
         <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="name" />
       </div>
+      <div class="flex flex-column gap-2">
+        <span class="p-float-label">
+          <p-password [(ngModel)]="name" [feedback]="false"></p-password>
+          <label for="password">Password</label>
+      </span>
+      </div>
     </div>
     <div class="col-12">
       <!-- <div class="flex flex-column gap-2 w-full">
