@@ -18,6 +18,8 @@ export class EmployeesComponent implements OnInit {
   lastName: string = "";
   email: string = "";
   password: string = "";
+  userData: any;
+  userID: string = '';
 
   constructor(
     private employeesService: EmployeesService,
@@ -25,24 +27,50 @@ export class EmployeesComponent implements OnInit {
   ){}
 
   ngOnInit(): void {
-    const user  =  this.mainStateService.getStateBykey('user');
-    console.log(user)
-    this.user$ = this.employeesService.getUser(user?.company_id);
+    this.userData  =  this.mainStateService.getStateBykey('user');
+    console.log(this.userData)
+    this.user$ = this.employeesService.getUser(this.userData?.company_id);
   }
 
 
   create(){
+    this.userID = '';
     this.displayDialog = true;
   }
 
   edit(data: any){
     this.displayDialog = true;
+    this.userID = data.id
 
   }
 
 
-  cnacel(){
+  cancel(){
     this.displayDialog = false;
+  }
+
+  save(){
+    if(this.userID){
+      const data = {
+        "name": this.firstName,
+        "lastname": this.lastName
+      }
+      console.log('edit',data)
+    } else {
+      const data = {
+        "name": this.firstName,
+        "lastname": this.lastName,
+        "email": this.email,
+        "password": this.password,
+        "tip": this.userData?.tip,
+        "is_active": 1,
+        "company_id": this.userData?.company_id
+      }
+      console.log('create',data)
+    }
+
+
+
   }
 
 }

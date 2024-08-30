@@ -125,7 +125,8 @@ export class RegistrationComponent implements OnInit, OnDestroy {
         address: formValues.address,
         post_code: formValues.postCode,
         contact_number: formValues.contactNumber,
-        subscription_type: this.selectedPretplata ? this.selectedPretplata : ''
+        subscription_type: this.selectedPretplata ? this.selectedPretplata : '',
+        max_licence: 2
       },
       user: {
         email: formValues.email,

@@ -14,4 +14,8 @@ export class EmployeesService {
   getUser(id: string):Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${id}`);
   }
+
+  create(data: any){
+    return this.http.post<any>(`${this.baseUrl}/`, data);
+  }
 }

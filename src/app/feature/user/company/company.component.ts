@@ -15,8 +15,17 @@ export class CompanyComponent {
   date: any;
   isActive: any;
   displayDialog: boolean = false;
+  displayDialogCompany: boolean = false;
   companyId = 0;
   items: MenuItem[] = [{ label: 'Korisnici' }];
+  companyName: string;
+  pib: string;
+  jbkjs: string;
+  numberLicence: string;
+  contact_number: string;
+  contact_person: string;
+  city: string;
+  address: string;
 
   constructor(
     private companyService: CompanyService,
@@ -30,13 +39,28 @@ export class CompanyComponent {
   }
 
   showDialog(data: any){
-
-    console.log(data)
     this.displayDialog = true;
     this.isActive = data.is_active == 1 ? true : false;
     this.date = data.subscription_end ? new Date(data.subscription_end) :  null;
     this.companyId = data.id;
   }
+
+
+  showDialogEdit(data: any){
+
+    this.companyName = data.company_name;
+    this.pib = data.pib;
+    this.jbkjs = data.jbkjs;
+    this.contact_person = data.contact_person;
+    this.city = data.city;
+    this.address = data.address;
+    this.contact_number = data.contact_number;
+    this.numberLicence = data.max_licence;
+    this.companyId = data.id;
+
+    this.displayDialogCompany = true;
+  }
+
 
   confirmDelete() {
     this.confirmationService.confirm({
@@ -67,6 +91,30 @@ export class CompanyComponent {
       }),
       tap(()=>{
         this.displayDialog = false;
+        this.messageService.add({ severity: 'success', summary: 'Uspešno ažuriranje', detail: 'Podaci su uspešno ažurirani' });
+      })
+    )
+  }
+
+  saveCompanyData(){
+    const data = {
+      "company_name": this.companyName,
+      "pib": this.pib,
+      "jbkjs": this.jbkjs,
+      "contact_person": this.contact_person,
+      "city": this.city,
+      "address": this.address,
+      "contact_number": this.contact_number,
+      "max_licence": this.numberLicence
+  }
+
+
+    this.company$ = this.companyService.update(this.companyId, data).pipe(
+      switchMap(()=>{
+        return this.companyService.getAll();
+      }),
+      tap(()=>{
+        this.displayDialogCompany = false;
         this.messageService.add({ severity: 'success', summary: 'Uspešno ažuriranje', detail: 'Podaci su uspešno ažurirani' });
       })
     )

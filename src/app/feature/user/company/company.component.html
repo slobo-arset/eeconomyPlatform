@@ -56,11 +56,17 @@
               </th>
               <th pSortableColumn="is_active">
                 <div class="flex align-items-center">
+                    Broj licenci
+                    <p-sortIcon field="is_actives"></p-sortIcon>
+               </div>
+              </th>
+              <th pSortableColumn="is_active">
+                <div class="flex align-items-center">
                     Aktivan
                     <p-sortIcon field="is_actives"></p-sortIcon>
                </div>
               </th>
-              <th style="width: 10rem">
+              <th>
                   <div class="flex align-items-center">
                       Akcija
                   </div>
@@ -86,12 +92,16 @@
                 {{ data.subscription_end | date:'dd-MM-yyyy' }}
               </td>
               <td>
+                {{ data.max_licence  }}
+              </td>
+              <td>
                 <i class="pi" [ngClass]="{ 'text-green-500 pi-check-circle': data.is_active, 'text-red-500 pi-times-circle': !data.is_active }"></i>
               </td>
 
 
               <td class="text-center">
-                  <p-button type="button" icon="pi pi-pencil" styleClass="p-button-info" (click)="showDialog(data)"></p-button>
+                  <p-button type="button" icon="pi pi-pencil" styleClass="p-button-warning" (click)="showDialogEdit(data)"></p-button>
+                  <p-button type="button" icon="pi pi-euro" styleClass="ml-2 p-button-info" (click)="showDialog(data)"></p-button>
                   <p-button type="button" icon="pi pi-trash" styleClass="ml-2 p-button-danger" (click)="confirmDelete()"></p-button>
               </td>
           </tr>
@@ -116,7 +126,6 @@ header="Izmena pretplate"
     class="grid"
   >
 
-
   <div class="col-12">
     <div class="flex flex-column gap-2 w-full">
       <label htmlFor="username">Aktivan</label>
@@ -130,8 +139,69 @@ header="Izmena pretplate"
     </div>
   </div>
   <div class="col-12 text-left">
-
     <p-button label="Sačuvaj" styleClass="p-button-raised p-button-success" [style]="{'width':'48%'}" (click)="saveData()"></p-button>
+    <p-button label="Odustani" styleClass="p-button-raised p-button-danger" class="w-6 ml-2 font-medium" [style]="{'width':'49%'}" (click)="cnacel()"></p-button>
+  </div>
+  </div>
+  <ng-template pTemplate="footer"> </ng-template>
+</p-dialog>
+
+
+
+
+
+<p-dialog
+  [(visible)]="displayDialogCompany"
+  [modal]="true"
+  [style]="{ width: '800px' }"
+  header="Izmena detalja kompanije"
+>
+  <div
+    class="grid"
+  >
+
+  <div class="col-6">
+    <div class="flex flex-column gap-2">
+      <label htmlFor="username">Naziv kompanije</label>
+      <input pInputText id="username" aria-describedby="username-help" class="w-full" [(ngModel)]="companyName" />
+    </div>
+    <div class="flex flex-column gap-2">
+      <label htmlFor="username">PIB</label>
+      <input pInputText id="username" aria-describedby="username-help" class="w-full" [(ngModel)]="pib" />
+    </div>
+    <div class="flex flex-column gap-2">
+      <label htmlFor="username">JBKJS</label>
+      <input pInputText id="username" aria-describedby="username-help" class="w-full" [(ngModel)]="jbkjs" />
+    </div>
+    <div class="flex flex-column gap-2">
+      <label htmlFor="username">Maksimalan broj licenci</label>
+      <input pInputText id="username" aria-describedby="username-help" class="w-full" [(ngModel)]="numberLicence" />
+    </div>
+  </div>
+  <div class="col-6">
+    <div class="flex flex-column gap-2">
+      <label htmlFor="username">Kontakt osoba</label>
+      <input pInputText id="username" aria-describedby="username-help" class="w-full" [(ngModel)]="contact_person" />
+    </div>
+    <div class="flex flex-column gap-2">
+      <label htmlFor="username">Kontakt telefon</label>
+      <input pInputText id="username" aria-describedby="username-help" class="w-full" [(ngModel)]="contact_number" />
+    </div>
+    <div class="flex flex-column gap-2">
+      <label htmlFor="username">Grad</label>
+      <input pInputText id="username" aria-describedby="username-help" class="w-full" [(ngModel)]="city" />
+    </div>
+    <div class="flex flex-column gap-2">
+      <label htmlFor="username">Adresa</label>
+      <input pInputText id="username" aria-describedby="username-help" class="w-full" [(ngModel)]="address" />
+    </div>
+  </div>
+  <div class="col-6 text-left">
+
+  </div>
+  <div class="col-6 text-left">
+
+    <p-button label="Sačuvaj" styleClass="p-button-raised p-button-success" [style]="{'width':'48%'}" (click)="saveCompanyData()"></p-button>
     <p-button label="Odustani" styleClass="p-button-raised p-button-danger" class="w-6 ml-2 font-medium" [style]="{'width':'49%'}" (click)="cnacel()"></p-button>
 
 
@@ -139,7 +209,6 @@ header="Izmena pretplate"
   </div>
   <ng-template pTemplate="footer"> </ng-template>
 </p-dialog>
-
 
 
 <p-confirmDialog #cd [style]="{width: '30vw'}">

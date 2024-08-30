@@ -107,25 +107,19 @@
         <label htmlFor="username">Prezime</label>
         <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="lastName" />
       </div>
-      <div class="flex flex-column gap-2">
+      <div class="flex flex-column gap-2" *ngIf="this.userID == ''">
         <label htmlFor="username">Mail</label>
         <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="email" />
       </div>
-      <div class="flex flex-column gap-2">
-        <label htmlFor="username">Šifra</label>
+      <div class="flex flex-column gap-2" *ngIf="this.userID == ''">
+        <label htmlFor="username" >Šifra</label>
         <p-password [(ngModel)]="password" [toggleMask]="false" [style]="{'width':'100%'}" [inputStyle]="{'width':'100%'}"></p-password>
       </div>
     </div>
-    <div class="col-12">
-      <!-- <div class="flex flex-column gap-2 w-full">
-        <label htmlFor="username">Datum isteka pretplate</label>
-        <p-calendar [(ngModel)]="date" [showIcon]="true" dateFormat="dd.mm.yy" [style]="{'width':'100%'}" ></p-calendar>
-      </div> -->
-    </div>
     <div class="col-12 text-left">
 
-      <p-button label="Sačuvaj" styleClass="p-button-raised p-button-success" [style]="{'width':'48%'}"></p-button>
-      <p-button label="Odustani" styleClass="p-button-raised p-button-danger" class="w-6 ml-2 font-medium" [style]="{'width':'49%'}" (click)="cnacel()"></p-button>
+      <p-button label="Sačuvaj" styleClass="p-button-raised p-button-success" [style]="{'width':'48%'}" (click)="save()"></p-button>
+      <p-button label="Odustani" styleClass="p-button-raised p-button-danger" class="w-6 ml-2 font-medium" [style]="{'width':'49%'}" (click)="cancel()"></p-button>
     </div>
   </div>
   <ng-template pTemplate="footer"> </ng-template>
