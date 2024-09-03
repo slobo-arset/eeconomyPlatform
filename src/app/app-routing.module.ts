@@ -9,10 +9,12 @@ import { PretplateComponent } from './feature/administracija/pretplate/pretplate
 import { CompanyComponent } from './feature/user/company/company.component';
 import { LogListaComponent } from './feature/administracija/log-lista/log-lista.component';
 import { EmployeesComponent } from './feature/user/employees/employees.component';
+import { SuccessfulRegistrationComponent } from './feature/registration/successful-registration/successful-registration.component';
 
 const routes: Routes = [
   {path: 'login', component: CpLoginComponent},
   {path: 'pretplata', component: RegistrationComponent},
+  {path: 'uspesna-registracija', component: SuccessfulRegistrationComponent},
   {
     path: '', component: AppLayoutComponent,
     canActivate: [AuthGuard],

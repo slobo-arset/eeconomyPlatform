@@ -23,6 +23,7 @@ import { ChartModule } from 'primeng/chart';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { UiModule } from '../ui/ui.module';
+import { SuccessfulRegistrationComponent } from './registration/successful-registration/successful-registration.component';
 @NgModule({
   declarations: [
     CpDashboardComponent,
@@ -31,7 +32,8 @@ import { UiModule } from '../ui/ui.module';
     PretplateComponent,
     CompanyComponent,
     EmployeesComponent,
-    LogListaComponent
+    LogListaComponent,
+    SuccessfulRegistrationComponent
   ],
   imports: [
     CommonModule,
@@ -51,7 +53,7 @@ import { UiModule } from '../ui/ui.module';
     ChartModule,
     ConfirmDialogModule,
     ToastModule,
-    UiModule
+    UiModule,
   ]
 })
 export class FeatureModule { }

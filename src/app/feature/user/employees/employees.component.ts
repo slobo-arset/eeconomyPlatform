@@ -28,7 +28,7 @@ export class EmployeesComponent implements OnInit {
 
   ngOnInit(): void {
     this.userData  =  this.mainStateService.getStateBykey('user');
-    console.log(this.userData)
+    console.log('dataaat', this.userData)
     this.user$ = this.employeesService.getUser(this.userData?.company_id);
   }
 
