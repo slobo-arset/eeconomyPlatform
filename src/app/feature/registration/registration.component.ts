@@ -161,6 +161,7 @@ export class RegistrationComponent implements OnInit, OnDestroy {
 
       this.displayMessageService.emitSuccessRegistration();
 
+      this.router.navigate(['/uspesna-registracija']);
     })
 
 
