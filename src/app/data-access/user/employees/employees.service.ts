@@ -18,4 +18,8 @@ export class EmployeesService {
   create(data: any){
     return this.http.post<any>(`${this.baseUrl}/`, data);
   }
+
+  update(id: string, data: any){
+    return this.http.put<any>(`${this.baseUrl}/${id}`, data);
+  }
 }

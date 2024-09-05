@@ -1,4 +1,5 @@
-import { Observable } from 'rxjs';
+import { CompanyService } from 'src/app/data-access/user/company/company.service';
+import { Observable, switchMap } from 'rxjs';
 import { EmployeesService } from './../../../data-access/user/employees/employees.service';
 import { Component, OnInit } from '@angular/core';
 import { MainStateService } from 'src/app/data-access/state/main-state.service';
@@ -20,33 +21,41 @@ export class EmployeesComponent implements OnInit {
   password: string = "";
   userData: any;
   userID: string = '';
+  numberLicence = 0
 
   constructor(
     private employeesService: EmployeesService,
-    public mainStateService: MainStateService
+    public mainStateService: MainStateService,
+    public companyService: CompanyService
   ){}
 
   ngOnInit(): void {
     this.userData  =  this.mainStateService.getStateBykey('user');
     console.log('dataaat', this.userData)
     this.user$ = this.employeesService.getUser(this.userData?.company_id);
+    this.companyService.getById(this.userData?.company_id).subscribe((data)=>{
+      this.numberLicence = data.max_licence
+    })
   }
 
 
   create(){
+    this.clear();
     this.userID = '';
     this.displayDialog = true;
   }
 
   edit(data: any){
     this.displayDialog = true;
-    this.userID = data.id
-
+    this.userID = data.id;
+    this.firstName = data.name;
+    this.lastName = data.lastname;
   }
 
 
   cancel(){
     this.displayDialog = false;
+    this.clear();
   }
 
   save(){
@@ -55,7 +64,13 @@ export class EmployeesComponent implements OnInit {
         "name": this.firstName,
         "lastname": this.lastName
       }
-      console.log('edit',data)
+
+      this.user$ = this.employeesService.update(this.userID, data).pipe(
+        switchMap(()=>{
+          return this.employeesService.getUser(this.userData?.company_id);
+        })
+      )
+      this.displayDialog = false;
     } else {
       const data = {
         "name": this.firstName,
@@ -66,11 +81,22 @@ export class EmployeesComponent implements OnInit {
         "is_active": 1,
         "company_id": this.userData?.company_id
       }
-      console.log('create',data)
+
+      this.user$ = this.employeesService.create(data).pipe(
+        switchMap(()=>{
+          return this.employeesService.getUser(this.userData?.company_id);
+        })
+      )
+      this.displayDialog = false;
+      this.clear();
     }
 
+  }
 
-
+  clear(){
+    this.firstName = '';
+    this.lastName = '';
+    this.email = ''
   }
 
 }
