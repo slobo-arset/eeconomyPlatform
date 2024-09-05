@@ -85,7 +85,7 @@ export class CompanyComponent {
       subscription_end: this.date
     }
 
-    this.company$ = this.companyService.update(this.companyId, data).pipe(
+    this.company$ = this.companyService.updateStatus(this.companyId, data).pipe(
       switchMap(()=>{
         return this.companyService.getAll();
       }),
