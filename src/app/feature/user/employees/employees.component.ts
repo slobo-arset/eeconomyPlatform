@@ -1,5 +1,5 @@
 import { CompanyService } from 'src/app/data-access/user/company/company.service';
-import { Observable, switchMap } from 'rxjs';
+import { Observable, switchMap, tap } from 'rxjs';
 import { EmployeesService } from './../../../data-access/user/employees/employees.service';
 import { Component, OnInit } from '@angular/core';
 import { MainStateService } from 'src/app/data-access/state/main-state.service';
@@ -22,6 +22,7 @@ export class EmployeesComponent implements OnInit {
   userData: any;
   userID: string = '';
   numberLicence = 0
+  numberOfRows = 0
 
   constructor(
     private employeesService: EmployeesService,
@@ -32,7 +33,11 @@ export class EmployeesComponent implements OnInit {
   ngOnInit(): void {
     this.userData  =  this.mainStateService.getStateBykey('user');
     console.log('dataaat', this.userData)
-    this.user$ = this.employeesService.getUser(this.userData?.company_id);
+    this.user$ = this.employeesService.getUser(this.userData?.company_id).pipe(
+      tap(users => {
+        this.numberOfRows = users.length;
+      })
+    )
     this.companyService.getById(this.userData?.company_id).subscribe((data)=>{
       this.numberLicence = data.max_licence
     })

@@ -17,8 +17,17 @@
 
       <ng-template pTemplate="caption">
         <div class="flex">
-          <div class="">Maksimalni broj licenci je {{ this.numberLicence }}. Za dodatne licence kontaktirajte administratora.</div>
-          <button type="button" pButton pRipple icon="pi pi-plus"  (click)="create()" class="p-button-info ml-auto" pTooltip="Selection Only" tooltipPosition="bottom"></button>
+          <div class="">Broj licenci je {{ this.numberOfRows }}/{{ this.numberLicence }}. Za dodatne licence kontaktirajte administratora.</div>
+          <button
+            type="button"
+            pButton pRipple
+            icon="pi pi-plus"
+            (click)="create()"
+            class="p-button-info ml-auto"
+            pTooltip="Selection Only"
+            tooltipPosition="bottom"
+            *ngIf="this.numberOfRows < this.numberLicence "
+          ></button>
         </div>
     </ng-template>
 
