@@ -24,6 +24,8 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { UiModule } from '../ui/ui.module';
 import { SuccessfulRegistrationComponent } from './registration/successful-registration/successful-registration.component';
+import { EFaktureModule } from './eFakture/e-fakture.module';
+import { ObukeModule } from './obuke/obuke.module';
 @NgModule({
   declarations: [
     CpDashboardComponent,
@@ -54,6 +56,8 @@ import { SuccessfulRegistrationComponent } from './registration/successful-regis
     ConfirmDialogModule,
     ToastModule,
     UiModule,
+    EFaktureModule,
+    ObukeModule
   ]
 })
 export class FeatureModule { }

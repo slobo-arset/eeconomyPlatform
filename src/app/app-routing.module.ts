@@ -27,14 +27,14 @@ const routes: Routes = [
 
       {path: 'xml/convertor', component: CpDashboardComponent},
       {path: 'employees', component: EmployeesComponent},
-      // {
-      //   path: 'administracija',
-      //   loadChildren: () => import('../app/feature/administracija/admin.module').then(m => m.AdminModule)
-      //  },
-      //  {
-      //   path: 'korisnik',
-      //   loadChildren: () => import('../app/feature/user/user.module').then(m => m.UserModule)
-      //  },
+      {
+        path: 'e-fakture',
+        loadChildren: () => import('../app/feature/eFakture/e-fakture.module').then(m => m.EFaktureModule)
+       },
+       {
+        path: 'obuka',
+        loadChildren: () => import('../app/feature/obuke/obuke.module').then(m => m.ObukeModule)
+       },
       //  {
       //   path: 'parametri',
       //   loadChildren: () => import('../app/feature/parametri/parametri.module').then(m => m.ParametriModule)

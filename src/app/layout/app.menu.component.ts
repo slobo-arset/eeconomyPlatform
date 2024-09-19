@@ -46,7 +46,34 @@ export class AppMenuComponent implements OnInit {
           label: 'MENI',
           items: [
               { label: 'Početna', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
-              { label: 'XML konvertor', icon: 'pi pi-fw pi-file-export', routerLink: ['/xml/convertor'] },
+              // { label: 'XML konvertor', icon: 'pi pi-fw pi-file-export', routerLink: ['/xml/convertor'] },
+              {
+                label: 'e-Fakture',
+                icon: 'pi pi-fw pi-user',
+                items: [
+                  {
+                    label: 'Ulazne fakture',
+                    icon: 'pi pi-fw pi-sign-in',
+                    routerLink: ['/e-fakture/ulazne']
+                  },
+                  {
+                    label: 'Izlazne fakture',
+                    icon: 'pi pi-fw pi-sign-out',
+                    routerLink: ['/e-fakture/izlazne']
+                  }
+                ]
+              },
+              {
+                label: 'Video obuke',
+                icon: 'pi pi-fw pi-user',
+                items: [
+                  {
+                    label: 'Obuke tip 1',
+                    icon: 'pi pi-fw pi-sign-in',
+                    routerLink: ['/obuka/obuka/1']
+                  }
+                ]
+              },
               { label: 'Zaposleni', icon: 'pi pi-fw pi-users', routerLink: ['/employees'] },
 
           ]
