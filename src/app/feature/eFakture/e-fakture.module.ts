@@ -3,17 +3,20 @@ import { CommonModule } from '@angular/common';
 import { UlazneFaktureComponent } from './ulazne-fakture/ulazne-fakture.component';
 import { RouterModule, Routes } from '@angular/router';
 import { IzlazneFaktureComponent } from './izlazne-fakture/izlazne-fakture.component';
+import { ExportSpiriComponent } from './export-spiri/export-spiri.component';
 
 
 const routes: Routes = [
   { path: 'ulazne', component: UlazneFaktureComponent },
   { path: 'izlazne', component: IzlazneFaktureComponent },
+  { path: 'generisanje-plaćanja', component: ExportSpiriComponent },
 ];
 
 @NgModule({
   declarations: [
     UlazneFaktureComponent,
-    IzlazneFaktureComponent
+    IzlazneFaktureComponent,
+    ExportSpiriComponent
   ],
   imports: [
     CommonModule,
@@ -21,7 +24,8 @@ const routes: Routes = [
   ],
   exports: [
     RouterModule,
-    UlazneFaktureComponent
+    UlazneFaktureComponent,
+    ExportSpiriComponent
   ]
 })
 export class EFaktureModule { }

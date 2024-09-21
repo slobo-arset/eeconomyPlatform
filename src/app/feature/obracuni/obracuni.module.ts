@@ -10,8 +10,14 @@ import { PrihodiIzRadnogOdnosaComponent } from './prihodi-iz-radnog-odnosa/priho
 import { PrihodiVanRadnogOdnosaComponent } from './prihodi-van-radnog-odnosa/prihodi-van-radnog-odnosa.component';
 
 const routes: Routes = [
-  { path: 'obuka/:id/:naslov', component: ObukaListaComponent },
-  { path: 'obuka/:id/video/:vid', component: ObukaPregledComponent },
+  { path: 'obračun-prihoda-iz-radnog-odnosa', component: PrihodiIzRadnogOdnosaComponent },
+  { path: 'naknada-zarade', component: NaknadaZaradeComponent },
+  { path: 'naknada-troškova-zaposlenom', component: NaknadaTroskovaZaposlenihComponent },
+  { path: 'druga-primanja-zaposlenih', component: ObracunDrugihPrihodaComponent },
+  { path: 'ugovorene-naknade-za-pp-poslove', component: PpposloviComponent },
+  { path: 'obračun-prihoda-van-radnog-odnosa', component: PrihodiVanRadnogOdnosaComponent },
+  { path: 'obračun-drugih-prihoda-van-radnog-odnosa', component: PrihodiIzRadnogOdnosaComponent },
+  { path: 'naknada-licima-koja-nisu-zaposlena', component: NaknadaNezaposleniComponent },
 ];
 
 @NgModule({

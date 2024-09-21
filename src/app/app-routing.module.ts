@@ -24,8 +24,6 @@ const routes: Routes = [
       {path: 'subscription', component: PretplateComponent},
       {path: 'profile', component: CpDashboardComponent},
       {path: 'log-lista', component: LogListaComponent},
-
-      {path: 'xml/convertor', component: CpDashboardComponent},
       {path: 'employees', component: EmployeesComponent},
       {
         path: 'e-fakture',
@@ -34,6 +32,11 @@ const routes: Routes = [
        {
         path: 'obuka',
         loadChildren: () => import('../app/feature/obuke/obuke.module').then(m => m.ObukeModule)
+       },
+
+       {
+        path: 'obračuni',
+        loadChildren: () => import('../app/feature/obracuni/obracuni.module').then(m => m.ObracuniModule)
        },
       //  {
       //   path: 'parametri',

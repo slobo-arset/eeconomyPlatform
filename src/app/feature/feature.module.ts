@@ -26,6 +26,7 @@ import { UiModule } from '../ui/ui.module';
 import { SuccessfulRegistrationComponent } from './registration/successful-registration/successful-registration.component';
 import { EFaktureModule } from './eFakture/e-fakture.module';
 import { ObukeModule } from './obuke/obuke.module';
+import { ObracuniModule } from './obracuni/obracuni.module';
 @NgModule({
   declarations: [
     CpDashboardComponent,
@@ -57,7 +58,8 @@ import { ObukeModule } from './obuke/obuke.module';
     ToastModule,
     UiModule,
     EFaktureModule,
-    ObukeModule
+    ObukeModule,
+    ObracuniModule
   ]
 })
 export class FeatureModule { }

@@ -54,41 +54,41 @@ export class AppMenuComponent implements OnInit {
                   {
                     label: 'Obračun prihoda iz radnog odnosa',
                     icon: 'pi pi-fw pi-calculator',
-                    routerLink: ['/e-fakture/ulazne']
+                    routerLink: ['/obračuni/obračun-prihoda-iz-radnog-odnosa']
                   },
                   {
                     label: 'Naknada zarade',
                     icon: 'pi pi-fw pi-calculator',
-                    routerLink: ['/e-fakture/izlazne']
+                    routerLink: ['/obračuni/naknada-zarade']
                   },
                   {
                     label: 'Naknada troškova zaposlenom',
                     icon: 'pi pi-fw pi-calculator',
-                    routerLink: ['/e-fakture/izlazne']
+                    routerLink: ['/obračuni/naknada-troškova-zaposlenom']
                   },
                   {
                     label: 'Druga primanja zaposlenih',
                     icon: 'pi pi-fw pi-calculator',
-                    routerLink: ['/e-fakture/izlazne']
+                    routerLink: ['/obračuni/druga-primanja-zaposlenih']
                   },
                   {
                     label: 'Ugovorene naknade za PP poslove',
                     icon: 'pi pi-fw pi-calculator',
-                    routerLink: ['/e-fakture/izlazne']
+                    routerLink: ['/obračuni/ugovorene-naknade-za-pp-poslove']
                   },
                   {
                     label: 'Obračun prihoda van radnog odnosa',
                     icon: 'pi pi-fw pi-calculator',
-                    routerLink: ['/e-fakture/izlazne']
+                    routerLink: ['/obračuni/obračun-prihoda-van-radnog-odnosa']
                   },
                   {
                     label: 'Obračun drugih prihoda van radnog odnosa',
                     icon: 'pi pi-fw pi-calculator',
-                    routerLink: ['/e-fakture/izlazne']
+                    routerLink: ['/obračuni/obračun-drugih-prihoda-van-radnog-odnosa']
                   },                  {
                     label: 'Naknada licima koja nisu zaposlena',
                     icon: 'pi pi-fw pi-calculator',
-                    routerLink: ['/e-fakture/izlazne']
+                    routerLink: ['/obračuni/naknada-licima-koja-nisu-zaposlena']
                   }
                 ]
               },
@@ -109,7 +109,7 @@ export class AppMenuComponent implements OnInit {
                   {
                     label: 'Generisanje plaćanja',
                     icon: 'pi pi-fw pi-file-export',
-                    routerLink: ['/e-fakture/izlazne']
+                    routerLink: ['/e-fakture/generisanje-plaćanja']
                   }
                 ]
               },
