@@ -48,29 +48,89 @@ export class AppMenuComponent implements OnInit {
               { label: 'Početna', icon: 'pi pi-fw pi-home', routerLink: ['/'] },
               // { label: 'XML konvertor', icon: 'pi pi-fw pi-file-export', routerLink: ['/xml/convertor'] },
               {
-                label: 'e-Fakture',
-                icon: 'pi pi-fw pi-user',
+                label: 'Obračuni',
+                icon: 'pi pi-fw pi-calculator',
                 items: [
                   {
-                    label: 'Ulazne fakture',
-                    icon: 'pi pi-fw pi-sign-in',
+                    label: 'Obračun prihoda iz radnog odnosa',
+                    icon: 'pi pi-fw pi-calculator',
                     routerLink: ['/e-fakture/ulazne']
                   },
                   {
-                    label: 'Izlazne fakture',
-                    icon: 'pi pi-fw pi-sign-out',
+                    label: 'Naknada zarade',
+                    icon: 'pi pi-fw pi-calculator',
+                    routerLink: ['/e-fakture/izlazne']
+                  },
+                  {
+                    label: 'Naknada troškova zaposlenom',
+                    icon: 'pi pi-fw pi-calculator',
+                    routerLink: ['/e-fakture/izlazne']
+                  },
+                  {
+                    label: 'Druga primanja zaposlenih',
+                    icon: 'pi pi-fw pi-calculator',
+                    routerLink: ['/e-fakture/izlazne']
+                  },
+                  {
+                    label: 'Ugovorene naknade za PP poslove',
+                    icon: 'pi pi-fw pi-calculator',
+                    routerLink: ['/e-fakture/izlazne']
+                  },
+                  {
+                    label: 'Obračun prihoda van radnog odnosa',
+                    icon: 'pi pi-fw pi-calculator',
+                    routerLink: ['/e-fakture/izlazne']
+                  },
+                  {
+                    label: 'Obračun drugih prihoda van radnog odnosa',
+                    icon: 'pi pi-fw pi-calculator',
+                    routerLink: ['/e-fakture/izlazne']
+                  },                  {
+                    label: 'Naknada licima koja nisu zaposlena',
+                    icon: 'pi pi-fw pi-calculator',
                     routerLink: ['/e-fakture/izlazne']
                   }
                 ]
               },
               {
-                label: 'Video obuke',
+                label: 'e-Fakture',
                 icon: 'pi pi-fw pi-user',
                 items: [
                   {
-                    label: 'Obuke tip 1',
+                    label: 'KPR',
                     icon: 'pi pi-fw pi-sign-in',
-                    routerLink: ['/obuka/obuka/1']
+                    routerLink: ['/e-fakture/ulazne']
+                  },
+                  {
+                    label: 'KIR',
+                    icon: 'pi pi-fw pi-sign-out',
+                    routerLink: ['/e-fakture/izlazne']
+                  },
+                  {
+                    label: 'Generisanje plaćanja',
+                    icon: 'pi pi-fw pi-file-export',
+                    routerLink: ['/e-fakture/izlazne']
+                  }
+                ]
+              },
+              {
+                label: 'Edukator',
+                icon: 'pi pi-fw pi-user',
+                items: [
+                  {
+                    label: 'Edukator - SPIRI',
+                    icon: 'pi pi-fw pi-sign-in',
+                    routerLink: ['/obuka/obuka/1/spiri']
+                  },
+                  {
+                    label: 'Edukator - FUK',
+                    icon: 'pi pi-fw pi-sign-in',
+                    routerLink: ['/obuka/obuka/2/fuk']
+                  },
+                  {
+                    label: 'Edukator - šeme knjiženja',
+                    icon: 'pi pi-fw pi-sign-in',
+                    routerLink: ['/obuka/obuka/3/šeme-knjiženja']
                   }
                 ]
               },

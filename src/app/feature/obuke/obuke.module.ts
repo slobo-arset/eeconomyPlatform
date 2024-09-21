@@ -5,7 +5,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { ObukaPregledComponent } from './obuka-pregled/obuka-pregled.component';
 
 const routes: Routes = [
-  { path: 'obuka/:id', component: ObukaListaComponent },
+  { path: 'obuka/:id/:naslov', component: ObukaListaComponent },
   { path: 'obuka/:id/video/:vid', component: ObukaPregledComponent },
 ];
 
