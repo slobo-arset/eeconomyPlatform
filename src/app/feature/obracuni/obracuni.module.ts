@@ -8,6 +8,7 @@ import { ObracunDrugihPrihodaComponent } from './obracun-drugih-prihoda/obracun-
 import { PpposloviComponent } from './ppposlovi/ppposlovi.component';
 import { PrihodiIzRadnogOdnosaComponent } from './prihodi-iz-radnog-odnosa/prihodi-iz-radnog-odnosa.component';
 import { PrihodiVanRadnogOdnosaComponent } from './prihodi-van-radnog-odnosa/prihodi-van-radnog-odnosa.component';
+import { UiModule } from 'src/app/ui/ui.module';
 
 const routes: Routes = [
   { path: 'obračun-prihoda-iz-radnog-odnosa', component: PrihodiIzRadnogOdnosaComponent },
@@ -32,7 +33,8 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    UiModule
   ],
   exports: [
     RouterModule,

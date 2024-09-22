@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { ObukaListaComponent } from './obuka-lista/obuka-lista.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ObukaPregledComponent } from './obuka-pregled/obuka-pregled.component';
+import { UiModule } from 'src/app/ui/ui.module';
 
 const routes: Routes = [
   { path: 'obuka/:id/:naslov', component: ObukaListaComponent },
@@ -16,7 +17,8 @@ const routes: Routes = [
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    UiModule
   ],
   exports: [
     RouterModule,

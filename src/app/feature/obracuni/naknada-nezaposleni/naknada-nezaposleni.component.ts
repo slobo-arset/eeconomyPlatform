@@ -1,10 +1,18 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-naknada-nezaposleni',
   templateUrl: './naknada-nezaposleni.component.html',
   styleUrl: './naknada-nezaposleni.component.scss'
 })
-export class NaknadaNezaposleniComponent {
+export class NaknadaNezaposleniComponent implements OnInit {
+
+  items: MenuItem[] = [{ label: 'Zaposleni' }];
+
+  constructor(){}
+
+  ngOnInit(): void {
+  }
 
 }
