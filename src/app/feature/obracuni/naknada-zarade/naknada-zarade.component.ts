@@ -8,7 +8,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class NaknadaZaradeComponent implements OnInit {
 
-  items: MenuItem[] = [{ label: 'Zaposleni' }];
+  items: MenuItem[] = [{ label: 'Naknada zarade' }];
 
   constructor(){}
 

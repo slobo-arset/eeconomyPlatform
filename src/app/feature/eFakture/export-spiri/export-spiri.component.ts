@@ -8,7 +8,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class ExportSpiriComponent implements OnInit {
 
-  items: MenuItem[] = [{ label: 'Zaposleni' }];
+  items: MenuItem[] = [{ label: 'Generisanje plaćanja' }];
 
   constructor(){}
 

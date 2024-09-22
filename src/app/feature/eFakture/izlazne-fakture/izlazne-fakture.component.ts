@@ -8,7 +8,7 @@ import { MenuItem } from 'primeng/api';
 })
 export class IzlazneFaktureComponent implements OnInit {
 
-  items: MenuItem[] = [{ label: 'Zaposleni' }];
+  items: MenuItem[] = [{ label: 'KIR' }];
 
   constructor(){}
 
