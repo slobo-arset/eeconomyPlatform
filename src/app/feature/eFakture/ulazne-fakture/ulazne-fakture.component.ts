@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-ulazne-fakture',
@@ -6,5 +7,6 @@ import { Component } from '@angular/core';
   styleUrl: './ulazne-fakture.component.scss'
 })
 export class UlazneFaktureComponent {
-
+  orders: any;
+  items: MenuItem[] = [{ label: 'KPR' }];
 }

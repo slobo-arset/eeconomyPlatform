@@ -23,7 +23,15 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "ngx-plyr": [
+        "dist/ngx-plyr"
+      ],
+      "ngx-plyr/*": [
+        "dist/ngx-plyr/*"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,

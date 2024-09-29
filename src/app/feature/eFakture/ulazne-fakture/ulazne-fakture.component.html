@@ -1,1 +1,162 @@
-<p>ulazne-fakture works!</p>
+<app-breadcrumbs [items]="items"></app-breadcrumbs>
+
+<div class="grid mt-3">
+  <div class="col-12 md:col-6 lg:col-3">
+     <div class="surface-card shadow-2 p-3 border-round">
+        <div class="flex justify-content-between mb-3">
+           <div>
+              <span class="block text-500 font-medium mb-3">Fakture</span>
+              <div class="text-900 font-medium text-xl">0</div>
+           </div>
+           <div class="flex align-items-center justify-content-center bg-blue-100 border-round" style="width: 2.5rem; height: 2.5rem;"><i class="pi pi-pencil text-blue-500 text-xl"></i></div>
+        </div>
+     </div>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+     <div class="surface-card shadow-2 p-3 border-round">
+        <div class="flex justify-content-between mb-3">
+           <div>
+              <span class="block text-500 font-medium mb-3">Avansne fakture</span>
+              <div class="text-900 font-medium text-xl">0</div>
+           </div>
+           <div class="flex align-items-center justify-content-center bg-orange-100 border-round" style="width: 2.5rem; height: 2.5rem;"><i class="pi pi-map-marker text-orange-500 text-xl"></i></div>
+        </div>
+     </div>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+     <div class="surface-card shadow-2 p-3 border-round">
+        <div class="flex justify-content-between mb-3">
+           <div>
+              <span class="block text-500 font-medium mb-3">Dokument o smanjenju</span>
+              <div class="text-900 font-medium text-xl">0</div>
+           </div>
+           <div class="flex align-items-center justify-content-center bg-cyan-100 border-round" style="width: 2.5rem; height: 2.5rem;"><i class="pi pi-check text-cyan-500 text-xl"></i></div>
+        </div>
+     </div>
+  </div>
+  <div class="col-12 md:col-6 lg:col-3">
+     <div class="surface-card shadow-2 p-3 border-round">
+        <div class="flex justify-content-between mb-3">
+           <div>
+              <span class="block text-500 font-medium mb-3">Dokument o povećanju</span>
+              <div class="text-900 font-medium text-xl">0</div>
+           </div>
+           <div class="flex align-items-center justify-content-center bg-purple-100 border-round" style="width: 2.5rem; height: 2.5rem;"><i class="pi pi-bars text-purple-500 text-xl"></i></div>
+        </div>
+     </div>
+  </div>
+</div>
+
+<div class="grid">
+  <div class="col-12">
+      <div class="card">
+          <p-table
+              #dt1
+              [value]="orders"
+              dataKey="id"
+              [rows]="5"
+              [showCurrentPageReport]="true"
+              [rowsPerPageOptions]="[5, 10, 25, 50]"
+              [paginator]="true"
+              currentPageReportTemplate="Prikaži od {first} do {last} od ukupno {totalRecords} redova"
+              [globalFilterFields]="['rfq','incoterms', 'date', 'endDate', 'items', 'status','numberOffer']"
+              >
+              <ng-template pTemplate="caption">
+                  <!-- <div class="flex">
+                      <button pButton label="Očisti sve filtere" class="p-button-outlined" icon="pi pi-filter-slash" (click)="clear(dt1)"></button>
+                      <span class="p-input-icon-left ml-auto mr-2">
+                          <i class="pi pi-search"></i>
+                          <input pInputText type="text" (input)="dt1.filterGlobal($event.target.value, 'contains')" placeholder="Search keyword" />
+                      </span>
+                      <p-button type="button" icon="pi pi-plus" (click)="goToOrder()"></p-button>
+                  </div> -->
+              </ng-template>
+              <ng-template pTemplate="header">
+                  <tr>
+                      <th pSortableColumn="rfq">
+                          <div class="flex align-items-center">
+                              Broj dokumenta
+                              <p-sortIcon field="rfq"></p-sortIcon>
+                              <p-columnFilter type="text" field="rfq" display="menu" class="ml-auto"></p-columnFilter>
+                          </div>
+                      </th>
+                      <th pSortableColumn="incoterms">
+                          <div class="flex align-items-center">
+                              Tip dokumenta
+                              <p-sortIcon field="incoterms"></p-sortIcon>
+                              <p-columnFilter type="text" field="incoterms" display="menu" class="ml-auto"></p-columnFilter>
+                          </div>
+                      </th>
+                      <th pSortableColumn="date">
+                          <div class="flex align-items-center">
+                              CRF identifikator
+                              <p-sortIcon field="date"></p-sortIcon>
+                              <p-columnFilter type="text" field="date" display="menu" class="ml-auto"></p-columnFilter>
+                          </div>
+                      </th>
+                      <th pSortableColumn="status">
+                          <div class="flex align-items-center">
+                              CRF status
+                              <p-sortIcon field="status"></p-sortIcon>
+                              <p-columnFilter type="text" field="status" display="menu" class="ml-auto"></p-columnFilter>
+                          </div>
+                      </th>
+                      <th pSortableColumn="status">
+                          <div class="flex align-items-center">
+                              Status
+                              <p-sortIcon field="status"></p-sortIcon>
+                              <p-columnFilter type="text" field="status" display="menu" class="ml-auto"></p-columnFilter>
+                          </div>
+                      </th>
+                      <th pSortableColumn="status">
+                          <div class="flex align-items-center">
+                              Dobavljač
+                              <p-sortIcon field="status"></p-sortIcon>
+                              <p-columnFilter type="text" field="status" display="menu" class="ml-auto"></p-columnFilter>
+                          </div>
+                      </th>
+                      <th pSortableColumn="status">
+                        <div class="flex align-items-center">
+                            Iznos
+                            <p-sortIcon field="status"></p-sortIcon>
+                            <p-columnFilter type="text" field="status" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                      </th>
+                      <th pSortableColumn="status">
+                        <div class="flex align-items-center">
+                            Datum prometa
+                            <p-sortIcon field="status"></p-sortIcon>
+                            <p-columnFilter type="text" field="status" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                      </th>
+                      <th pSortableColumn="status">
+                        <div class="flex align-items-center">
+                            Datum Slanja
+                            <p-sortIcon field="status"></p-sortIcon>
+                            <p-columnFilter type="text" field="status" display="menu" class="ml-auto"></p-columnFilter>
+                        </div>
+                      </th>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="body" let-data>
+                  <tr>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                      <td></td>
+                  </tr>
+              </ng-template>
+              <ng-template pTemplate="emptymessage">
+                  <tr>
+                      <td colspan="9">Nema naloga.</td>
+                  </tr>
+              </ng-template>
+          </p-table>
+      </div>
+  </div>
+</div>
