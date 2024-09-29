@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { MenuItem } from 'primeng/api';
 
 @Component({
   selector: 'app-obuka-lista',
@@ -6,5 +7,12 @@ import { Component } from '@angular/core';
   styleUrl: './obuka-lista.component.scss'
 })
 export class ObukaListaComponent {
-  items = Array(15).fill(0);
+  itemsList = Array(15).fill(0);
+
+  items: MenuItem[] = [{ label: 'Zaposleni' }];
+
+  constructor(){}
+
+  ngOnInit(): void {
+  }
 }

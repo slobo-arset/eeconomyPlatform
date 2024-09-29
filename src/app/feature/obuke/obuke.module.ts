@@ -4,7 +4,6 @@ import { CommonModule } from '@angular/common';
 import { ObukaListaComponent } from './obuka-lista/obuka-lista.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ObukaPregledComponent } from './obuka-pregled/obuka-pregled.component';
-import { YoutubePlayerComponent } from 'ngx-youtube-player';
 import { UiModule } from 'src/app/ui/ui.module';
 
 const routes: Routes = [

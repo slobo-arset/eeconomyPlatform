@@ -8,6 +8,8 @@ import { ObracunDrugihPrihodaComponent } from './obracun-drugih-prihoda/obracun-
 import { PpposloviComponent } from './ppposlovi/ppposlovi.component';
 import { PrihodiIzRadnogOdnosaComponent } from './prihodi-iz-radnog-odnosa/prihodi-iz-radnog-odnosa.component';
 import { PrihodiVanRadnogOdnosaComponent } from './prihodi-van-radnog-odnosa/prihodi-van-radnog-odnosa.component';
+import { UiModule } from 'src/app/ui/ui.module';
+import { DrugihPrihodaVanRadnogOdnosaComponent } from './drugih-prihoda-van-radnog-odnosa/drugih-prihoda-van-radnog-odnosa.component';
 
 const routes: Routes = [
   { path: 'obračun-prihoda-iz-radnog-odnosa', component: PrihodiIzRadnogOdnosaComponent },
@@ -16,7 +18,7 @@ const routes: Routes = [
   { path: 'druga-primanja-zaposlenih', component: ObracunDrugihPrihodaComponent },
   { path: 'ugovorene-naknade-za-pp-poslove', component: PpposloviComponent },
   { path: 'obračun-prihoda-van-radnog-odnosa', component: PrihodiVanRadnogOdnosaComponent },
-  { path: 'obračun-drugih-prihoda-van-radnog-odnosa', component: PrihodiIzRadnogOdnosaComponent },
+  { path: 'obračun-drugih-prihoda-van-radnog-odnosa', component: DrugihPrihodaVanRadnogOdnosaComponent },
   { path: 'naknada-licima-koja-nisu-zaposlena', component: NaknadaNezaposleniComponent },
 ];
 
@@ -28,11 +30,13 @@ const routes: Routes = [
     ObracunDrugihPrihodaComponent,
     PpposloviComponent,
     PrihodiIzRadnogOdnosaComponent,
-    PrihodiVanRadnogOdnosaComponent
+    PrihodiVanRadnogOdnosaComponent,
+    DrugihPrihodaVanRadnogOdnosaComponent
   ],
   imports: [
     CommonModule,
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
+    UiModule
   ],
   exports: [
     RouterModule,
