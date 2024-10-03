@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import { VideoService } from './../../../data-access/obuka/video.service';
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
@@ -20,23 +20,31 @@ export class ObukaListaComponent {
   link: string;
   short_desc: string;
 
-  cities: any[] =  [
+  status: any[] =  [
+    { name: 'Neaktivan', code: false },
+    { name: 'Aktivan', code: true },
+  ];
+  statusSelected: any;
+
+  provider: any[] =  [
     { name: 'youtube', code: '1' },
     { name: 'vimeo', code: '2' },
   ];
-  selectedCity: any;
+  providerSelected: any;
 
   constructor(
     public mainStateService: MainStateService,
     public videoService: VideoService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute,
   ){}
 
 
   ngOnInit(): void {
+    this.route.url.subscribe((params ) => {
+      console.log('doslo je do promene', params[1].path )
+    });
     this.userData  =  this.mainStateService.getStateBykey('user');
-    console.log('dataaat', this.userData)
-    this.mainStateService.setAppState({video: {url:'1014246952', provider : 'vimeo'}})
     this.itemsList$ = this.videoService.getVideoByCategory(1)
   }
 
@@ -50,9 +58,9 @@ export class ObukaListaComponent {
       "link" : this.link,
       "name": this.name,
       "short_desc": this.short_desc,
-      "provider": this.selectedCity.name,
+      "provider": this.providerSelected.name,
       "category_id": 1,
-      "is_active": 1,
+      "is_active": this.statusSelected ? 1 : 0,
     }
 
     this.itemsList$ = this.videoService.create(data).pipe(
@@ -65,7 +73,8 @@ export class ObukaListaComponent {
   }
 
   showVideo(data: any){
-    this.mainStateService.setAppState({video: {url: data.link, provider : data.provider}})
-    this.router.navigate(['/obuka/obuka/1/video/1'])
+    console.log(data)
+    //this.mainStateService.setAppState({video: {url: data.link, provider : data.provider}})
+    //this.router.navigate(['/obuka/obuka/1/video/1'])
   }
 }

@@ -3,8 +3,6 @@
 </div>
 
 
-
-
 <div class="col-12 card">
   <div class="grid">
     <div class="col-12 text-right">
@@ -33,15 +31,19 @@
     </div>
     <div class="col-12 flex flex-column gap-2">
       <label htmlFor="username">Kratak opis</label>
-      <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="short_desc" />
+      <input pInputText aria-describedby="username-help" [(ngModel)]="short_desc" />
     </div>
     <div class="col-6 flex flex-column gap-2">
       <label htmlFor="username">Izvor</label>
-      <p-dropdown [options]="cities" [(ngModel)]="selectedCity"  [editable]="true" optionLabel="name"></p-dropdown>
+      <p-dropdown [options]="provider" [(ngModel)]="providerSelected"  [editable]="true" optionLabel="name"></p-dropdown>
+    </div>
+    <div class="col-6 flex flex-column gap-2">
+      <label htmlFor="username">Aktivan</label>
+      <p-dropdown [options]="status" [(ngModel)]="statusSelected"  [editable]="true" optionLabel="name"></p-dropdown>
     </div>
     <div class="col-12 flex flex-column gap-2">
       <label htmlFor="username">Link </label>
-      <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="link" />
+      <input pInputText aria-describedby="username-help" [(ngModel)]="link" />
       <small id="username-help">Ako se korisit youtube kao izvor koristi se ID</small>
     </div>
 
