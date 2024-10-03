@@ -5,10 +5,9 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CommentsService {
+export class VideoService {
 
-
-  private baseUrl = "video/comments";
+  private baseUrl = "video/data";
 
   constructor(private http: HttpClient) { }
 
@@ -17,9 +16,16 @@ export class CommentsService {
     return this.http.post<any>(this.baseUrl, data);
   }
 
-  get(id: number):Observable<any> {
+  getVideoByCategory(id: number):Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${id}`);
   }
 
+  getVideoByCategoryActive(id: number):Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/active/${id}`);
+  }
+
+  getVideoById(id: number):Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/one/${id}`);
+  }
 
 }

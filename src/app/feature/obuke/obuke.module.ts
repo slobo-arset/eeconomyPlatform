@@ -5,6 +5,12 @@ import { ObukaListaComponent } from './obuka-lista/obuka-lista.component';
 import { RouterModule, Routes } from '@angular/router';
 import { ObukaPregledComponent } from './obuka-pregled/obuka-pregled.component';
 import { UiModule } from 'src/app/ui/ui.module';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { BrowserModule } from '@angular/platform-browser';
+import { FormsModule } from '@angular/forms';
+import { DialogModule } from 'primeng/dialog';
+import { DropdownModule } from 'primeng/dropdown';
 
 const routes: Routes = [
   { path: 'obuka/:id/:naslov', component: ObukaListaComponent },
@@ -19,11 +25,16 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    UiModule
+    UiModule,
+    ButtonModule,
+    InputTextModule,
+    FormsModule,
+    DialogModule,
+    DropdownModule
   ],
   exports: [
     RouterModule,
-    ObukaListaComponent
+    ObukaListaComponent,
   ]
 })
 export class ObukeModule { }

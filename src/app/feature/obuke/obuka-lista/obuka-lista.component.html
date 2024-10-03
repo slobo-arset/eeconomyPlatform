@@ -2,19 +2,52 @@
   <app-breadcrumbs [items]="items"></app-breadcrumbs>
 </div>
 
+
+
+
 <div class="col-12 card">
   <div class="grid">
-    <div class="col-3 p-2 cursor-pointer" *ngFor="let item of itemsList; let i = index">
-      <div class="mb-3 relative h-25rem border-round bg-cover bg-no-repeat"
-           style="background-image: url('https://blocks.primeng.org/assets/images/blocks/team/team-9.png');">
-        <div class="border-round p-3 absolute text-white inline-flex flex-column justify-content-center font-semibold"
-             style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); background: linear-gradient(90deg, rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.4) 100%); backdrop-filter: blur(6px);">
-           <h3 class="font-light text-xl xl:text-2xl mb-2 mt-0">Predavanje {{i + 1}}</h3>
-           <p class="font-normal text-sm xl:text-base mb-0 mt-0 text-white-alpha-70">Obuka tip {{i + 1}}</p>
-        </div>
-      </div>
+    <div class="col-12 text-right">
+      <p-button label="Kreiraj novi video" icon="pi pi-desktop" styleClass="p-button-outlined p-button-success" (click)="showDialog()"></p-button>
     </div>
+    <ng-container *ngIf="(itemsList$ | async) as itemsList">
+      <div class="col-3 p-2 cursor-pointer" *ngFor="let item of itemsList; let i = index" (click)="showVideo(item)">
+        <div class="mb-3 relative h-25rem border-round bg-cover bg-no-repeat"
+              style="background-image: url('https://e-economy.biz/wp-content/uploads/2022/10/Pun-logo.png');">
+            <div class="border-round p-3 absolute text-white inline-flex flex-column justify-content-center font-semibold"
+                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); background: linear-gradient(90deg, rgba(0, 0, 0, 0.4), rgba(255, 255, 255, 0.4) 100%); backdrop-filter: blur(6px);">
+              <h3 class="font-light text-xl xl:text-2xl mb-2 mt-0">Predavanje {{i + 1}}</h3>
+              <p class="font-normal text-sm xl:text-base mb-0 mt-0 text-white-alpha-70">{{item.name}}</p>
+            </div>
+          </div>
+        </div>
+      </ng-container>
   </div>
-  
 </div>
 
+<p-dialog header="Kreiraj novi video" [(visible)]="visible" [style]="{width: '30vw'}" modal="true">
+  <div class="grid mt-1">
+    <div class="col-12 flex flex-column gap-2">
+      <label htmlFor="username">Naziv</label>
+      <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="name" />
+    </div>
+    <div class="col-12 flex flex-column gap-2">
+      <label htmlFor="username">Kratak opis</label>
+      <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="short_desc" />
+    </div>
+    <div class="col-6 flex flex-column gap-2">
+      <label htmlFor="username">Izvor</label>
+      <p-dropdown [options]="cities" [(ngModel)]="selectedCity"  [editable]="true" optionLabel="name"></p-dropdown>
+    </div>
+    <div class="col-12 flex flex-column gap-2">
+      <label htmlFor="username">Link </label>
+      <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="link" />
+      <small id="username-help">Ako se korisit youtube kao izvor koristi se ID</small>
+    </div>
+
+
+    <div class="col-12 text-right">
+      <p-button label="Kreiraj video" icon="pi pi-desktop" styleClass="p-button-outlined p-button-success" (click)="create()"></p-button>
+    </div>
+  </div>
+</p-dialog>
