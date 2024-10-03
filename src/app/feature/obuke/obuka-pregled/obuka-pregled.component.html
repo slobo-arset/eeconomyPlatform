@@ -1,1 +1,54 @@
-<p>obuka-pregled works!</p>
+<app-breadcrumbs [items]="items"></app-breadcrumbs>
+
+<div class="grid mt-2 p-1">
+  <div class="col-8">
+    <video id="player" controls></video>
+  </div>
+  <div class="col-4">
+
+    <div class="flex flex-column h-full">
+      <div class="flex align-items-center border-bottom-1 surface-border p-1 lg:p-1">
+      </div>
+      <div class="p-3 md:px-4 lg:px-6 lg:py-4 mt-2 overflow-y-auto" style="max-height: 53vh;">
+
+        <ng-container *ngIf="(comment$ | async) as data">
+
+          <div class="ng-star-inserted" *ngFor="let p of data; let i = index">
+            <div class="grid grid-nogutter mb-1 ng-star-inserted">
+               <div class="col mt-1">
+                  <p class="text-900 font-semibold mb-1">Ioni Bowcher</p>
+                  <span class="text-700 inline-block font-xs border-1 surface-border p-3 white-space-normal border-round" style="word-break: break-word; width: 90%;">
+                    {{p.comment}}
+                  </span>
+               </div>
+            </div>
+
+            <div class="grid grid-nogutter mb-1 ng-star-inserted">
+              <div class="col mt-1 text-right">
+                 <p class="text-900 font-semibold mb-1">Konsultant</p>
+                 <span class="inline-block text-left font-xs border-1 surface-border bg-primary-100 text-primary-900 p-3 white-space-normal border-round" style="word-break: break-word; max-width: 90%;">Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</span>
+              </div>
+           </div>
+         </div>
+
+
+        </ng-container>
+
+
+
+      </div>
+
+      <div class="p-3     flex flex-column sm:flex-row align-items-center mt-auto border-top-1 surface-border gap-3">
+        <input type="text" pInputText [(ngModel)]="commentData" />
+         <div class="flex w-full sm:w-auto gap-3">
+          <p-button label="Primary" icon="pi pi-send" styleClass="p-button-raised" (click)="saveComment()"></p-button>
+        </div>
+
+      </div>
+   </div>
+
+  </div>
+</div>
+
+
+

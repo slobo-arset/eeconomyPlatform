@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 
 @Component({
@@ -6,13 +6,7 @@ import { MenuItem } from 'primeng/api';
   templateUrl: './ulazne-fakture.component.html',
   styleUrl: './ulazne-fakture.component.scss'
 })
-export class UlazneFaktureComponent implements OnInit {
-
+export class UlazneFaktureComponent {
+  orders: any;
   items: MenuItem[] = [{ label: 'KPR' }];
-
-  constructor(){}
-
-  ngOnInit(): void {
-  }
-  
 }

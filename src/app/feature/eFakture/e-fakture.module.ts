@@ -4,7 +4,10 @@ import { UlazneFaktureComponent } from './ulazne-fakture/ulazne-fakture.componen
 import { RouterModule, Routes } from '@angular/router';
 import { IzlazneFaktureComponent } from './izlazne-fakture/izlazne-fakture.component';
 import { ExportSpiriComponent } from './export-spiri/export-spiri.component';
+import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { UiModule } from 'src/app/ui/ui.module';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
 
 
 const routes: Routes = [
@@ -22,7 +25,9 @@ const routes: Routes = [
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
-    UiModule
+    UiModule,
+    TableModule,
+    ButtonModule
   ],
   exports: [
     RouterModule,

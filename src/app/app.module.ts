@@ -25,7 +25,7 @@ import { UiModule } from './ui/ui.module';
     UtilModule,
     UiModule,
     HttpClientModule,
-    EffectsModule.forRoot([]),
+    EffectsModule.forRoot([])
   ],
   providers: [],
   bootstrap: [AppComponent]
