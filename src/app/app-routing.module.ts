@@ -38,6 +38,10 @@ const routes: Routes = [
         path: 'obračuni',
         loadChildren: () => import('../app/feature/obracuni/obracuni.module').then(m => m.ObracuniModule)
        },
+       {
+        path: 'šifarnici',
+        loadChildren: () => import('../app/feature/codebook/codebook.module').then(m => m.CodebookModule)
+       },
       //  {
       //   path: 'parametri',
       //   loadChildren: () => import('../app/feature/parametri/parametri.module').then(m => m.ParametriModule)

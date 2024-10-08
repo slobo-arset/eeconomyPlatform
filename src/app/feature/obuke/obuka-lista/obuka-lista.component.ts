@@ -2,7 +2,7 @@ import {ActivatedRoute, Router} from '@angular/router';
 import { VideoService } from './../../../data-access/obuka/video.service';
 import { Component } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { Observable, switchMap } from 'rxjs';
+import { Observable, switchMap, tap } from 'rxjs';
 import { MainStateService } from 'src/app/data-access/state/main-state.service';
 
 @Component({
@@ -31,6 +31,7 @@ export class ObukaListaComponent {
     { name: 'vimeo', code: '2' },
   ];
   providerSelected: any;
+  category: string = '';
 
   constructor(
     public mainStateService: MainStateService,
@@ -41,11 +42,15 @@ export class ObukaListaComponent {
 
 
   ngOnInit(): void {
-    this.route.url.subscribe((params ) => {
-      console.log('doslo je do promene', params[1].path )
-    });
+    this.itemsList$ = this.route.url.pipe(
+      tap((data)=>{
+        this.category = data[1].path
+      }),
+      switchMap((data)=>{
+        return this.videoService.getVideoByCategory(data[1].path)
+      })
+    )
     this.userData  =  this.mainStateService.getStateBykey('user');
-    this.itemsList$ = this.videoService.getVideoByCategory(1)
   }
 
 
@@ -59,13 +64,13 @@ export class ObukaListaComponent {
       "name": this.name,
       "short_desc": this.short_desc,
       "provider": this.providerSelected.name,
-      "category_id": 1,
+      "category_id":  this.category,
       "is_active": this.statusSelected ? 1 : 0,
     }
 
     this.itemsList$ = this.videoService.create(data).pipe(
       switchMap(()=>{
-        return this.videoService.getVideoByCategory(1)
+        return this.videoService.getVideoByCategory('1')
       })
     )
     this.visible = false;
@@ -73,8 +78,9 @@ export class ObukaListaComponent {
   }
 
   showVideo(data: any){
-    console.log(data)
-    //this.mainStateService.setAppState({video: {url: data.link, provider : data.provider}})
-    //this.router.navigate(['/obuka/obuka/1/video/1'])
+    this.mainStateService.setAppState({video: {url: data.link, provider : data.provider}})
+    this.router.navigate([`/obuka/obuka/${data.category_id}/video/${data.id}`])
   }
+
+  edit(){}
 }

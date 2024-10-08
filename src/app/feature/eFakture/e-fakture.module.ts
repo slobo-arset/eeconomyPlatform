@@ -8,10 +8,15 @@ import { BreadcrumbModule } from 'primeng/breadcrumb';
 import { UiModule } from 'src/app/ui/ui.module';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
+import { UlazneFaktureSingleComponent } from './ulazne-fakture/ulazne-fakture-single/ulazne-fakture-single.component';
+import { FormsModule } from '@angular/forms';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
 
 
 const routes: Routes = [
   { path: 'ulazne', component: UlazneFaktureComponent },
+  { path: 'ulazne/:id', component: UlazneFaktureSingleComponent },
   { path: 'izlazne', component: IzlazneFaktureComponent },
   { path: 'generisanje-plaćanja', component: ExportSpiriComponent },
 ];
@@ -19,6 +24,7 @@ const routes: Routes = [
 @NgModule({
   declarations: [
     UlazneFaktureComponent,
+    UlazneFaktureSingleComponent,
     IzlazneFaktureComponent,
     ExportSpiriComponent
   ],
@@ -27,7 +33,10 @@ const routes: Routes = [
     RouterModule.forChild(routes),
     UiModule,
     TableModule,
-    ButtonModule
+    ButtonModule,
+    FormsModule,
+    InputTextModule,
+    DropdownModule
   ],
   exports: [
     RouterModule,

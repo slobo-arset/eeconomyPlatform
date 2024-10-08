@@ -1,0 +1,20 @@
+<ng-container  >
+  <form [formGroup]="form" (ngSubmit)="onSubmit(form.value)">
+      <div class="col-12 grid" >
+              <div class="flex flex-column gap-2 col-12 p-1">
+                  <label htmlFor="name">Naziv</label>
+                  <input pInputText id="name" aria-describedby="name-help"  autocomplete="off" formControlName="name"/>
+              </div>
+
+              <div class="flex flex-column gap-2 col-12 p-1">
+                  <label htmlFor="code">Kod</label>
+                  <input pInputText id="code" aria-describedby="code-help"  autocomplete="off" formControlName="code"/>
+              </div>
+
+
+              <div class="col-12 flex flex-column align-items-end justify-content-end p-1 pt-2">
+                  <button pButton type="submit" label="Sačuvaj" class="w-6" ></button>
+              </div>
+      </div>
+  </form>
+</ng-container>

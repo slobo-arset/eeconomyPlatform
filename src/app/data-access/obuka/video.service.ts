@@ -16,7 +16,7 @@ export class VideoService {
     return this.http.post<any>(this.baseUrl, data);
   }
 
-  getVideoByCategory(id: number):Observable<any> {
+  getVideoByCategory(id: string):Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/${id}`);
   }
 

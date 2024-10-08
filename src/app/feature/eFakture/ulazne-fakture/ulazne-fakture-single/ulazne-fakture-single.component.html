@@ -1,0 +1,197 @@
+<app-breadcrumbs [items]="items"></app-breadcrumbs>
+
+<div class="grid m-1 card mt-3">
+  <div class="col-12 grid">
+    <div class="col-8 grid pr-4">
+      <div class="flex flex-column gap-2 col-4">
+        <label htmlFor="username">Lista valuta</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="value" />
+      </div>
+      <div class="flex flex-column gap-2 col-4">
+        <label htmlFor="username">Tip dokumenta</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="value" />
+      </div>
+      <div class="flex flex-column gap-2 col-4">
+        <label htmlFor="username">Broj dokumenta</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="value" />
+      </div>
+
+      <div class="flex flex-column gap-2 col-8">
+        <label htmlFor="username">Prodavac</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="value" />
+      </div>
+
+      <div class="flex flex-column gap-2 col-4">
+        <label htmlFor="username">Broj ugovora</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="value" />
+      </div>
+      <div class="flex flex-column gap-2 col-4">
+        <label htmlFor="username">Broj Narudžbenice/Broj Fakture/Broj Ponude</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="value" />
+      </div>
+      <div class="flex flex-column gap-2 col-4">
+        <label htmlFor="username">Broj okvirnog sporazuma</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="value" />
+      </div>
+      <div class="flex flex-column gap-2 col-4">
+        <label htmlFor="username">Interni broj za rutiranje</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="value" />
+      </div>
+      <div class="flex flex-column gap-2 col-4">
+        <label htmlFor="username">Datum prometa</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="value" />
+      </div>
+      <div class="flex flex-column gap-2 col-4">
+        <label htmlFor="username">Datum dospeća</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="value" />
+      </div>
+      <div class="flex flex-column gap-2 col-4">
+        <label htmlFor="username">Nastanak PDV obaveze</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="value" />
+      </div>
+      <div class="flex flex-column gap-2 col-4">
+        <label htmlFor="username">Poziv na broj</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="value" />
+      </div>
+      <div class="flex flex-column gap-2 col-4">
+        <label htmlFor="username">Broj modela poziva na broj</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="value" />
+      </div>
+      <div class="flex flex-column gap-2 col-4">
+        <label htmlFor="username">Šifra objekta</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="value" />
+      </div>
+      <div class="flex flex-column gap-2 col-4">
+        <label htmlFor="username">Broj otpremnice</label>
+        <input pInputText id="username" aria-describedby="username-help" [(ngModel)]="value" />
+      </div>
+
+
+    </div>
+    <div class="col-4 surface-100 grid pl-1">
+      <div class="flex flex-column gap-2 col-12">
+        <label htmlFor="username">Konto knjiženja</label>
+        <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+      </div>
+      <div class="flex flex-column gap-2 col-12">
+        <label htmlFor="username">Ekonomska klasifikacija</label>
+        <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+      </div>
+      <div class="flex flex-column gap-2 col-12">
+        <label htmlFor="username">Podekonomska klasifikacija</label>
+        <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+      </div>
+      <div class="flex flex-column gap-2 col-12">
+        <label htmlFor="username">Izvor finansiranja</label>
+        <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+      </div>
+      <div class="flex flex-column gap-2 col-12">
+        <label htmlFor="username">Podizvor finansiranja</label>
+        <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+      </div>
+      <div class="flex flex-column gap-2 col-12">
+        <label htmlFor="username">Šifra projekta</label>
+        <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+      </div>
+      <div class="flex flex-column gap-2 col-12">
+        <label htmlFor="username">Šifra programa</label>
+        <p-dropdown [options]="cities" [(ngModel)]="selectedCity" optionLabel="name" [style]="{'width':'100%'}"></p-dropdown>
+      </div>
+    </div>
+
+    <div class="col-12 grid">
+
+    </div>
+
+    <div class="col-12 grid">
+      <p-table
+        #dt1
+        [value]="stv$ | async"
+        dataKey="id"
+        [rows]="5"
+        [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[5, 10, 25, 50]"
+        [paginator]="true"
+        currentPageReportTemplate="Prikaži od {first} do {last} od ukupno {totalRecords} redova"
+        [globalFilterFields]="['rfq','incoterms', 'date', 'endDate', 'items', 'status','numberOffer']"
+        class="w-full"
+        >
+        <ng-template pTemplate="header">
+            <tr>
+                <th pSortableColumn="rfq">
+                    <div class="flex align-items-center">
+                        Redni broj
+                    </div>
+                </th>
+                <th pSortableColumn="incoterms">
+                    <div class="flex align-items-center">
+                      Šifra
+                    </div>
+                </th>
+                <th pSortableColumn="date">
+                    <div class="flex align-items-center">
+                      Naziv
+                    </div>
+                </th>
+                <th pSortableColumn="status">
+                    <div class="flex align-items-center">
+                      Količina
+                    </div>
+                </th>
+                <th pSortableColumn="status">
+                    <div class="flex align-items-center">
+                      Jedinica mere
+                    </div>
+                </th>
+                <th pSortableColumn="status">
+                    <div class="flex align-items-center">
+                      Cena
+                    </div>
+                </th>
+                <th pSortableColumn="status">
+                  <div class="flex align-items-center">
+                      Iznos umanjenja
+                  </div>
+                </th>
+                <th pSortableColumn="status">
+                  <div class="flex align-items-center">
+                      Iznos bez PDV
+                  </div>
+                </th>
+                <th pSortableColumn="status">
+                  <div class="flex align-items-center">
+                      PDV %
+                  </div>
+                </th>
+                <th pSortableColumn="status">
+                  <div class="flex align-items-center">
+                      PDV kategorija
+                  </div>
+                </th>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="body" let-data>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </ng-template>
+        <ng-template pTemplate="emptymessage">
+            <tr>
+                <td colspan="10">Nema stavki.</td>
+            </tr>
+        </ng-template>
+      </p-table>
+    </div>
+
+
+  </div>
+</div>
