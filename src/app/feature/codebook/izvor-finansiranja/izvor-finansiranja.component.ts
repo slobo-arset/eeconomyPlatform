@@ -1,20 +1,20 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { Table } from 'primeng/table';
 import { Observable, tap } from 'rxjs';
-import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
-import { EkonomskaKlasifikacijaService } from 'src/app/data-access/codebook/ekonomska-klasifikacija.service';
+import { IzvorFinansiranjaService } from 'src/app/data-access/codebook/izvor-finansiranja.service';
 import { MainStateService } from 'src/app/data-access/state/main-state.service';
-import { EkonomskaKlasifikacijaModalComponent } from './ekonomska-klasifikacija-modal/ekonomska-klasifikacija-modal.component';
+import { IzvorFinansiranjaModalComponent } from './izvor-finansiranja-modal/izvor-finansiranja-modal.component';
+
 
 @Component({
-  selector: 'app-ekonomska-klasifikacija',
-  templateUrl: './ekonomska-klasifikacija.component.html',
-  styleUrl: './ekonomska-klasifikacija.component.scss',
-  providers: [DialogService]
+  selector: 'app-izvor-finansiranja',
+  templateUrl: './izvor-finansiranja.component.html',
+  styleUrl: './izvor-finansiranja.component.scss'
 })
-export class EkonomskaKlasifikacijaComponent {
+export class IzvorFinansiranjaComponent {
   ref: DynamicDialogRef | undefined;
 
   dokument$: Observable<any[]>;
@@ -32,13 +32,13 @@ export class EkonomskaKlasifikacijaComponent {
   constructor(
     private router: Router,
     public dialogService: DialogService,
-    public ekonomskaKlasifikacijaService: EkonomskaKlasifikacijaService,
+    public izvorFinansiranjaService: IzvorFinansiranjaService,
     public mainStateService: MainStateService,
 ) {}
 
   ngOnInit() {
     this.userData  =  this.mainStateService.getStateBykey('user');
-    this.dokument$ = this.ekonomskaKlasifikacijaService.getAll(this.userData.company_id).pipe(tap((_)=> this.loading = false));
+    this.dokument$ = this.izvorFinansiranjaService.getAll(this.userData.company_id).pipe(tap((_)=> this.loading = false));
   }
 
   clear(table: Table) {
@@ -47,24 +47,24 @@ export class EkonomskaKlasifikacijaComponent {
 
 
   goToDokument(id:number){
-   this.ref = this.dialogService.open(EkonomskaKlasifikacijaModalComponent, { header: 'Izmena ekonomske klasifikacije', width: '600px', height: '300px', data: { mode:'edit', id:id }});
+   this.ref = this.dialogService.open(IzvorFinansiranjaModalComponent, { header: 'Izmena ekonomske klasifikacije', width: '600px', height: '300px', data: { mode:'edit', id:id }});
 
     this.ref.onClose.subscribe((result: any) => {
       console.log('Dialog closed with result:', result);
       if(result!== undefined) {
         this.loading = true;
-        this.dokument$ = this.ekonomskaKlasifikacijaService.getAll(this.userData.company_id).pipe(tap((_)=> this.loading = false))
+        this.dokument$ = this.izvorFinansiranjaService.getAll(this.userData.company_id).pipe(tap((_)=> this.loading = false))
       }
     });
   }
 
 
   createDokument(){
-    this.ref = this.dialogService.open(EkonomskaKlasifikacijaModalComponent, { header: 'Kreiranje ekonomske klasifikacije', width: '600px', height: '300px', data: { mode:'create' }});
+    this.ref = this.dialogService.open(IzvorFinansiranjaModalComponent, { header: 'Kreiranje ekonomske klasifikacije', width: '600px', height: '300px', data: { mode:'create' }});
     this.ref.onClose.subscribe((result: any) => {
       console.log('Dialog closed with result:', result);
       if(result!== undefined) {
-        this.dokument$ = this.ekonomskaKlasifikacijaService.getAll(this.userData.company_id).pipe(tap((_)=> this.loading = false))
+        this.dokument$ = this.izvorFinansiranjaService.getAll(this.userData.company_id).pipe(tap((_)=> this.loading = false))
       }
     });
   }

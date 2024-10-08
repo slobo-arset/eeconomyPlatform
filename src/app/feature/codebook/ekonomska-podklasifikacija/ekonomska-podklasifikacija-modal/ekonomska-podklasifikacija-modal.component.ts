@@ -2,15 +2,15 @@ import { Component } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { catchError, of, tap } from 'rxjs';
-import { EkonomskaKlasifikacijaService } from 'src/app/data-access/codebook/ekonomska-klasifikacija.service';
+import { EkonomskaPodklasifikacijaService } from 'src/app/data-access/codebook/ekonomska-podklasifikacija.service';
 import { MainStateService } from 'src/app/data-access/state/main-state.service';
 
 @Component({
-  selector: 'app-ekonomska-klasifikacija-modal',
-  templateUrl: './ekonomska-klasifikacija-modal.component.html',
-  styleUrl: './ekonomska-klasifikacija-modal.component.scss'
+  selector: 'app-ekonomska-podklasifikacija-modal',
+  templateUrl: './ekonomska-podklasifikacija-modal.component.html',
+  styleUrl: './ekonomska-podklasifikacija-modal.component.scss'
 })
-export class EkonomskaKlasifikacijaModalComponent {
+export class EkonomskaPodklasifikacijaModalComponent {
   form = this.fb.group({
     id:[0],
     naziv:['', Validators.required],
@@ -25,13 +25,13 @@ export class EkonomskaKlasifikacijaModalComponent {
     private fb: FormBuilder,
     public ref: DynamicDialogRef,
     public config: DynamicDialogConfig,
-    public ekonomskaKlasifikacijaService: EkonomskaKlasifikacijaService,
+    public ekonomskaPodklasifikacijaService: EkonomskaPodklasifikacijaService,
     public mainStateService: MainStateService,
 
   ) {
     this.userData  =  this.mainStateService.getStateBykey('user');
     if(this.config.data.mode ==='edit' || this.config.data.mode ==='preview') {
-      this.ekonomskaKlasifikacijaService.getById(this.config.data.id).subscribe((data:any)=>{
+      this.ekonomskaPodklasifikacijaService.getById(this.config.data.id).subscribe((data:any)=>{
         this.patchValues(data)
       })
     }
@@ -55,7 +55,7 @@ export class EkonomskaKlasifikacijaModalComponent {
         company_id: this.userData.company_id,
         is_active: 1
       }
-      this.ekonomskaKlasifikacijaService.create(req).pipe(
+      this.ekonomskaPodklasifikacijaService.create(req).pipe(
         catchError((msg) => {
           console.log('Error create Dokument: ', msg);
           return of([])
@@ -83,7 +83,7 @@ export class EkonomskaKlasifikacijaModalComponent {
         company_id: this.userData.company_id,
         is_active: 1
       }
-      this.ekonomskaKlasifikacijaService.update(req, val.id).pipe(
+      this.ekonomskaPodklasifikacijaService.update(req, val.id).pipe(
         catchError((msg) => {
           console.log('Error update Dokument: ', msg);
           return of([])
