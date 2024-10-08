@@ -12,7 +12,8 @@ import { IzvorFinansiranjaModalComponent } from './izvor-finansiranja-modal/izvo
 @Component({
   selector: 'app-izvor-finansiranja',
   templateUrl: './izvor-finansiranja.component.html',
-  styleUrl: './izvor-finansiranja.component.scss'
+  styleUrl: './izvor-finansiranja.component.scss',
+  providers: [DialogService]
 })
 export class IzvorFinansiranjaComponent {
   ref: DynamicDialogRef | undefined;

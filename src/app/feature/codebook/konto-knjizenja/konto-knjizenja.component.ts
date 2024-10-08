@@ -11,7 +11,8 @@ import { KontoKnjizenjaModalComponent } from './konto-knjizenja-modal/konto-knji
 @Component({
   selector: 'app-konto-knjizenja',
   templateUrl: './konto-knjizenja.component.html',
-  styleUrl: './konto-knjizenja.component.scss'
+  styleUrl: './konto-knjizenja.component.scss',
+  providers: [DialogService]
 })
 export class KontoKnjizenjaComponent {
   ref: DynamicDialogRef | undefined;

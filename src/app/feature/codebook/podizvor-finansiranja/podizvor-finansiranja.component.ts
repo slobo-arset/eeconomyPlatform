@@ -11,7 +11,8 @@ import { PodizvorFinansiranjaModalComponent } from './podizvor-finansiranja-moda
 @Component({
   selector: 'app-podizvor-finansiranja',
   templateUrl: './podizvor-finansiranja.component.html',
-  styleUrl: './podizvor-finansiranja.component.scss'
+  styleUrl: './podizvor-finansiranja.component.scss',
+  providers: [DialogService]
 })
 export class PodizvorFinansiranjaComponent {
   ref: DynamicDialogRef | undefined;

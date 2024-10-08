@@ -11,7 +11,8 @@ import { SifraProgramaModalComponent } from './sifra-programa-modal/sifra-progra
 @Component({
   selector: 'app-sifra-programa',
   templateUrl: './sifra-programa.component.html',
-  styleUrl: './sifra-programa.component.scss'
+  styleUrl: './sifra-programa.component.scss',
+  providers: [DialogService]
 })
 export class SifraProgramaComponent {
   ref: DynamicDialogRef | undefined;

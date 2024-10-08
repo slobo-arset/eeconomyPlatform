@@ -11,7 +11,8 @@ import { EkonomskaPodklasifikacijaModalComponent } from './ekonomska-podklasifik
 @Component({
   selector: 'app-ekonomska-podklasifikacija',
   templateUrl: './ekonomska-podklasifikacija.component.html',
-  styleUrl: './ekonomska-podklasifikacija.component.scss'
+  styleUrl: './ekonomska-podklasifikacija.component.scss',
+  providers: [DialogService]
 })
 export class EkonomskaPodklasifikacijaComponent {
   ref: DynamicDialogRef | undefined;
