@@ -115,22 +115,53 @@ export class AppMenuComponent implements OnInit {
               },
               {
                 label: 'Edukator',
-                icon: 'pi pi-fw pi-user',
+                icon: 'pi pi-fw pi-play',
                 items: [
                   {
                     label: 'Edukator - SPIRI',
-                    icon: 'pi pi-fw pi-sign-in',
+                    icon: 'pi pi-fw pi-play',
                     routerLink: ['/obuka/obuka/1/spiri']
                   },
                   {
                     label: 'Edukator - FUK',
-                    icon: 'pi pi-fw pi-sign-in',
+                    icon: 'pi pi-fw pi-play',
                     routerLink: ['/obuka/obuka/2/fuk']
                   },
                   {
                     label: 'Edukator - šeme knjiženja',
-                    icon: 'pi pi-fw pi-sign-in',
+                    icon: 'pi pi-fw pi-play',
                     routerLink: ['/obuka/obuka/3/šeme-knjiženja']
+                  }
+                ]
+              },
+              {
+                label: 'Šifarnici',
+                icon: 'pi pi-fw pi-book',
+                items: [
+                  {
+                    label: 'Ekonomska klasifikacija',
+                    icon: 'pi pi-fw pi-file',
+                    routerLink: ['/šifarnici/ekonomska-klasifikacija']
+                  },
+                  {
+                    label: 'Izvori finansiranja',
+                    icon: 'pi pi-fw pi-file',
+                    routerLink: ['/šifarnici/izvor-finansiranja']
+                  },
+                  {
+                    label: 'Konto knjiženja',
+                    icon: 'pi pi-fw pi-file',
+                    routerLink: ['/šifarnici/konto-knjizenja']
+                  },
+                  {
+                    label: 'Šifra programa',
+                    icon: 'pi pi-fw pi-file',
+                    routerLink: ['/šifarnici/sifra-programa']
+                  },
+                  {
+                    label: 'Šifra projekta',
+                    icon: 'pi pi-fw pi-file',
+                    routerLink: ['/šifarnici/sifra-projekta']
                   }
                 ]
               },
