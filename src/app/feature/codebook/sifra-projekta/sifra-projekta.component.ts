@@ -21,7 +21,7 @@ export class SifraProjektaComponent {
   userData: any;
   loading: boolean = true;
 
-  items: MenuItem[] = [{ label: 'Dokumenta' }];
+  items: MenuItem[] = [{ label: 'Šifra projekta' }];
   contextData: any;
   context: MenuItem[] =  [
     {label: 'Pregled', icon: 'pi pi-fw pi-eye', command: () => this.goToDokument(this.contextData.id)},
@@ -47,7 +47,7 @@ export class SifraProjektaComponent {
 
 
   goToDokument(id:number){
-   this.ref = this.dialogService.open(SifraProjektaModalComponent, { header: 'Izmena ekonomske klasifikacije', width: '600px', data: { mode:'edit', id:id }});
+   this.ref = this.dialogService.open(SifraProjektaModalComponent, { header: 'Izmeni šifru projekta', width: '600px', data: { mode:'edit', id:id }});
 
     this.ref.onClose.subscribe((result: any) => {
       console.log('Dialog closed with result:', result);
@@ -60,7 +60,7 @@ export class SifraProjektaComponent {
 
 
   createDokument(){
-    this.ref = this.dialogService.open(SifraProjektaModalComponent, { header: 'Kreiranje ekonomske klasifikacije', width: '600px', data: { mode:'create' }});
+    this.ref = this.dialogService.open(SifraProjektaModalComponent, { header: 'Kreiraj šifru projekta', width: '600px', data: { mode:'create' }});
     this.ref.onClose.subscribe((result: any) => {
       console.log('Dialog closed with result:', result);
       if(result!== undefined) {

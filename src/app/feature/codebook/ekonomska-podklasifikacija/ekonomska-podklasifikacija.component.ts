@@ -66,7 +66,7 @@ export class EkonomskaPodklasifikacijaComponent {
 
 
   createDokument(){
-    this.ref = this.dialogService.open(EkonomskaPodklasifikacijaModalComponent, { header: 'Kreiranje ekonomske klasifikacije', width: '600px', data: { mode:'create' }});
+    this.ref = this.dialogService.open(EkonomskaPodklasifikacijaModalComponent, { header: 'Kreiranje ekonomske podklasifikacije', width: '600px', data: { mode:'create' }});
     this.ref.onClose.subscribe((result: any) => {
       console.log('Dialog closed with result:', result);
       if(result!== undefined) {

@@ -48,7 +48,7 @@ export class IzvorFinansiranjaComponent {
 
 
   goToDokument(id:number){
-   this.ref = this.dialogService.open(IzvorFinansiranjaModalComponent, { header: 'Izmena ekonomske klasifikacije', width: '600px', data: { mode:'edit', id:id }});
+   this.ref = this.dialogService.open(IzvorFinansiranjaModalComponent, { header: 'Izmena izvora finasiranja', width: '600px', data: { mode:'edit', id:id }});
 
     this.ref.onClose.subscribe((result: any) => {
       console.log('Dialog closed with result:', result);
@@ -61,7 +61,7 @@ export class IzvorFinansiranjaComponent {
 
 
   createDokument(){
-    this.ref = this.dialogService.open(IzvorFinansiranjaModalComponent, { header: 'Kreiranje ekonomske klasifikacije', width: '600px',  data: { mode:'create' }});
+    this.ref = this.dialogService.open(IzvorFinansiranjaModalComponent, { header: 'Kreiranje izvora finasiranja', width: '600px',  data: { mode:'create' }});
     this.ref.onClose.subscribe((result: any) => {
       console.log('Dialog closed with result:', result);
       if(result!== undefined) {

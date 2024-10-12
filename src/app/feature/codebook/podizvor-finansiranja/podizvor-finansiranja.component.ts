@@ -53,7 +53,7 @@ export class PodizvorFinansiranjaComponent {
 
 
   goToDokument(id:number){
-   this.ref = this.dialogService.open(PodizvorFinansiranjaModalComponent, { header: 'Izmena ekonomske klasifikacije', width: '600px',data: { mode:'edit', id:id }});
+   this.ref = this.dialogService.open(PodizvorFinansiranjaModalComponent, { header: 'Izmeni podizvor finansiranja', width: '600px',data: { mode:'edit', id:id }});
 
     this.ref.onClose.subscribe((result: any) => {
       if(result!== undefined) {
@@ -65,7 +65,7 @@ export class PodizvorFinansiranjaComponent {
 
 
   createDokument(){
-    this.ref = this.dialogService.open(PodizvorFinansiranjaModalComponent, { header: 'Kreiranje ekonomske klasifikacije', width: '600px',  data: { mode:'create' }});
+    this.ref = this.dialogService.open(PodizvorFinansiranjaModalComponent, { header: 'Kreiraj podizvor finansiranja', width: '600px',  data: { mode:'create' }});
     this.ref.onClose.subscribe((result: any) => {
       if(result!== undefined) {
         this.dokument$ = this.podizvorFinansiranjaService.getAll(this.userData.company_id, this.podizvor_finansiranja).pipe(tap((_)=> this.loading = false))
