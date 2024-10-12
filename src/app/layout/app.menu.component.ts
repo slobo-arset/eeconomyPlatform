@@ -36,7 +36,28 @@ export class AppMenuComponent implements OnInit {
               { label: 'Zaposleni', icon: 'pi pi-fw pi-users', routerLink: ['/employees'] },
               { label: 'Log lista', icon: 'pi pi-fw pi-list', routerLink: ['/log-lista'] },
           ]
-        }
+        },
+        {
+          label: 'Edukator',
+          icon: 'pi pi-fw pi-play',
+          items: [
+            {
+              label: 'Edukator - SPIRI',
+              icon: 'pi pi-fw pi-play',
+              routerLink: ['/obuka/obuka/admin/1/spiri']
+            },
+            {
+              label: 'Edukator - FUK',
+              icon: 'pi pi-fw pi-play',
+              routerLink: ['/obuka/obuka/admin/2/fuk']
+            },
+            {
+              label: 'Edukator - šeme knjiženja',
+              icon: 'pi pi-fw pi-play',
+              routerLink: ['/obuka/obuka/admin/3/šeme-knjiženja']
+            }
+          ]
+        },
       ]
 
     } else {

@@ -1,26 +1,24 @@
-import {ActivatedRoute, Router} from '@angular/router';
-import { VideoService } from './../../../data-access/obuka/video.service';
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MenuItem } from 'primeng/api';
 import { Observable, switchMap, tap } from 'rxjs';
+import { VideoService } from 'src/app/data-access/obuka/video.service';
 import { MainStateService } from 'src/app/data-access/state/main-state.service';
 
 @Component({
-  selector: 'app-obuka-lista',
-  templateUrl: './obuka-lista.component.html',
-  styleUrl: './obuka-lista.component.scss'
+  selector: 'app-obuka-admin-lista',
+  templateUrl: './obuka-admin-lista.component.html',
+  styleUrl: './obuka-admin-lista.component.scss'
 })
-export class ObukaListaComponent {
+export class ObukaAdminListaComponent {
   itemsList$: Observable<any>;
   userData: any;
 
-  items: MenuItem[] = [{ label: 'Zaposleni' }];
+  items: MenuItem[] = [{ label: 'Administracija edukatora' }];
   visible: boolean;
   name: string;
   link: string;
   short_desc: string;
-  selectedTopic: any;
-  topic$: Observable<any>;
 
   status: any[] =  [
     { name: 'Neaktivan', code: false },
@@ -46,10 +44,10 @@ export class ObukaListaComponent {
   ngOnInit(): void {
     this.itemsList$ = this.route.url.pipe(
       tap((data)=>{
-        this.category = data[1].path
+        this.category = data[2].path
       }),
       switchMap((data)=>{
-        return this.videoService.getVideoByCategory(data[1].path)
+        return this.videoService.getVideoByCategory(data[2].path)
       })
     )
     this.userData  =  this.mainStateService.getStateBykey('user');
@@ -81,7 +79,7 @@ export class ObukaListaComponent {
 
   showVideo(data: any){
     this.mainStateService.setAppState({video: {url: data.link, provider : data.provider}})
-    this.router.navigate([`/obuka/obuka/${data.category_id}/video/${data.id}`])
+    this.router.navigate([`/obuka/obuka/admin/${data.category_id}/video/${data.id}`])
   }
 
   edit(){}

@@ -3,24 +3,27 @@
 </div>
 
 <div class="col-12 card text-right mb-2">
-  <p-dropdown [options]="topic$ | async" [(ngModel)]="selectedTopic" optionLabel="name" [style]="{'width':'30%'}" placeholder="Odaberi temu" [filter]="true"></p-dropdown>
-  <p-button icon="pi pi-search" styleClass="p-button-success" class="ml-2"></p-button>
-  <!-- <p-button label="Kreiraj novi video" icon="pi pi-desktop" styleClass="p-button-outlined p-button-success" (click)="showDialog()"></p-button> -->
+  <p-button label="Kreiraj novi video" icon="pi pi-desktop" styleClass="p-button-outlined p-button-success" (click)="showDialog()"></p-button>
 </div>
 
 <div class="col-12 card">
   <div class="grid">
     <ng-container *ngIf="(itemsList$ | async) as itemsList">
-        <div class="col-3 p-2 cursor-pointer" *ngFor="let item of itemsList; let i = index" >
-          <div class="mb-3 relative h-25rem border-round bg-cover bg-no-repeat" (click)="showVideo(item)"
-                style="background-image: url('https://www.caut.ca/sites/default/files/education.jpg');">
-              <div class="border-round p-3 absolute text-white inline-flex flex-column justify-content-center font-semibold"
-                  style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); background: linear-gradient(90deg, rgb(255 36 36), rgb(255 149 149) 100%); backdrop-filter: blur(6px);">
-                <h3 class="font-bold text-xl xl:text-2xl mb-2 mt-0 text-white-alpha-70">{{item.name}}</h3>
-                <p class="font-normal text-sm xl:text-base mb-0 mt-0 text-white-alpha-70">{{item.short_d}}</p>
+      <div class="col-3 p-2 cursor-pointer" *ngFor="let item of itemsList; let i = index" >
+        <div class="mb-3 relative h-25rem border-round bg-cover bg-no-repeat"
+              style="background-image: url('https://www.caut.ca/sites/default/files/education.jpg');">
+            <div class="border-round p-3 absolute text-white inline-flex flex-column justify-content-center font-semibold"
+                style="bottom: 1rem; left: 1rem; width: calc(100% - 2rem); background: linear-gradient(90deg, rgb(255 36 36), rgb(255 149 149) 100%); backdrop-filter: blur(6px);">
+              <h3 class="font-bold text-xl xl:text-2xl mb-2 mt-0 text-white-alpha-70">{{item.name}}</h3>
+              <p class="font-normal text-sm xl:text-base mb-0 mt-0 text-white-alpha-70">{{item.short_desc}}</p>
+              <div class="bg-white p-2 text-right z-1">
+                <p-button icon="pi pi-eye" styleClass="p-button-success p-button-outlined mr-2" (click)="showVideo(item)"></p-button>
+                <p-button icon="pi pi-pencil" styleClass="p-button-warning p-button-outlined mr-2" (onClick)="edit()"></p-button>
+                <p-button icon="pi pi-trash" styleClass="p-button-danger p-button-outlined"></p-button>
               </div>
             </div>
           </div>
+        </div>
       </ng-container>
   </div>
 </div>

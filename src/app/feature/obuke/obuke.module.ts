@@ -11,16 +11,22 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
+import { ObukaAdminPregledComponent } from './obuka-admin-pregled/obuka-admin-pregled.component';
+import { ObukaAdminListaComponent } from './obuka-admin-lista/obuka-admin-lista.component';
 
 const routes: Routes = [
   { path: 'obuka/:id/:naslov', component: ObukaListaComponent },
   { path: 'obuka/:id/video/:vid', component: ObukaPregledComponent },
+  { path: 'obuka/admin/:id/:naslov', component: ObukaAdminListaComponent },
+  { path: 'obuka/admin/:id/video/:vid', component: ObukaAdminPregledComponent },
 ];
 
 @NgModule({
   declarations: [
     ObukaListaComponent,
-    ObukaPregledComponent
+    ObukaPregledComponent,
+    ObukaAdminPregledComponent,
+    ObukaAdminListaComponent
   ],
   imports: [
     CommonModule,

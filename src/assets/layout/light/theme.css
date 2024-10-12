@@ -799,11 +799,12 @@ p-chips.p-chips-clearable .p-chips-clear-icon{
     border-top-left-radius:3px
 }
 .p-dropdown-panel .p-dropdown-header .p-dropdown-filter{
-    padding-right:1.5rem;
-    margin-right:-1.5rem
+    padding-right:1rem;
+    margin-right:1rem
 }
 .p-dropdown-panel .p-dropdown-header .p-dropdown-filter-icon{
     right:.5rem;
+    top: 1.3rem;
     color:#6c757d
 }
 .p-dropdown-panel .p-dropdown-items{
@@ -5986,4 +5987,3 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon{
 .p-datatable .p-datatable-tbody>tr.p-datatable-dragpoint-bottom>td{
     box-shadow:inset 0 -2px 0 0 #ff1c1c
 }
- 
