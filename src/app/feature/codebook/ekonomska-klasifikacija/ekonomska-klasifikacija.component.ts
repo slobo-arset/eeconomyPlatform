@@ -57,6 +57,11 @@ export class EkonomskaKlasifikacijaComponent {
     });
   }
 
+  showPodklasifikaciju(id:number){
+    this.mainStateService.setAppState({ekonomska_podklasifikacija: id});
+    this.router.navigate(['/šifarnici/ekonomska-podklasifikacija']);
+  }
+
 
   createDokument(){
     this.ref = this.dialogService.open(EkonomskaKlasifikacijaModalComponent, { header: 'Kreiranje ekonomske klasifikacije', width: '600px',  data: { mode:'create' }});

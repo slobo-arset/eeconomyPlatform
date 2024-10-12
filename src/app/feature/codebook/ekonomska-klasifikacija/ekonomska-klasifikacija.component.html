@@ -48,7 +48,7 @@
             </ng-template>
             <ng-template pTemplate="body" let-data>
                 <tr class="text-sm" [pContextMenuRow]="data">
-                    <td class="cursor-pointer font-bold text-primary" (click)="goToDokument(data.id)">
+                    <td class="cursor-pointer font-bold text-primary" (click)="showPodklasifikaciju(data.id)">
                         {{ data.sifra }}
                     </td>
                     <td>

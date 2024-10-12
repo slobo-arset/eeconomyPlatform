@@ -11,8 +11,8 @@ export class EkonomskaPodklasifikacijaService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(id: string):Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/all/${id}`);
+  getAll(id: string, klasifikacija_id: string):Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/all/${id}/${klasifikacija_id}`);
   }
 
   getById(id: string):Observable<any> {

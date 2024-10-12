@@ -15,11 +15,12 @@ export class EkonomskaPodklasifikacijaModalComponent {
     id:[0],
     naziv:['', Validators.required],
     sifra:['', Validators.required],
-    opis:['', Validators.required], 
+    opis:['', Validators.required],
 
   });
 
   userData: any;
+  ekonomska_podklasifikacija: any;
 
   constructor(
     private fb: FormBuilder,
@@ -29,6 +30,7 @@ export class EkonomskaPodklasifikacijaModalComponent {
     public mainStateService: MainStateService,
 
   ) {
+    this.ekonomska_podklasifikacija  =  this.mainStateService.getStateBykey('ekonomska_podklasifikacija');
     this.userData  =  this.mainStateService.getStateBykey('user');
     if(this.config.data.mode ==='edit' || this.config.data.mode ==='preview') {
       this.ekonomskaPodklasifikacijaService.getById(this.config.data.id).subscribe((data:any)=>{
@@ -53,6 +55,7 @@ export class EkonomskaPodklasifikacijaModalComponent {
         sifra:val.sifra,
         opis: val.opis,
         company_id: this.userData.company_id,
+        klasifikacija_id: this.ekonomska_podklasifikacija,
         is_active: 1
       }
       this.ekonomskaPodklasifikacijaService.create(req).pipe(
@@ -74,13 +77,14 @@ export class EkonomskaPodklasifikacijaModalComponent {
   }
 
   update(val) {
-    console.log('update')
+
     if(this.form.valid){
       const req:any = {
         naziv: val.naziv,
         sifra:val.sifra,
         opis: val.opis,
         company_id: this.userData.company_id,
+        klasifikacija_id: this.ekonomska_podklasifikacija,
         is_active: 1
       }
       this.ekonomskaPodklasifikacijaService.update(req, val.id).pipe(

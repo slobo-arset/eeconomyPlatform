@@ -21,12 +21,17 @@ export class EkonomskaPodklasifikacijaComponent {
   userData: any;
   loading: boolean = true;
 
-  items: MenuItem[] = [{ label: 'Dokumenta' }];
+  items: MenuItem[] = [
+    { label: 'Ekonomska klasifikacija', routerLink : '/šifarnici/ekonomska-klasifikacija' },
+    { label: 'Ekonomska podklasifikacija'}
+  ];
   contextData: any;
   context: MenuItem[] =  [
     {label: 'Pregled', icon: 'pi pi-fw pi-eye', command: () => this.goToDokument(this.contextData.id)},
     {label: 'Obriši', icon: 'pi pi-fw pi-trash', command: () => this.deleteDokument(this.contextData.id)}
   ];
+
+  ekonomska_podklasifikacija: any;
 
 
   constructor(
@@ -38,7 +43,8 @@ export class EkonomskaPodklasifikacijaComponent {
 
   ngOnInit() {
     this.userData  =  this.mainStateService.getStateBykey('user');
-    this.dokument$ = this.ekonomskaPodklasifikacijaService.getAll(this.userData.company_id).pipe(tap((_)=> this.loading = false));
+    this.ekonomska_podklasifikacija  =  this.mainStateService.getStateBykey('ekonomska_podklasifikacija');
+    this.dokument$ = this.ekonomskaPodklasifikacijaService.getAll(this.userData.company_id,  this.ekonomska_podklasifikacija).pipe(tap((_)=> this.loading = false));
   }
 
   clear(table: Table) {
@@ -47,24 +53,24 @@ export class EkonomskaPodklasifikacijaComponent {
 
 
   goToDokument(id:number){
-   this.ref = this.dialogService.open(EkonomskaPodklasifikacijaModalComponent, { header: 'Izmena ekonomske klasifikacije', width: '600px', height: '300px', data: { mode:'edit', id:id }});
+   this.ref = this.dialogService.open(EkonomskaPodklasifikacijaModalComponent, { header: 'Izmena ekonomske podklasifikacije', width: '600px', data: { mode:'edit', id:id }});
 
     this.ref.onClose.subscribe((result: any) => {
       console.log('Dialog closed with result:', result);
       if(result!== undefined) {
         this.loading = true;
-        this.dokument$ = this.ekonomskaPodklasifikacijaService.getAll(this.userData.company_id).pipe(tap((_)=> this.loading = false))
+        this.dokument$ = this.ekonomskaPodklasifikacijaService.getAll(this.userData.company_id,  this.ekonomska_podklasifikacija).pipe(tap((_)=> this.loading = false))
       }
     });
   }
 
 
   createDokument(){
-    this.ref = this.dialogService.open(EkonomskaPodklasifikacijaModalComponent, { header: 'Kreiranje ekonomske klasifikacije', width: '600px', height: '300px', data: { mode:'create' }});
+    this.ref = this.dialogService.open(EkonomskaPodklasifikacijaModalComponent, { header: 'Kreiranje ekonomske klasifikacije', width: '600px', data: { mode:'create' }});
     this.ref.onClose.subscribe((result: any) => {
       console.log('Dialog closed with result:', result);
       if(result!== undefined) {
-        this.dokument$ = this.ekonomskaPodklasifikacijaService.getAll(this.userData.company_id).pipe(tap((_)=> this.loading = false))
+        this.dokument$ = this.ekonomskaPodklasifikacijaService.getAll(this.userData.company_id, this.ekonomska_podklasifikacija).pipe(tap((_)=> this.loading = false))
       }
     });
   }
