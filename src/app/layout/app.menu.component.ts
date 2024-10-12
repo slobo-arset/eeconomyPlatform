@@ -55,7 +55,12 @@ export class AppMenuComponent implements OnInit {
               label: 'Edukator - šeme knjiženja',
               icon: 'pi pi-fw pi-play',
               routerLink: ['/obuka/obuka/admin/3/šeme-knjiženja']
-            }
+            },
+            {
+              label: 'Teme',
+              icon: 'pi pi-fw pi-file',
+              routerLink: ['/šifarnici/teme']
+            },
           ]
         },
       ]

@@ -26,6 +26,9 @@ import { SifraProgramaComponent } from './sifra-programa/sifra-programa.componen
 import { SifraProgramaModalComponent } from './sifra-programa/sifra-programa-modal/sifra-programa-modal.component';
 import { SifraProjektaComponent } from './sifra-projekta/sifra-projekta.component';
 import { SifraProjektaModalComponent } from './sifra-projekta/sifra-projekta-modal/sifra-projekta-modal.component';
+import { TopicListComponent } from './topic-list/topic-list.component';
+import { TopicPrevComponent } from './topic-list/topic-prev/topic-prev.component';
+import { TopicModalComponent } from './topic-list/topic-modal/topic-modal.component';
 
 const routes: Routes = [
   { path: 'ekonomska-klasifikacija', component: EkonomskaKlasifikacijaComponent },
@@ -35,6 +38,8 @@ const routes: Routes = [
   { path: 'konto-knjizenja', component: KontoKnjizenjaComponent },
   { path: 'sifra-programa', component: SifraProgramaComponent },
   { path: 'sifra-projekta', component: SifraProjektaComponent },
+  { path: 'teme', component: TopicListComponent },
+  { path: 'teme/lista', component: TopicPrevComponent },
 ]
 
 @NgModule({
@@ -52,7 +57,10 @@ const routes: Routes = [
     SifraProgramaComponent,
     SifraProgramaModalComponent,
     SifraProjektaComponent,
-    SifraProjektaModalComponent
+    SifraProjektaModalComponent,
+    TopicListComponent,
+    TopicPrevComponent,
+    TopicModalComponent
   ],
   imports: [
     CommonModule,
