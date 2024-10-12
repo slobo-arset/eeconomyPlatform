@@ -25,7 +25,7 @@
                 <tr>
                     <th pSortableColumn="sifra">
                         <div class="flex align-items-center">
-                            Sifra
+                            Konto
                             <p-sortIcon field="sifra"></p-sortIcon>
                             <p-columnFilter type="text" field="sifra" display="menu" class="ml-auto"></p-columnFilter>
                         </div>
@@ -49,7 +49,7 @@
             <ng-template pTemplate="body" let-data>
                 <tr class="text-sm" [pContextMenuRow]="data">
                     <td class="cursor-pointer font-bold text-primary" (click)="goToDokument(data.id)">
-                        {{ data.sifra }}
+                        {{ data.konto }}
                     </td>
                     <td>
                         {{ data.naziv  }}

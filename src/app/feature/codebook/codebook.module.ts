@@ -24,6 +24,8 @@ import { PodizvorFinansiranjaComponent } from './podizvor-finansiranja/podizvor-
 import { PodizvorFinansiranjaModalComponent } from './podizvor-finansiranja/podizvor-finansiranja-modal/podizvor-finansiranja-modal.component';
 import { SifraProgramaComponent } from './sifra-programa/sifra-programa.component';
 import { SifraProgramaModalComponent } from './sifra-programa/sifra-programa-modal/sifra-programa-modal.component';
+import { SifraProjektaComponent } from './sifra-projekta/sifra-projekta.component';
+import { SifraProjektaModalComponent } from './sifra-projekta/sifra-projekta-modal/sifra-projekta-modal.component';
 
 const routes: Routes = [
   { path: 'ekonomska-klasifikacija', component: EkonomskaKlasifikacijaComponent },
@@ -32,7 +34,7 @@ const routes: Routes = [
   { path: 'podizvor-finansiranja', component: PodizvorFinansiranjaComponent },
   { path: 'konto-knjizenja', component: KontoKnjizenjaComponent },
   { path: 'sifra-programa', component: SifraProgramaComponent },
-  { path: 'sifra-projekta', component: EkonomskaKlasifikacijaComponent },
+  { path: 'sifra-projekta', component: SifraProjektaComponent },
 ]
 
 @NgModule({
@@ -49,6 +51,8 @@ const routes: Routes = [
     PodizvorFinansiranjaModalComponent,
     SifraProgramaComponent,
     SifraProgramaModalComponent,
+    SifraProjektaComponent,
+    SifraProjektaModalComponent
   ],
   imports: [
     CommonModule,

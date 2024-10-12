@@ -14,8 +14,8 @@ export class KontoKnjizenjaModalComponent {
   form = this.fb.group({
     id:[0],
     naziv:['', Validators.required],
-    sifra:['', Validators.required],
-    opis:['', Validators.required], 
+    konto:['', Validators.required],
+    opis:['', Validators.required],
 
   });
 
@@ -41,7 +41,7 @@ export class KontoKnjizenjaModalComponent {
     this.form.patchValue({
       id:data.id,
       naziv: data.naziv,
-      sifra: data.sifra,
+      konto: data.konto,
       opis: data.opis
     });
   }
@@ -50,7 +50,7 @@ export class KontoKnjizenjaModalComponent {
     if(this.form.valid){
       const req:any = {
         naziv: val.naziv,
-        sifra:val.sifra,
+        konto:val.konto,
         opis: val.opis,
         company_id: this.userData.company_id,
         is_active: 1
@@ -78,7 +78,7 @@ export class KontoKnjizenjaModalComponent {
     if(this.form.valid){
       const req:any = {
         naziv: val.naziv,
-        sifra:val.sifra,
+        konto:val.konto,
         opis: val.opis,
         company_id: this.userData.company_id,
         is_active: 1

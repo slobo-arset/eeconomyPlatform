@@ -47,7 +47,7 @@ export class SifraProgramaComponent {
 
 
   goToDokument(id:number){
-   this.ref = this.dialogService.open(SifraProgramaModalComponent, { header: 'Izmena ekonomske klasifikacije', width: '600px', height: '300px', data: { mode:'edit', id:id }});
+   this.ref = this.dialogService.open(SifraProgramaModalComponent, { header: 'Izmena ekonomske klasifikacije', width: '600px', data: { mode:'edit', id:id }});
 
     this.ref.onClose.subscribe((result: any) => {
       console.log('Dialog closed with result:', result);
@@ -60,7 +60,7 @@ export class SifraProgramaComponent {
 
 
   createDokument(){
-    this.ref = this.dialogService.open(SifraProgramaModalComponent, { header: 'Kreiranje ekonomske klasifikacije', width: '600px', height: '300px', data: { mode:'create' }});
+    this.ref = this.dialogService.open(SifraProgramaModalComponent, { header: 'Kreiranje ekonomske klasifikacije', width: '600px', data: { mode:'create' }});
     this.ref.onClose.subscribe((result: any) => {
       console.log('Dialog closed with result:', result);
       if(result!== undefined) {
