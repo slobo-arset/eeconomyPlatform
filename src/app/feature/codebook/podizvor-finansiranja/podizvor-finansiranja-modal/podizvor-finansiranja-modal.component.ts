@@ -15,11 +15,12 @@ export class PodizvorFinansiranjaModalComponent {
     id:[0],
     naziv:['', Validators.required],
     sifra:['', Validators.required],
-    opis:['', Validators.required], 
+    opis:['', Validators.required],
 
   });
 
   userData: any;
+  podizvor_finansiranja: any;
 
   constructor(
     private fb: FormBuilder,
@@ -30,6 +31,7 @@ export class PodizvorFinansiranjaModalComponent {
 
   ) {
     this.userData  =  this.mainStateService.getStateBykey('user');
+    this.podizvor_finansiranja  =  this.mainStateService.getStateBykey('podizvor_finansiranja');
     if(this.config.data.mode ==='edit' || this.config.data.mode ==='preview') {
       this.podizvorFinansiranjaService.getById(this.config.data.id).subscribe((data:any)=>{
         this.patchValues(data)
@@ -52,6 +54,7 @@ export class PodizvorFinansiranjaModalComponent {
         naziv: val.naziv,
         sifra:val.sifra,
         opis: val.opis,
+        izvor_finansiranja_id: this.podizvor_finansiranja,
         company_id: this.userData.company_id,
         is_active: 1
       }
@@ -80,6 +83,7 @@ export class PodizvorFinansiranjaModalComponent {
         naziv: val.naziv,
         sifra:val.sifra,
         opis: val.opis,
+        izvor_finansiranja_id: this.podizvor_finansiranja,
         company_id: this.userData.company_id,
         is_active: 1
       }

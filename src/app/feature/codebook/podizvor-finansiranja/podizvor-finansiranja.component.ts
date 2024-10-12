@@ -19,9 +19,13 @@ export class PodizvorFinansiranjaComponent {
 
   dokument$: Observable<any[]>;
   userData: any;
+  podizvor_finansiranja: any;
   loading: boolean = true;
 
-  items: MenuItem[] = [{ label: 'Dokumenta' }];
+  items: MenuItem[] = [
+    { label: 'Izvor finansiranja', routerLink: '/šifarnici/izvor-finansiranja' },
+    { label: 'Podizvor finansiranja' }
+  ];
   contextData: any;
   context: MenuItem[] =  [
     {label: 'Pregled', icon: 'pi pi-fw pi-eye', command: () => this.goToDokument(this.contextData.id)},
@@ -38,7 +42,9 @@ export class PodizvorFinansiranjaComponent {
 
   ngOnInit() {
     this.userData  =  this.mainStateService.getStateBykey('user');
-    this.dokument$ = this.podizvorFinansiranjaService.getAll(this.userData.company_id).pipe(tap((_)=> this.loading = false));
+    this.podizvor_finansiranja  =  this.mainStateService.getStateBykey('podizvor_finansiranja');
+
+    this.dokument$ = this.podizvorFinansiranjaService.getAll(this.userData.company_id, this.podizvor_finansiranja).pipe(tap((_)=> this.loading = false));
   }
 
   clear(table: Table) {
@@ -47,24 +53,22 @@ export class PodizvorFinansiranjaComponent {
 
 
   goToDokument(id:number){
-   this.ref = this.dialogService.open(PodizvorFinansiranjaModalComponent, { header: 'Izmena ekonomske klasifikacije', width: '600px', height: '300px', data: { mode:'edit', id:id }});
+   this.ref = this.dialogService.open(PodizvorFinansiranjaModalComponent, { header: 'Izmena ekonomske klasifikacije', width: '600px',data: { mode:'edit', id:id }});
 
     this.ref.onClose.subscribe((result: any) => {
-      console.log('Dialog closed with result:', result);
       if(result!== undefined) {
         this.loading = true;
-        this.dokument$ = this.podizvorFinansiranjaService.getAll(this.userData.company_id).pipe(tap((_)=> this.loading = false))
+        this.dokument$ = this.podizvorFinansiranjaService.getAll(this.userData.company_id, this.podizvor_finansiranja).pipe(tap((_)=> this.loading = false))
       }
     });
   }
 
 
   createDokument(){
-    this.ref = this.dialogService.open(PodizvorFinansiranjaModalComponent, { header: 'Kreiranje ekonomske klasifikacije', width: '600px', height: '300px', data: { mode:'create' }});
+    this.ref = this.dialogService.open(PodizvorFinansiranjaModalComponent, { header: 'Kreiranje ekonomske klasifikacije', width: '600px',  data: { mode:'create' }});
     this.ref.onClose.subscribe((result: any) => {
-      console.log('Dialog closed with result:', result);
       if(result!== undefined) {
-        this.dokument$ = this.podizvorFinansiranjaService.getAll(this.userData.company_id).pipe(tap((_)=> this.loading = false))
+        this.dokument$ = this.podizvorFinansiranjaService.getAll(this.userData.company_id, this.podizvor_finansiranja).pipe(tap((_)=> this.loading = false))
       }
     });
   }

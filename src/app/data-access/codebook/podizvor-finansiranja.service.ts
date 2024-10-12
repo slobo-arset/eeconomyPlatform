@@ -11,8 +11,8 @@ export class PodizvorFinansiranjaService {
 
   constructor(private http: HttpClient) { }
 
-  getAll(id: string):Observable<any> {
-    return this.http.get<any>(`${this.baseUrl}/all/${id}`);
+  getAll(id: string, izvor_finansiranja_id: string):Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/all/${id}/${izvor_finansiranja_id}`);
   }
 
   getById(id: string):Observable<any> {
