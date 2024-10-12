@@ -21,7 +21,7 @@ export class EkonomskaKlasifikacijaComponent {
   userData: any;
   loading: boolean = true;
 
-  items: MenuItem[] = [{ label: 'Dokumenta' }];
+  items: MenuItem[] = [{ label: 'Ekonomska klasifikacija' }];
   contextData: any;
   context: MenuItem[] =  [
     {label: 'Pregled', icon: 'pi pi-fw pi-eye', command: () => this.goToDokument(this.contextData.id)},
@@ -47,10 +47,9 @@ export class EkonomskaKlasifikacijaComponent {
 
 
   goToDokument(id:number){
-   this.ref = this.dialogService.open(EkonomskaKlasifikacijaModalComponent, { header: 'Izmena ekonomske klasifikacije', width: '600px', height: '300px', data: { mode:'edit', id:id }});
+   this.ref = this.dialogService.open(EkonomskaKlasifikacijaModalComponent, { header: 'Izmena ekonomske klasifikacije', width: '600px',  data: { mode:'edit', id:id }});
 
     this.ref.onClose.subscribe((result: any) => {
-      console.log('Dialog closed with result:', result);
       if(result!== undefined) {
         this.loading = true;
         this.dokument$ = this.ekonomskaKlasifikacijaService.getAll(this.userData.company_id).pipe(tap((_)=> this.loading = false))
@@ -60,9 +59,8 @@ export class EkonomskaKlasifikacijaComponent {
 
 
   createDokument(){
-    this.ref = this.dialogService.open(EkonomskaKlasifikacijaModalComponent, { header: 'Kreiranje ekonomske klasifikacije', width: '600px', height: '300px', data: { mode:'create' }});
+    this.ref = this.dialogService.open(EkonomskaKlasifikacijaModalComponent, { header: 'Kreiranje ekonomske klasifikacije', width: '600px',  data: { mode:'create' }});
     this.ref.onClose.subscribe((result: any) => {
-      console.log('Dialog closed with result:', result);
       if(result!== undefined) {
         this.dokument$ = this.ekonomskaKlasifikacijaService.getAll(this.userData.company_id).pipe(tap((_)=> this.loading = false))
       }
