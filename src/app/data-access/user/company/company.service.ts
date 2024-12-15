@@ -24,6 +24,9 @@ export class CompanyService {
     return this.http.put<any>(`${this.baseUrl}/${id}`,data);
   }
 
+  updateData(id,data):Observable<any> {
+    return this.http.put<any>(`${this.baseUrl}/data/${id}`,data);
+  }
   updateStatus(id,data):Observable<any> {
     return this.http.put<any>(`${this.baseUrl}/status/${id}`,data);
   }

@@ -28,6 +28,7 @@ import { EFaktureModule } from './eFakture/e-fakture.module';
 import { ObukeModule } from './obuke/obuke.module';
 import { ObracuniModule } from './obracuni/obracuni.module';
 import { CodebookModule } from './codebook/codebook.module';
+import { InfoModule } from './info/info.module';
 @NgModule({
   declarations: [
     CpDashboardComponent,
@@ -61,7 +62,8 @@ import { CodebookModule } from './codebook/codebook.module';
     EFaktureModule,
     ObukeModule,
     ObracuniModule,
-    CodebookModule
+    CodebookModule,
+    InfoModule
   ]
 })
 export class FeatureModule { }

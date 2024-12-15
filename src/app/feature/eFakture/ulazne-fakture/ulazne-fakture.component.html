@@ -50,9 +50,45 @@
 <div class="grid">
   <div class="col-12">
       <div class="card">
+
+        <div class="text-right mb-2 ml-2">
+          <div class="grid p-fluid justify-content-end">
+            <!-- First Calendar -->
+            <div class="p-field mr-2">
+              <label for="firstDate">Datum od:</label>
+              <p-calendar
+                [(ngModel)]="firstDate"
+                id="firstDate"
+                dateFormat="yy-mm-dd"
+                showIcon="true"
+              ></p-calendar>
+            </div>
+
+            <div class="p-field mr-2">
+              <label for="secondDate">Datum do:</label>
+              <p-calendar
+                [(ngModel)]="secondDate"
+                id="secondDate"
+                dateFormat="yy-mm-dd"
+                showIcon="true"
+              ></p-calendar>
+            </div>
+
+            <div class="p-field">
+              <label>&nbsp;</label>
+              <button pButton type="button" (click)="fetchInvoices()" label="Prikaži fakture" class="p-button-outlined"></button>
+            </div>
+            <div class="p-field ml-2">
+              <label>&nbsp;</label>
+              <button pButton type="button" (click)="sinhro()" label="Preuzmi fakture" class="p-button-outlined p-button-info"></button>
+            </div>
+          </div>
+        </div>
+
+
           <p-table
               #dt1
-              [value]="orders"
+              [value]="invoice$ | async"
               dataKey="id"
               [rows]="5"
               [showCurrentPageReport]="true"
@@ -89,7 +125,7 @@
                       </th>
                       <th pSortableColumn="date">
                           <div class="flex align-items-center">
-                              CRF identifikator
+                              SEF identifikator
                               <p-sortIcon field="date"></p-sortIcon>
                               <p-columnFilter type="text" field="date" display="menu" class="ml-auto"></p-columnFilter>
                           </div>
@@ -140,11 +176,11 @@
               </ng-template>
               <ng-template pTemplate="body" let-data>
                   <tr>
+                      <td>{{data.broj_fakture}}</td>
                       <td></td>
+                      <td>{{data.purchase_invoice_id}}</td>
                       <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td>{{data.status}}</td>
                       <td></td>
                       <td></td>
                       <td></td>
@@ -160,3 +196,6 @@
       </div>
   </div>
 </div>
+
+
+<p-progressSpinner *ngIf="showLoader" styleClass="w-4rem h-4rem" strokeWidth="8" fill="var(--surface-ground)" animationDuration=".5s"></p-progressSpinner>

@@ -1,0 +1,96 @@
+<div class="col-12 p-0 mb-2">
+  <app-breadcrumbs [items]="items"></app-breadcrumbs>
+</div>
+
+<div class="col-12 card">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div *ngIf="company$ | async as usr;">
+        <span class="text-900 text-xl font-bold mb-4 block">Profil kompanije</span>
+        <div class="grid">
+            <div class="col-12 lg:col-2">
+                <div class="text-900 font-medium text-xl mb-3">&nbsp;</div>
+                <p class="m-0 p-0 text-600 line-height-3 mr-3">
+                    &nbsp;
+                </p>
+            </div>
+            <div class="col-12 lg:col-10">
+                <div class="grid formgrid p-fluid">
+                    <div class="field mb-4 col-6">
+                        <label for="nickname" class="font-medium text-900"
+                            >Naziv</label
+                        >
+                        <input id="nickname"  pInputText formControlName="company_name" [disabled]="true"/>
+                    </div>
+                    <div class="field mb-4 col-6">
+                        <label for="last_name" class="font-medium text-900"
+                            >Pretplata važi do: </label
+                        >
+                        <input id="last_name"  pInputText formControlName="subscription_end" [disabled]="true"/>
+                    </div>
+
+                    <div class="field mb-4 col-6">
+                        <label for="last_name" class="font-medium text-900"
+                            >PIB</label
+                        >
+                        <input id="last_name" type="text" pInputText formControlName="last_name"/>
+                    </div>
+
+
+
+                    <div class="field mb-4 col-6">
+                        <label for="superior_user_id" class="font-medium text-900"
+                            >MB</label
+                        >
+                        <input id="superior_user_id" type="text" pInputText formControlName="mb"/>
+                    </div>
+                    <div class="field mb-4 col-6">
+                        <label for="im_name" class="font-medium text-900"
+                            >JBKJS</label
+                        >
+                        <input id="im_name" type="text" pInputText formControlName="jbkjs"/>
+                    </div>
+                    <div class="field mb-4 col-6">
+                        <label for="email" class="font-medium text-900"
+                            >Kontakt osoba</label
+                        >
+                        <input id="email" type="text" pInputText formControlName="contact_person"/>
+                    </div>
+                    <div class="field mb-4 col-6">
+                        <label for="mobile" class="font-medium text-900"
+                            >Grad</label
+                        >
+                        <input id="mobile" type="text" pInputText formControlName="city"/>
+                    </div>
+                    <div class="field mb-4 col-6">
+                        <label for="linkedin" class="font-medium text-900"
+                            >Adresa</label
+                        >
+                        <input id="linkedin" type="text" pInputText formControlName="address"/>
+                    </div>
+
+                    <div class="field mb-4 col-6">
+                      <label for="linkedin" class="font-medium text-900"
+                          >API ključ za eFakture</label
+                      >
+                      <input id="linkedin" type="text" pInputText formControlName="api_key"/>
+                  </div>
+
+                    <div class="col-12">
+                        <button
+                            pButton
+                            pRipple
+                            label="Sačuvaj"
+                            class="w-auto mt-3"
+                            type="submit"
+                        ></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+</div>
+
+
+

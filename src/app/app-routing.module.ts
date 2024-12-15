@@ -10,6 +10,8 @@ import { CompanyComponent } from './feature/user/company/company.component';
 import { LogListaComponent } from './feature/administracija/log-lista/log-lista.component';
 import { EmployeesComponent } from './feature/user/employees/employees.component';
 import { SuccessfulRegistrationComponent } from './feature/registration/successful-registration/successful-registration.component';
+import { ProfileComponent } from './feature/administracija/profile/profile.component';
+import { PodesavanjeComponent } from './feature/eFakture/podesavanje/podesavanje.component';
 
 const routes: Routes = [
   {path: 'login', component: CpLoginComponent},
@@ -22,7 +24,7 @@ const routes: Routes = [
       {path: '', component: CpDashboardComponent},
       {path: 'users', component: CompanyComponent},
       {path: 'subscription', component: PretplateComponent},
-      {path: 'profile', component: CpDashboardComponent},
+      {path: 'profile', component: PodesavanjeComponent},
       {path: 'log-lista', component: LogListaComponent},
       {path: 'employees', component: EmployeesComponent},
       {
@@ -41,6 +43,10 @@ const routes: Routes = [
        {
         path: 'šifarnici',
         loadChildren: () => import('../app/feature/codebook/codebook.module').then(m => m.CodebookModule)
+       },
+       {
+        path: 'info',
+        loadChildren: () => import('../app/feature/info/info.module').then(m => m.InfoModule)
        },
       //  {
       //   path: 'parametri',

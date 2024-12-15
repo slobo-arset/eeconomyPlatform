@@ -29,4 +29,8 @@ export class AppTopBarComponent {
       localStorage.removeItem('accessToken');
       this.router.navigate(['/login']);
     }
+
+    goToProfile(){
+      this.router.navigate(['/profile']);
+    }
 }

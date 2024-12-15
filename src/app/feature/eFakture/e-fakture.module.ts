@@ -9,16 +9,19 @@ import { UiModule } from 'src/app/ui/ui.module';
 import { TableModule } from 'primeng/table';
 import { ButtonModule } from 'primeng/button';
 import { UlazneFaktureSingleComponent } from './ulazne-fakture/ulazne-fakture-single/ulazne-fakture-single.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { DropdownModule } from 'primeng/dropdown';
-
+import { PodesavanjeComponent } from './podesavanje/podesavanje.component';
+import { CalendarModule } from 'primeng/calendar';
+import { ProgressSpinnerModule } from 'primeng/progressspinner';
 
 const routes: Routes = [
   { path: 'ulazne', component: UlazneFaktureComponent },
   { path: 'ulazne/:id', component: UlazneFaktureSingleComponent },
   { path: 'izlazne', component: IzlazneFaktureComponent },
   { path: 'generisanje-plaćanja', component: ExportSpiriComponent },
+  { path: 'podesavanje', component: PodesavanjeComponent },
 ];
 
 @NgModule({
@@ -26,17 +29,21 @@ const routes: Routes = [
     UlazneFaktureComponent,
     UlazneFaktureSingleComponent,
     IzlazneFaktureComponent,
-    ExportSpiriComponent
+    ExportSpiriComponent,
+    PodesavanjeComponent
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    ReactiveFormsModule,
     UiModule,
     TableModule,
     ButtonModule,
     FormsModule,
     InputTextModule,
-    DropdownModule
+    DropdownModule,
+    CalendarModule,
+    ProgressSpinnerModule
   ],
   exports: [
     RouterModule,

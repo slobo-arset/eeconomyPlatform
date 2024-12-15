@@ -43,17 +43,17 @@ export class AppMenuComponent implements OnInit {
           items: [
             {
               label: 'Edukator - SPIRI',
-              icon: 'pi pi-fw pi-play',
+              icon: 'pi pi-fw pi-youtube',
               routerLink: ['/obuka/obuka/admin/1/spiri']
             },
             {
               label: 'Edukator - FUK',
-              icon: 'pi pi-fw pi-play',
+              icon: 'pi pi-fw pi-youtube',
               routerLink: ['/obuka/obuka/admin/2/fuk']
             },
             {
               label: 'Edukator - šeme knjiženja',
-              icon: 'pi pi-fw pi-play',
+              icon: 'pi pi-fw pi-youtube',
               routerLink: ['/obuka/obuka/admin/3/šeme-knjiženja']
             },
             {
@@ -61,6 +61,20 @@ export class AppMenuComponent implements OnInit {
               icon: 'pi pi-fw pi-file',
               routerLink: ['/šifarnici/teme']
             },
+          ]
+        },
+        {
+          label: 'e-Informator',
+          items: [
+              { label: 'e-Informator', icon: 'pi pi-fw pi-calendar-minus', routerLink: ['/info/e-informator'] },
+          ]
+        },
+        {
+          label: 'e-Rokovi',
+          items: [
+              { label: 'Poreski rokovi', icon: 'pi pi-fw pi-calendar', routerLink: ['/info/e-rokovi/poreski-rokovi'] },
+              { label: 'Budžetski rokovi', icon: 'pi pi-fw pi-calendar', routerLink: ['/info/e-rokovi/budzetski-rokovi'] },
+              { label: 'Vrste poreske prijave', icon: 'pi pi-fw pi-book', routerLink: ['/info/e-rokovi/vrste-prijave'] },
           ]
         },
       ]
@@ -127,15 +141,20 @@ export class AppMenuComponent implements OnInit {
                     icon: 'pi pi-fw pi-sign-in',
                     routerLink: ['/e-fakture/ulazne']
                   },
-                  {
-                    label: 'KIR',
-                    icon: 'pi pi-fw pi-sign-out',
-                    routerLink: ['/e-fakture/izlazne']
-                  },
+                  // {
+                  //   label: 'KIR',
+                  //   icon: 'pi pi-fw pi-sign-out',
+                  //   routerLink: ['/e-fakture/izlazne']
+                  // },
                   {
                     label: 'Generisanje plaćanja',
                     icon: 'pi pi-fw pi-file-export',
                     routerLink: ['/e-fakture/generisanje-plaćanja']
+                  },
+                  {
+                    label: 'Podešavanje API',
+                    icon: 'pi pi-fw pi-file-export',
+                    routerLink: ['/e-fakture/podesavanje']
                   }
                 ]
               },
