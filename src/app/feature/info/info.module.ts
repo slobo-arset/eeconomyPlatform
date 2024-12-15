@@ -5,7 +5,15 @@ import { PoreskiRokoviComponent } from './poreski-rokovi/poreski-rokovi.componen
 import { InformatorComponent } from './informator/informator.component';
 import { BudzetskiRokoviComponent } from './budzetski-rokovi/budzetski-rokovi.component';
 import { RouterModule, Routes } from '@angular/router';
-
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { UiModule } from 'src/app/ui/ui.module';
+import { TableModule } from 'primeng/table';
+import { ButtonModule } from 'primeng/button';
+import { InputTextModule } from 'primeng/inputtext';
+import { DropdownModule } from 'primeng/dropdown';
+import { CalendarModule } from 'primeng/calendar';
+import { DialogModule } from 'primeng/dialog';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 
 
 const routes: Routes = [
@@ -21,11 +29,21 @@ const routes: Routes = [
     VrstePoreskePrijaveComponent,
     PoreskiRokoviComponent,
     InformatorComponent,
-    BudzetskiRokoviComponent
+    BudzetskiRokoviComponent,
   ],
   imports: [
     CommonModule,
     RouterModule.forChild(routes),
+    ReactiveFormsModule,
+    UiModule,
+    TableModule,
+    ButtonModule,
+    FormsModule,
+    InputTextModule,
+    DropdownModule,
+    CalendarModule,
+    DialogModule,
+    InputTextareaModule
   ]
 })
 export class InfoModule { }
