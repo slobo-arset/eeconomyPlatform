@@ -180,6 +180,33 @@ export class AppMenuComponent implements OnInit {
                 ]
               },
               {
+                label: 'e-Rokovi',
+                icon: 'pi pi-fw pi-calendar',
+                items: [
+                  {
+                    label: 'Poreski rokovi',
+                    icon: 'pi pi-fw pi-calendar',
+                    routerLink: ['/info/e-rokovi/poreski-rokovi']
+                  },
+                  {
+                    label: 'Budžetski rokovi',
+                    icon: 'pi pi-fw pi-calendar',
+                    routerLink: ['/info/e-rokovi/budzetski-rokovi']
+                  }
+                ]
+              },
+              {
+                label: 'e-Informator',
+                icon: 'pi pi-fw pi-calendar-minus',
+                items: [
+                  {
+                    label: 'e-Informator',
+                    icon: 'pi pi-fw pi-calendar-minus',
+                    routerLink: ['/info/e-informator']
+                  },
+                ]
+              },
+              {
                 label: 'Šifarnici',
                 icon: 'pi pi-fw pi-book',
                 items: [
