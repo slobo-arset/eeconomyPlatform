@@ -14,6 +14,7 @@ import { DropdownModule } from 'primeng/dropdown';
 import { CalendarModule } from 'primeng/calendar';
 import { DialogModule } from 'primeng/dialog';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { InputSwitchModule } from 'primeng/inputswitch';
 
 
 const routes: Routes = [
@@ -43,7 +44,8 @@ const routes: Routes = [
     DropdownModule,
     CalendarModule,
     DialogModule,
-    InputTextareaModule
+    InputTextareaModule,
+    InputSwitchModule
   ]
 })
 export class InfoModule { }

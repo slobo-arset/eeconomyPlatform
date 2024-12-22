@@ -53,7 +53,7 @@
                               <p-columnFilter type="text" field="status" display="menu" class="ml-auto"></p-columnFilter>
                           </div>
                       </th>
-                      <th>
+                      <th *ngIf="user.tip == 1" >
                         <div class="flex align-items-center" style="width: 10rem">
                             Akcija
                         </div>
@@ -67,7 +67,7 @@
                       <td>{{data.tema_sluzbeni_glasnik}}</td>
                       <td>{{data.strucni_komentar}}</td>
                       <td>{{data.misljenje_ministarstva}}</td>
-                      <td class="text-right">
+                      <td *ngIf="user.tip == 1" class="text-right">
                         <p-button (click)="editData(data)" type="button" class="mr-1" styleClass="p-button-info" icon="pi pi-pencil"></p-button>
                         <p-button (click)="deleteData(data.id)" type="button" icon="pi pi-trash"></p-button>
                     </td>
