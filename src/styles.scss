@@ -114,3 +114,48 @@ padding-bottom: 5px;
   padding: 0px;
   box-shadow: 0px 3px 5px rgb(0 0 0 / 2%), 0px 0px 2px rgb(0 0 0 / 5%), 0px 1px 4px rgb(0 0 0 / 8%);
 }
+
+.p-dynamic-dialog.fuk-dynamic-dialog {
+  max-width: 95vw;
+}
+
+.p-dynamic-dialog.fuk-dynamic-dialog .p-dialog-content {
+  overflow: hidden !important;
+}
+
+.fuk-form-modal {
+  display: flex;
+  flex-direction: column;
+  max-height: min(72vh, calc(100vh - 8rem));
+}
+
+.fuk-form-modal__body {
+  overflow-y: auto;
+  overflow-x: hidden;
+  flex: 1 1 auto;
+  padding-right: 0.25rem;
+}
+
+.fuk-form-modal__footer {
+  flex: 0 0 auto;
+  text-align: right;
+  padding-top: 0.75rem;
+  border-top: 1px solid var(--surface-border, #dee2e6);
+}
+
+.fuk-datepicker,
+.p-datepicker,
+.fuk-dropdown-panel,
+.p-dropdown-panel {
+  z-index: 14000 !important;
+}
+
+.p-datepicker .p-datepicker-title,
+.p-datepicker .p-datepicker-month,
+.p-datepicker .p-datepicker-year {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-weight: 700 !important;
+  color: var(--text-color) !important;
+}

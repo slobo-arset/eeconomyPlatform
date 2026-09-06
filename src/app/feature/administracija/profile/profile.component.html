@@ -1,1 +1,123 @@
-<p>profile works!</p>
+<div class="col-12 p-0 mb-2">
+  <app-breadcrumbs [items]="items"></app-breadcrumbs>
+</div>
+
+<div class="col-12 card profile-card">
+  <div class="flex align-items-center gap-3 mb-4">
+    <span class="profile-avatar" aria-hidden="true">{{ initials }}</span>
+    <div>
+      <div class="text-900 font-bold text-2xl">{{ fullName }}</div>
+      <div class="text-600 mt-1">{{ user?.email }}</div>
+      <span class="profile-role-badge mt-2">{{ roleLabel }}</span>
+    </div>
+  </div>
+
+  <div class="grid">
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="profile-field">
+        <span class="profile-field-label">IME</span>
+        <span class="profile-field-value">{{ user?.name || '—' }}</span>
+      </div>
+    </div>
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="profile-field">
+        <span class="profile-field-label">PREZIME</span>
+        <span class="profile-field-value">{{ user?.lastname || '—' }}</span>
+      </div>
+    </div>
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="profile-field">
+        <span class="profile-field-label">EMAIL</span>
+        <span class="profile-field-value">{{ user?.email || '—' }}</span>
+      </div>
+    </div>
+    <div class="col-12 md:col-6 lg:col-3">
+      <div class="profile-field">
+        <span class="profile-field-label">AKTIVNA KOMPANIJA</span>
+        <span class="profile-field-value">{{ activeCompany }}</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-12 card profile-card">
+  <div class="text-900 font-bold text-xl mb-4">Promena lozinke</div>
+  <form [formGroup]="passwordForm" (ngSubmit)="handleChangePassword()">
+    <div class="grid">
+      <div class="col-12 md:col-4">
+        <label class="block font-medium text-900 mb-2" for="currentPassword">Trenutna lozinka</label>
+        <span class="p-input-icon-right w-full">
+          <i
+            class="pi"
+            [class.pi-eye]="!showCurrent"
+            [class.pi-eye-slash]="showCurrent"
+            role="button"
+            tabindex="0"
+            aria-label="Prikaži trenutnu lozinku"
+            (click)="showCurrent = !showCurrent"
+            (keydown.enter)="showCurrent = !showCurrent"></i>
+          <input
+            id="currentPassword"
+            pInputText
+            class="w-full"
+            [type]="showCurrent ? 'text' : 'password'"
+            formControlName="currentPassword"
+            autocomplete="current-password">
+        </span>
+      </div>
+      <div class="col-12 md:col-4">
+        <label class="block font-medium text-900 mb-2" for="newPassword">Nova lozinka</label>
+        <span class="p-input-icon-right w-full">
+          <i
+            class="pi"
+            [class.pi-eye]="!showNew"
+            [class.pi-eye-slash]="showNew"
+            role="button"
+            tabindex="0"
+            aria-label="Prikaži novu lozinku"
+            (click)="showNew = !showNew"
+            (keydown.enter)="showNew = !showNew"></i>
+          <input
+            id="newPassword"
+            pInputText
+            class="w-full"
+            [type]="showNew ? 'text' : 'password'"
+            formControlName="newPassword"
+            autocomplete="new-password">
+        </span>
+      </div>
+      <div class="col-12 md:col-4">
+        <label class="block font-medium text-900 mb-2" for="confirmPassword">Potvrda nove lozinke</label>
+        <span class="p-input-icon-right w-full">
+          <i
+            class="pi"
+            [class.pi-eye]="!showConfirm"
+            [class.pi-eye-slash]="showConfirm"
+            role="button"
+            tabindex="0"
+            aria-label="Prikaži potvrdu lozinke"
+            (click)="showConfirm = !showConfirm"
+            (keydown.enter)="showConfirm = !showConfirm"></i>
+          <input
+            id="confirmPassword"
+            pInputText
+            class="w-full"
+            [type]="showConfirm ? 'text' : 'password'"
+            formControlName="confirmPassword"
+            autocomplete="new-password">
+        </span>
+      </div>
+      <div class="col-12">
+        <button
+          pButton
+          type="submit"
+          label="Promeni lozinku"
+          icon="pi pi-lock"
+          class="p-button-success"
+          [loading]="saving"
+          [disabled]="saving">
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

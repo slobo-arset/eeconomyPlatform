@@ -11,14 +11,53 @@
         <i class="pi pi-ellipsis-v"></i>
     </button>
 
+    <div class="layout-topbar-end">
+        <div class="layout-topbar-admin" *ngIf="isAdmin">
+            <div class="layout-topbar-admin-pill">
+                <span class="layout-topbar-admin-label">Admin mod</span>
+                <p-inputSwitch
+                    [ngModel]="adminMode"
+                    (onChange)="handleAdminModeChange($event)"
+                    inputId="admin-mode-toggle"
+                    aria-label="Admin mod">
+                </p-inputSwitch>
+            </div>
+            <div class="layout-topbar-company" *ngIf="!adminMode">
+                <label class="layout-topbar-admin-label" for="company-select">Kompanija</label>
+                <p-dropdown
+                    inputId="company-select"
+                    [options]="sessionContext.companies"
+                    [(ngModel)]="selectedCompanyId"
+                    optionLabel="company_name"
+                    optionValue="id"
+                    placeholder="Izaberi kompaniju"
+                    [filter]="true"
+                    filterBy="company_name"
+                    appendTo="body"
+                    (onChange)="handleCompanyChange($event.value)"
+                    styleClass="layout-topbar-company-dropdown">
+                </p-dropdown>
+            </div>
+        </div>
 
-    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        <div class="layout-topbar-divider" *ngIf="isAdmin"></div>
 
-        <button class="p-link layout-topbar-button">
-            <i class="pi pi-user" (click)="goToProfile()"></i>
-        </button>
-        <button class="p-link layout-topbar-button" (click)="logOut()">
-            <i class="pi pi-power-off"></i>
-        </button>
+        <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+            <button
+                class="layout-topbar-user-btn"
+                type="button"
+                aria-label="Moj profil"
+                (click)="goToProfile()"
+                (keydown.enter)="goToProfile()">
+                <span class="layout-topbar-avatar" aria-hidden="true">{{ initials }}</span>
+                <span class="layout-topbar-user" *ngIf="userName">
+                    <span class="layout-topbar-user-name">{{ userName }}</span>
+                    <small class="layout-topbar-user-role">{{ roleLabel }}</small>
+                </span>
+            </button>
+            <button class="p-link layout-topbar-button layout-topbar-logout" type="button" aria-label="Odjava" (click)="logOut()">
+                <i class="pi pi-power-off"></i>
+            </button>
+        </div>
     </div>
 </div>

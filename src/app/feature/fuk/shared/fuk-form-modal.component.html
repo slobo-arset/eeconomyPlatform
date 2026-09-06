@@ -1,0 +1,9 @@
+<div class="fuk-form-modal">
+  <div class="fuk-form-modal__body">
+    <app-fuk-fields [form]="form" [fields]="configScreen.fields" [optionsMap]="optionsMap"></app-fuk-fields>
+  </div>
+  <div class="fuk-form-modal__footer">
+    <button pButton type="button" label="Otkaži" class="p-button-text mr-2" (click)="handleClose()"></button>
+    <button pButton type="button" label="Sačuvaj" (click)="handleSubmit()"></button>
+  </div>
+</div>

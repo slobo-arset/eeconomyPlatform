@@ -59,4 +59,20 @@ export class DisplayMessageService {
       detail: 'Uspešno ste se prijavili. Predračun je poslat na vašu mail adresu.',
     });
   }
+
+  emitSuccess(detail: string): void {
+    this.messageEmitter.next({
+      severity: 'success',
+      summary: 'OBAVEŠTENJE',
+      detail,
+    });
+  }
+
+  emitError(detail: string): void {
+    this.messageEmitter.next({
+      severity: 'error',
+      summary: 'GREŠKA',
+      detail,
+    });
+  }
 }

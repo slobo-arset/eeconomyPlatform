@@ -17,4 +17,8 @@ export class AuthService {
     return this.http.post<AuthResp>('auth/login',data)
   }
 
+  public changePassword(data: { userId: number; currentPassword: string; newPassword: string }): Observable<void> {
+    return this.http.post<void>('auth/change-password', data);
+  }
+
 }

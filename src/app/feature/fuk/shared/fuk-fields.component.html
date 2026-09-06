@@ -1,0 +1,87 @@
+<form [formGroup]="form">
+  <div class="grid">
+    <div class="flex flex-column gap-2 p-1" *ngFor="let field of fields" [ngClass]="getFieldColClass(field)">
+      <label [for]="field.key">{{ field.label }}</label>
+
+      <ng-container [ngSwitch]="field.type">
+        <textarea
+          *ngSwitchCase="'textarea'"
+          pInputTextarea
+          [id]="field.key"
+          [formControlName]="field.key"
+          [attr.aria-label]="field.label"
+          [autoResize]="true"
+          rows="6">
+        </textarea>
+
+        <p-inputNumber
+          *ngSwitchCase="'number'"
+          [id]="field.key"
+          [formControlName]="field.key"
+          [min]="field.min"
+          [max]="field.max"
+          styleClass="w-full">
+        </p-inputNumber>
+
+        <p-calendar
+          *ngSwitchCase="'date'"
+          [id]="field.key"
+          [formControlName]="field.key"
+          dateFormat="dd.mm.yy"
+          [showIcon]="true"
+          [showButtonBar]="true"
+          [monthNavigator]="true"
+          [yearNavigator]="true"
+          yearRange="2000:2040"
+          appendTo="body"
+          panelStyleClass="fuk-datepicker"
+          styleClass="w-full"
+          inputStyleClass="w-full"
+          [attr.aria-label]="field.label">
+        </p-calendar>
+
+        <p-dropdown
+          *ngSwitchCase="'dropdown'"
+          [id]="field.key"
+          [formControlName]="field.key"
+          [options]="field.options || optionsMap[field.key] || []"
+          [optionLabel]="field.options ? 'label' : getOptionLabel(field)"
+          [optionValue]="field.options ? 'value' : getOptionValue(field)"
+          [placeholder]="'Izaberite'"
+          [showClear]="true"
+          [filter]="true"
+          [filterBy]="field.options ? 'label' : getOptionLabel(field)"
+          appendTo="body"
+          panelStyleClass="fuk-dropdown-panel"
+          styleClass="w-full"
+          [attr.aria-label]="field.label">
+        </p-dropdown>
+
+        <p-inputSwitch
+          *ngSwitchCase="'switch'"
+          [id]="field.key"
+          [formControlName]="field.key"
+          [attr.aria-label]="field.label">
+        </p-inputSwitch>
+
+        <input
+          *ngSwitchCase="'computed'"
+          pInputText
+          [id]="field.key"
+          [formControlName]="field.key"
+          [attr.aria-label]="field.label"
+          readonly
+        />
+
+        <input
+          *ngSwitchDefault
+          pInputText
+          [id]="field.key"
+          [formControlName]="field.key"
+          [attr.aria-label]="field.label"
+          autocomplete="off"
+        />
+      </ng-container>
+    </div>
+  </div>
+</form>

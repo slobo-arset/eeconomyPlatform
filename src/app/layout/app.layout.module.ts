@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { SidebarModule } from 'primeng/sidebar';
 import { BadgeModule } from 'primeng/badge';
@@ -31,6 +32,7 @@ import { DropdownModule } from 'primeng/dropdown';
     ],
     exports: [AppLayoutComponent],
     imports: [
+        CommonModule,
         BrowserModule,
         FormsModule,
         HttpClientModule,

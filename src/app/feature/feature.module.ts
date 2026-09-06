@@ -24,6 +24,7 @@ import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ToastModule } from 'primeng/toast';
 import { UiModule } from '../ui/ui.module';
 import { SuccessfulRegistrationComponent } from './registration/successful-registration/successful-registration.component';
+import { ProfileComponent } from './administracija/profile/profile.component';
 import { EFaktureModule } from './eFakture/e-fakture.module';
 import { ObukeModule } from './obuke/obuke.module';
 import { ObracuniModule } from './obracuni/obracuni.module';
@@ -38,7 +39,8 @@ import { InfoModule } from './info/info.module';
     CompanyComponent,
     EmployeesComponent,
     LogListaComponent,
-    SuccessfulRegistrationComponent
+    SuccessfulRegistrationComponent,
+    ProfileComponent
   ],
   imports: [
     CommonModule,

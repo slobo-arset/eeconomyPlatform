@@ -11,7 +11,6 @@ import { LogListaComponent } from './feature/administracija/log-lista/log-lista.
 import { EmployeesComponent } from './feature/user/employees/employees.component';
 import { SuccessfulRegistrationComponent } from './feature/registration/successful-registration/successful-registration.component';
 import { ProfileComponent } from './feature/administracija/profile/profile.component';
-import { PodesavanjeComponent } from './feature/eFakture/podesavanje/podesavanje.component';
 
 const routes: Routes = [
   {path: 'login', component: CpLoginComponent},
@@ -24,7 +23,7 @@ const routes: Routes = [
       {path: '', component: CpDashboardComponent},
       {path: 'users', component: CompanyComponent},
       {path: 'subscription', component: PretplateComponent},
-      {path: 'profile', component: PodesavanjeComponent},
+      {path: 'profile', component: ProfileComponent},
       {path: 'log-lista', component: LogListaComponent},
       {path: 'employees', component: EmployeesComponent},
       {
@@ -47,6 +46,10 @@ const routes: Routes = [
        {
         path: 'info',
         loadChildren: () => import('../app/feature/info/info.module').then(m => m.InfoModule)
+       },
+       {
+        path: 'fuk',
+        loadChildren: () => import('../app/feature/fuk/fuk.module').then(m => m.FukModule)
        },
       //  {
       //   path: 'parametri',

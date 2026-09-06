@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { MainStateService } from './data-access/state/main-state.service';
+import { SessionContextService } from './data-access/state/session-context.service';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ export class AppComponent implements OnInit {
   }
 
   constructor(
-    public mainStateService: MainStateService
+    public mainStateService: MainStateService,
+    private sessionContext: SessionContextService
   ){}
 
   ngOnInit() {
@@ -27,6 +29,8 @@ export class AppComponent implements OnInit {
         this.mainStateService.setAppState(JSON.parse(state));
         sessionStorage.removeItem('state');
     }
+
+    this.sessionContext.init();
 
   }
 

@@ -7,6 +7,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/data-access/auth/auth.service';
 import { catchError, Observable, of, switchMap, tap } from 'rxjs';
 import { MainStateService } from 'src/app/data-access/state/main-state.service';
+import { SessionContextService } from 'src/app/data-access/state/session-context.service';
 
 @Component({
   selector: 'app-cp-login',
@@ -27,7 +28,8 @@ export class CpLoginComponent {
     private store: Store,
     private router: Router,
     private authService: AuthService,
-    private mainStateService: MainStateService
+    private mainStateService: MainStateService,
+    private sessionContext: SessionContextService
   ) {
   }
 
@@ -36,9 +38,9 @@ export class CpLoginComponent {
 
     this.authService.login(dataLogin).subscribe({
       next: (data: any) => {
-        this.mainStateService.setAppState({user:data.user})
+        this.sessionContext.onLogin(data.user);
         localStorage.setItem('accessToken', data.token);
-        this.router.navigate(['/dashboard']);
+        this.router.navigate(['/']);
       },
       error: (error) => {
         console.log('Login failed:', error);

@@ -74,14 +74,124 @@
         }
     }
 
+    .layout-topbar-end {
+        margin-left: auto;
+        display: flex;
+        align-items: center;
+        gap: 0.25rem;
+    }
+
+    .layout-topbar-admin {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .layout-topbar-admin-pill {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: var(--surface-100);
+        border-radius: 2rem;
+        padding: 0.35rem 0.85rem;
+    }
+
+    .layout-topbar-admin-label {
+        font-size: 0.9rem;
+        font-weight: 600;
+        color: var(--text-color);
+        white-space: nowrap;
+    }
+
+    .layout-topbar-company {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    .layout-topbar-company-dropdown {
+        min-width: 16rem;
+    }
+
+    .layout-topbar-divider {
+        width: 1px;
+        height: 2.25rem;
+        background: var(--surface-300);
+        margin: 0 0.85rem;
+    }
+
+    .layout-topbar-user-btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        background: transparent;
+        border: 0;
+        padding: 0.25rem 0.5rem;
+        cursor: pointer;
+        border-radius: 0.75rem;
+        color: inherit;
+
+        &:hover {
+            background-color: var(--surface-hover);
+        }
+
+        &:focus {
+            @include focused();
+        }
+    }
+
+    .layout-topbar-avatar {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 0.65rem;
+        background: #3b82f6;
+        color: #fff;
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 0.02em;
+        flex-shrink: 0;
+    }
+
+    .layout-topbar-user {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        line-height: 1.2;
+        text-align: left;
+    }
+
+    .layout-topbar-user-name {
+        font-weight: 700;
+        color: var(--text-color);
+    }
+
+    .layout-topbar-user-role {
+        color: var(--text-color-secondary);
+        font-size: 0.8rem;
+    }
+
+    .layout-topbar-logout {
+        color: #e24c4c;
+
+        &:hover {
+            color: #c0392b;
+            background-color: rgba(226, 76, 76, 0.08);
+        }
+    }
+
     .layout-topbar-menu {
-        margin: 0 0 0 auto;
+        margin: 0;
         padding: 0;
         list-style: none;
         display: flex;
+        align-items: center;
 
         .layout-topbar-button {
-            margin-left: 1rem;
+            margin-left: 0.25rem;
         }
     }
 }
@@ -104,6 +214,17 @@
             display: inline-flex;
             margin-left: 0;
             order: 3;
+        }
+
+        .layout-topbar-end {
+            margin-left: 0;
+            order: 4;
+            position: static;
+        }
+
+        .layout-topbar-company,
+        .layout-topbar-divider {
+            display: none;
         }
 
         .layout-topbar-menu {

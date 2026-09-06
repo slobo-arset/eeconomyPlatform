@@ -1,24 +1,31 @@
-import {OnInit} from '@angular/core';
+import {OnDestroy, OnInit} from '@angular/core';
 import {Component} from '@angular/core';
+import { Subscription } from 'rxjs';
 import {LayoutService} from './service/app.layout.service';
-import {Store} from "@ngrx/store";
 import { MainStateService } from '../data-access/state/main-state.service';
+import { SessionContextService } from '../data-access/state/session-context.service';
+import { buildAdminMenu, buildCompanyMenu } from './app.menu.builders';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './app.menu.component.html'
 })
-export class AppMenuComponent implements OnInit {
+export class AppMenuComponent implements OnInit, OnDestroy {
 
   model: any[] = [];
   companyName = '';
+  private sessionSub?: Subscription;
 
   constructor(
     public layoutService: LayoutService,
-    public mainStateService: MainStateService
+    public mainStateService: MainStateService,
+    private sessionContext: SessionContextService
   ) {}
 
   ngOnInit() {
+    this.rebuildMenu();
+    this.sessionSub = this.sessionContext.changes$.subscribe(() => this.rebuildMenu());
+    return;
     const user  =  this.mainStateService.getStateBykey('user');
     if(user.tip == 1){
       this.model = [
@@ -985,5 +992,24 @@ export class AppMenuComponent implements OnInit {
       //     ]
       // }
     //];
+  }
+
+  ngOnDestroy() {
+    this.sessionSub?.unsubscribe();
+  }
+
+  private rebuildMenu() {
+    const user = this.mainStateService.getStateBykey('user');
+    if (!user) {
+      this.model = [];
+      return;
+    }
+
+    if (Number(this.sessionContext.getOriginalUser()?.tip) === 1 && this.sessionContext.adminMode) {
+      this.model = buildAdminMenu();
+      return;
+    }
+
+    this.model = buildCompanyMenu(Number(this.sessionContext.getOriginalUser()?.tip) === 1);
   }
 }

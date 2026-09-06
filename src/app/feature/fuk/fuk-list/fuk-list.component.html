@@ -1,0 +1,108 @@
+<div class="col-12 p-0 mb-2">
+  <app-breadcrumbs [items]="items"></app-breadcrumbs>
+</div>
+
+<div class="col-12 card" *ngIf="config">
+  <p-table
+    #dt1
+    [value]="rows"
+    dataKey="id"
+    [rows]="10"
+    [loading]="loading"
+    [showCurrentPageReport]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [paginator]="true"
+    [customSort]="true"
+    (sortFunction)="handleSort($event)"
+    currentPageReportTemplate="Prikaži od {first} do {last} od ukupno {totalRecords} redova"
+    [(contextMenuSelection)]="contextData"
+    [contextMenu]="cm">
+    <ng-template pTemplate="caption">
+      <div class="flex justify-content-between align-items-center">
+        <span class="font-bold">{{ config.label }}</span>
+        <p-button
+          type="button"
+          icon="pi pi-plus"
+          label="Dodaj"
+          [disabled]="!sessionContext.getCompanyId()"
+          (click)="handleCreate()">
+        </p-button>
+      </div>
+      <small class="text-color-secondary" *ngIf="!sessionContext.getCompanyId()">
+        Izaberite kompaniju u headeru da biste dodavali šifarnike.
+      </small>
+    </ng-template>
+    <ng-template pTemplate="header">
+      <tr>
+        <th *ngFor="let column of config.columns" [pSortableColumn]="column.field">
+          <div class="flex align-items-center">
+            {{ column.header }}
+            <p-sortIcon [field]="column.field"></p-sortIcon>
+          </div>
+          <p-columnFilter
+            *ngIf="column.filter !== 'boolean' && column.filter !== 'none'"
+            type="text"
+            [field]="column.field"
+            [showMenu]="false"
+            [placeholder]="'Filter ' + column.header"
+            class="mt-2 block">
+          </p-columnFilter>
+          <p-columnFilter
+            *ngIf="column.filter === 'boolean'"
+            [field]="column.field"
+            matchMode="equals"
+            [showMenu]="false"
+            class="mt-2 block">
+            <ng-template pTemplate="filter" let-value let-filter="filterCallback">
+              <p-dropdown
+                [ngModel]="value"
+                [options]="validanOptions"
+                optionLabel="label"
+                optionValue="value"
+                placeholder="Validan"
+                [showClear]="true"
+                appendTo="body"
+                styleClass="w-full"
+                (onChange)="filter($event.value)">
+              </p-dropdown>
+            </ng-template>
+          </p-columnFilter>
+        </th>
+        <th style="width: 8rem">Akcija</th>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-data>
+      <tr class="text-sm" [pContextMenuRow]="data">
+        <td *ngFor="let column of config.columns">
+          {{ formatCell(data, column.field) }}
+        </td>
+        <td>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-pencil"
+            class="p-button-text p-button-sm"
+            aria-label="Izmeni"
+            (click)="handleEdit(data)">
+          </button>
+          <button
+            pButton
+            type="button"
+            icon="pi pi-trash"
+            class="p-button-text p-button-danger p-button-sm"
+            aria-label="Obriši"
+            (click)="handleDelete(data)">
+          </button>
+        </td>
+      </tr>
+    </ng-template>
+    <ng-template pTemplate="emptymessage">
+      <tr>
+        <td [attr.colspan]="config.columns.length + 1">Nema unetih podataka.</td>
+      </tr>
+    </ng-template>
+  </p-table>
+</div>
+
+<p-contextMenu #cm [model]="context"></p-contextMenu>
+<p-confirmDialog></p-confirmDialog>
